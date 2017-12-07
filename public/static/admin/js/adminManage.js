@@ -49,7 +49,8 @@ function admin_edit() {
  
     var reg_old = $("#passwordold").val();
     var reg_new = $("#passwordnew").val();
-    var reg_id = $("#adminid").val();
+    var reg_id = $("#adminid").text();
+    var arr = reg_id.split("："); 
 
     if (reg_old == "") {
         alert("请输入旧的密码");
@@ -65,7 +66,7 @@ function admin_edit() {
         type: "get",
         url: "editAdmin/",
         eache: false,
-        data:{id:reg_id,oldpwd:reg_old,newpwd:reg_new},
+        data:{id:arr[1],oldpwd:reg_old,newpwd:reg_new},
         success: function(reg) {
             $("#passwordold").val("");
             $("#passwordnew").val("");
