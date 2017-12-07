@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/common.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/library.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/copyboooks2.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/dict1.css" />
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/CopyBooks2.js" ></script>
+		<style>
+			.form{
+				padding: 15px;
+				font-size: 16px;
+			}
+			.form .text {
+				padding: 3px;
+				margin:2px 10px;
+				width: 240px;
+				height: 24px;
+				line-height: 28px;
+				border: 1px solid #D4D4D4;
+			}
+			.form .btn{
+				margin:6px;
+				padding: 6px;
+				width: 120px;
+				font-size: 16px;
+				border: 1px solid #D4D4D4;
+				cursor: pointer;
+				background:#eee;
+			}
+			.form .file{
+				margin:6px;
+				padding: 6px;
+				width: 220px;
+				font-size: 16px;
+				border: 1px solid #D4D4D4;
+				cursor: pointer;
+				background:#eee;
+			}
+			h2{
+				color: #4288ce;
+				font-weight: 400;
+				padding: 6px 0;
+				margin: 6px 0 0;
+				font-size: 28px;
+				border-bottom: 1px solid #eee;
+			}
+			.info{
+				padding: 12px 0;
+				border-bottom: 1px solid #eee;
+			}
+			.copyright{
+				margin-top: 24px;
+				padding: 12px 0;
+  				border-top: 1px solid #eee;
+			}
+	</style>
+	</head>
+	<body class="_fullBody">
+		<div class="main_box">
+			<div class="right_box" style="height:1000px;">
+				<div>
+					<a style="font-size: 24px;" href="test4">添加字</a>
+					<a style="font-size: 24px;" href="test5">删除字</a>
+					<a style="font-size: 24px;" href="test6">更新字图片</a>
+					<a style="font-size: 24px;" href="test8">更新字视频</a>
+					<a style="font-size: 24px;" href="test9">更新说文解字</a>
+					<a style="font-size: 24px; color: #0000FF;" href="test10">更新生字类型</a>
+					<a style="font-size: 24px;" href="test7">查询字</a>
+				</div>
+				<div class="right_box_bg"></div>
+				<div class="search_box">
+					<FORM method="post" enctype="multipart/form-data" class="form" action="{:url('uploadKindController')}" style="margin-left: 35px; margin-top: -60px;">
+						<ul>
+							<li>
+								<label class="title">请输入要修改的字</label>
+								<input id="wordName" type="text" name="_name" />
+								<!-- <input id="wordName" type="text" name="_name" onchange="delnote()"/> -->
+								<!-- <script>
+									function delnote() {
+										$('#Version').children().remove();
+										$('#Grade').children().remove();
+										$('#Course').children().remove();
+									}
+								</script> -->
+							</li>
+							<!-- <li>
+								<ul>
+									<li><label class="title">版本</label><input type="text" id="wordversion" name="oldversion" ></input></li>
+									<li><label class="title">年级</label><input type="text" id="wordgrade" name="oldgrade" ></input></li>
+									<li><label class="title">课程</label><input type="text" id="wordcourse" name="oldcourse" ></input></li>
+									<li><br></li>
+								</ul>
+							</li> -->
+							<!-- <li>
+								<ul>
+									<li><label class="title">原生字信息</label></li>
+									<li><label class="title">版本</label><input type="text" id="wordversion" name="oldversion" ></input></li>
+									<li><label class="title">年级</label><input type="text" id="wordgrade" name="oldgrade" ></input></li>
+									<li><label class="title">课程</label><input type="text" id="wordcourse" name="oldcourse" ></input></li>
+									<li><br></li>
+								</ul>
+								<ul>
+									<li><label class="title">原生字信息</label></li>
+									<li><label class="title" >版本</label><div id="Version"></div></li>
+									<li><label class="title" >年级</label><div id="Grade"></div></li>
+									<li><label class="title" >课程</label><div id="Course"></div></li>
+									<li><input id="versionName" name="oldversion" type="hidden"></input></li>
+									<li><input id="gradeName" name="oldgrade" type="hidden"></input></li>
+									<li><input id="courseName" name="oldcourse" type="hidden"></input></li>
+									<li><br></li>
+								</ul>
+								<script>
+								function saveVersionValue(th) {
+									var id = th.id;
+									var val = document.getElementById(id).innerHTML;
+									document.getElementById('versionName').value = val;
+								}
+								</script>
+								<script>
+								function saveGradeValue(th) {
+									var id = th.id;
+									var val = document.getElementById(id).innerHTML;
+									document.getElementById('gradeName').value = val;
+								}
+								</script>
+								<script>
+								function saveCourseValue(th) {
+									var id = th.id;
+									var val = document.getElementById(id).innerHTML;
+									document.getElementById('courseName').value = val;
+								}
+								</script>
+								<hr />
+							</li> -->
+							<li><label class="title">请输入原来的生字信息</label></li>
+							<li>
+								<label class="title">版本</label>
+								<select name="oldversion">
+									<option value="">请选择版本</option>
+									<option value="人教版">人教版</option>
+									<option value="北京版">北京版</option>
+									<option value="苏教版">苏教版</option>
+									<option value="粤教版">粤教版</option>
+								</select>
+								<label class="title">年级</label>
+								<select name="oldgrade">
+									<option value="">请选择年级</option>
+									<option value="一年级">一年级</option>
+									<option value="二年级">二年级</option>
+									<option value="三年级">三年级</option>
+									<option value="四年级">四年级</option>
+									<option value="五年级">五年级</option>
+								</select>
+								<label class="title">课程</label>
+								<select name="oldcourse">
+									<option value="">请选择课程</option>
+									<option value="第一课">第一课</option>
+									<option value="第二课">第二课</option>
+									<option value="第三课">第三课</option>
+									<option value="第四课">第四课</option>
+								</select>
+							</li>
+							<li><label class="title">请输入新的生字信息</label></li>
+							<li>
+								<label class="title">版本</label>
+								<select name="_version">
+									<option value="">请选择版本</option>
+									<option value="人教版">人教版</option>
+									<option value="北京版">北京版</option>
+									<option value="苏教版">苏教版</option>
+									<option value="粤教版">粤教版</option>
+								</select>
+								<label class="title">年级</label>
+								<select name="_grade">
+									<option value="">请选择年级</option>
+									<option value="一年级">一年级</option>
+									<option value="二年级">二年级</option>
+									<option value="三年级">三年级</option>
+									<option value="四年级">四年级</option>
+									<option value="五年级">五年级</option>
+								</select>
+								<label class="title">课程</label>
+								<select name="_course">
+									<option value="">请选择课程</option>
+									<option value="第一课">第一课</option>
+									<option value="第二课">第二课</option>
+									<option value="第三课">第三课</option>
+									<option value="第四课">第四课</option>
+								</select>
+							</li>
+							<li>
+								<input type="submit" class="btn" value="提交 " style="margin-left:-1px;" >
+							</li>
+						</ul>
+					</FORM>	
+				</div>
+			</div>
+		</div>
+		</body>
+		<!-- <script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/FindNewRecord.js"></script> -->
+</html>

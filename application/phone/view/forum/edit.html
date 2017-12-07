@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<html>
+	<!--
+    	作者：834157649@qq.com
+    	时间：2017-11-21
+    	描述：瑞聪的编辑文章
+    -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+
+		<link href="../../../static/css/myChange.css" rel="stylesheet" />
+	</head>
+
+	<body style="background: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav" style="height: 57px;background-color:#e3ddd4;">
+
+			<button type="button" class="mui-action-back mui-btn mui-btn-outlined" style="width: 36px;height: 20px;padding: 0px;margin-top:26px;float: left;border: 0px;font-family: 'HYGanLanJ';font-size: 15px;">取消</button>
+			<button type="button" onclick="finish()" class="mui-btn mui-btn-warning" style="width: 36px;height: 20px;text-align:center;margin-top:26px;float: right;font-size: 15px;">完成</button>
+
+			<h1 class="mui-title" style="padding-top: 20px;">编辑文章</h1>
+		</header>
+
+		<div style="width: 100%; height: 182px; margin-top: 24px;text-align: center;">
+			<input type="file" id="cover" accept="images/*" capture="camera" style="position: absolute;width: 223px; height: 88px;padding: 36px 69px;margin:53px 72px 11px;opacity: 0;" />
+			<!--<img id="cover_img" src="../../../static/imgs/my/head.png" style="width: 223px; height: 88px;padding: 0;margin:53px 72px 11px;">-->
+			<img id="cover_img" style="width: 100%; height: 88px;margin-top:49px"></br>+添加封面</img>
+			<!--<button type="button" class="mui-btn mui-btn-outlined" style="width: 223px; height: 88px;padding: 36px 69px;margin:53px 72px 11px;font-size: 18px; ">+添加封面</button>-->
+		</div>
+		<div>
+			<label style="margin-left: 5px;">标题</label>
+			<input type="text" style="padding:10px;" id="theme" class="mui-input-clear" placeholder="请输入标题">
+		</div>
+		<!--<input type="text" class="mui-input-clear" placeholder="标题" style="margin: 0px;height: 45px;font-size: 18px;">-->
+		<!--<div>
+					<label>导语</label>
+					<input type="text" class="mui-input-clear" placeholder="请输入内容">
+				</div>-->
+		<!--<input type="text" class="mui-input-clear" placeholder="导语" style="margin: 0px;height: 30px;font-size: 15px;">-->
+		<!--<input type="text" class="mui-input-clear" placeholder="正文" style="margin: 0px;height: auto;font-size: 15px;">-->
+		<div>
+			<label style="margin-left: 5px;">正文</label>
+			<div id="article" style="padding: 10px;border-top: 1px solid #dbdbdb;" contentEditable="true">
+			</div>
+		</div>
+
+		</div>
+		
+		
+		
+		<nav class="mui-bar mui-bar-tab" style="background: #e3ddd4;">
+			<div style="width: 100%;margin: 0;float: left;text-align: center;">
+				<input type="file" id="img" multiple="multiple" accept="images/*" capture="camera" style="position: absolute;width: 100%;height: inherit;opacity: 0;" />
+				<!--<img style="width: 100%;height: 50px;" src="../../../static/imgs/edit/photo.png" />
+-->				<img src="../../../static/imgs/edit/photo.png" style="width: 10%;height: 10%;"/>
+                <br>
+                <span class="mui-tab-label">添加图片</span>
+                
+                
+			</div>
+
+		
+			<!--<div id="square" style="width: 50%;margin: 0;float: left;">
+				<input type="file" id="images" accept="images/*" capture="camera" style="width: 100%;"/>
+				<img class="mui-icon" src="../../../static/imgs/edit/photo.png" />
+				<span class="mui-tab-label">添加图片</span>
+			</div>-->
+
+			<!--<a id="forum" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/edit/link.png" />
+				<span class="mui-tab-label">添加链接</span>
+			</a>-->
+		</nav>
+
+		<script src="../../../static/js/mui.min.js"></script>
+		<!-- JQUERY -->
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+		<!-- BOOTSTRAP -->
+		<script src="../../../static/js/bootstrap.min.js"></script>
+
+		<script src="../../../static/js/md5.js"></script>
+
+		<script type="text/javascript">
+			mui.init();
+			var imgURL;
+			var id = 1;
+
+			//选择封面后显示
+			$("#cover").change(function() {
+				var file = $(this);
+				var fileObj = file[0];
+				var windowURL = window.URL || window.webkitURL;
+				var dataURL;
+				for(var i = 0; fileObj && fileObj.files && fileObj.files[i]; i++) {
+					dataURL = windowURL.createObjectURL(fileObj.files[i]);
+					$("#cover_img").attr('src', dataURL);
+					//		            imgURL = dataURL;
+				}
+			});
+
+			$("#img").change(function() {
+
+				var file = $(this);
+				var fileObj = file[0];
+				var windowURL = window.URL || window.webkitURL;
+				var dataURL;
+				for(var i = 0; fileObj && fileObj.files && fileObj.files[i]; i++) {
+					dataURL = windowURL.createObjectURL(fileObj.files[i]);
+					imgURL = dataURL;
+				}
+				var div = document.createElement("div");
+				var imgnode = document.createElement("img");
+				var br = document.createElement('br');
+				imgnode.setAttribute('id', id);
+				imgnode.setAttribute('src', dataURL);
+				imgnode.setAttribute('text-align', 'center');
+				div.appendChild(imgnode);
+				div.setAttribute('style', 'text-align: center');
+				imgnode.setAttribute('style', 'max-width: 350px;height: auto;')
+				document.getElementById("article").appendChild(br);
+				document.getElementById("article").appendChild(div);
+				document.getElementById("article").appendChild(br);
+				id++;
+			});
+
+			function finish() {
+				var theme = document.getElementById("theme");
+				var article = document.getElementById("article");
+				var html_txt = document.getElementById("article").innerHTML;
+				//mui.toast(document.getElementById("article").innerHTML);
+//				alert(document.getElementById("article").innerHTML);
+
+				//传图片过去
+				var formData = new FormData();
+				formData.append("file", $("#cover")[0].files[0]);
+				formData.append("theme", theme.value);
+				formData.append("article", html_txt);
+
+				$.ajax({
+					type: "post",
+					url: "../../phone/edit/saveArticle",
+					cache: false,
+					async: true,
+					processData: false,
+					contentType: false,
+					data: formData,
+					success: function(data) {
+						mui.toast(data);
+						if(data == "1") {
+							mui.toast("发表成功！");
+							window.location.href = "../../phone/forum/forum";
+						} else if(data == "2") {
+							mui.toast('保存失败！');
+						} else {
+							mui.toast('没返回1或者2！');
+						}
+					},
+					error: function() {
+						mui.toast('服务器出错了');
+					}
+				});
+			}
+
+            jQuery(document).ready(function() {
+				var a = false;
+				$.ajax({
+					type: "get",
+					url: "../../phone/user/checkLogin",
+					cache: false,
+					async: false,
+					success: function(data) {
+						if(data == 1) {
+							a = true;
+						} else if(data == 0) {
+							a = false;
+						}
+					},
+					error: function() {
+						mui.toast('服务器出错了!!!')
+					}
+				});
+				if(!a) {
+					mui.confirm('是否前往登录？', '您还没登录', ['取消', '登录'], function(e) {
+						if(e.index == 1) {
+							window.location.href = "../../phone/user/loginPage"
+						} else {
+							window.location.href = "../../phone/index/index"
+						}
+					}, 'div')
+				} else {
+
+				}
+			});
+		</script>
+	</body>
+
+</html>

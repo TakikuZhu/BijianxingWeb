@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/register.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 59px;background: #E3DDD4;">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+		    <h1 class="mui-title" style="margin-top: 26px;">修改密码</h1>
+		</header>
+		<div class="text" >
+			<!--<input id="phone" type="text" placeholder="手机号" style="width: 344px;height: 42px;margin-top: 17px;"/>-->
+			<input id="password" type="password" placeholder="密码" style="width: 344px;height: 42px;"/>
+			<input id="password2" type="password" placeholder="确认密码" onblur="checkpwd()" style="width: 344px;height: 42px;"/>
+		</div>
+		
+		<div class="mui-content mui-col-sm-12" style="padding-top:0 ;">
+			<div style="width: 100%;background-color: #FFFFFF;" >
+			<input type="image" onclick="changePwd()" src="../../../static/imgs/editPwd.png" style="width: 312px;height: 76px;margin-left: 35px;" />
+			</div>
+			<!--<div style="width: 100%;  background-color: #FFFFFF;" >
+			<button class="registerButton" id="btnRegister" style="border:0px; margin-left: 126.5px;">同意用户协议</button>
+			</div>-->
+		</div>
+	</body>
+	
+	<!-- JQUERY -->
+	<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+	<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>-->
+	<script src="../../../static/js/jquery.backstretch.min.js"></script>
+	<script src="../../../static/js/jquery.cookie.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="../../../static/js/bootstrap.min.js"></script>
+	
+	<script src="../../../static/js/md5.js"></script>
+	
+	<script type="text/javascript">
+		function checkpwd(){
+			var pwd = document.getElementById('password');
+			var pwd2 = document.getElementById('password2');
+			if(pwd.value != pwd2.value){
+				mui.toast('两次密码不一致!')
+			}
+		}
+		
+		function changePwd() {
+			var message = "";
+			var pwd = document.getElementById('password');
+			var pwd2 = document.getElementById('password2');
+			if(pwd.value != pwd2.value) {
+							message += "两次密码不一致！\n";
+						} 
+						if(pwd.value == null || pwd2.value == "") {
+							message += "密码不能为空！\n"
+						}
+						if(message != "") {
+							mui.toast(message);
+						} else {
+							$.ajax({
+								type: "post",
+								url: "../../phone/user/changePwd",
+								cache: false,
+								async: true,
+								data: {
+									'pwd': hex_md5($("#password").val())
+								},
+								success: function(data) {
+									if(data == "1") {
+										window.location.href = "../../phone/my/my";
+									} else if(data == "2") {
+										mui.toast('密码修改失败，请稍后再试!');
+									} else {
+										mui.toast('出现未知的错误！');
+									}
+								},
+								error: function() {
+									mui.toast('服务器出错了！');
+								}
+							});
+						}
+		}
+		
+	</script>
+</html>

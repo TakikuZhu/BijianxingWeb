@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/common.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/library.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/copyboooks2.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/dict1.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/jquery.fileupload.css" />
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/CopyBooks2.js" ></script>
+		<style>
+			.form{
+				padding: 15px;
+				font-size: 16px;
+			}
+			.form .text {
+				padding: 3px;
+				margin:2px 10px;
+				width: 240px;
+				height: 24px;
+				line-height: 28px;
+				border: 1px solid #D4D4D4;
+			}
+			.form .btn{
+				margin:6px;
+				padding: 6px;
+				width: 120px;
+				font-size: 16px;
+				border: 1px solid #D4D4D4;
+				cursor: pointer;
+				background:#eee;
+			}
+			.form .file{
+				margin:6px;
+				padding: 6px;
+				width: 220px;
+				font-size: 16px;
+				border: 1px solid #D4D4D4;
+				cursor: pointer;
+				background:#eee;
+			}
+			h2{
+				color: #4288ce;
+				font-weight: 400;
+				padding: 6px 0;
+				margin: 6px 0 0;
+				font-size: 28px;
+				border-bottom: 1px solid #eee;
+			}
+			.info{
+				padding: 12px 0;
+				border-bottom: 1px solid #eee;
+			}
+			.copyright{
+				margin-top: 24px;
+				padding: 12px 0;
+  				border-top: 1px solid #eee;
+			}
+	</style>
+	</head>
+	<body class="_fullBody">
+		<div class="main_box">
+			<div class="right_box" style="height:1000px;">
+				<div>
+					<a style="font-size: 24px;" href="test4">添加字</a>
+					<a style="font-size: 24px;" href="test5">删除字</a>
+					<a style="font-size: 24px; color: #0000FF;" href="test6">更新字图片</a>
+					<a style="font-size: 24px;" href="test8">更新字视频</a>
+					<a style="font-size: 24px;" href="test9">更新说文解字</a>
+					<a style="font-size: 24px;" href="test10">更新生字类型</a>
+					<a style="font-size: 24px;" href="test7">查询字</a>
+				</div>
+				<div class="right_box_bg"></div>
+				<div class="search_box">
+					<FORM method="post" enctype="multipart/form-data" class="form" action="{:url('uploadPhotoController')}" style="margin-left: 35px; margin-top: -40px;">
+						<ul>
+							<li>
+								<label class="title">请输入要修改的字</label>
+								<input id="wordName" type="text" name="_name" />
+							</li>
+							<li>
+								<label class="title">书体</label>
+								<select id="bookType" name="_booktype">
+									<option value="">请选择书体</option>
+									<option value="1">毛笔</option>
+									<option value="2">硬笔</option>
+									<option value="3">粉笔</option>
+								</select>
+								<label class="title">字体</label>
+								<select id="wordType" name="_wordtype">
+									<option value="">请选择字体</option>
+									<option value="1">楷书</option>
+									<option value="2">行书</option>
+									<option value="3">草书</option>
+									<option value="4">隶书</option>
+									<option value="5">篆书</option>
+									<option value="6">魏碑</option>
+								</select>
+							</li>
+							<li>
+								<span class="title" style="margin-top: -40px; margin-left: 0px;">选择图片：</span>
+								<input id="wordPhoto" type="file" class="file" name="wordphoto"><br/>
+							</li>
+							<li>
+								<label class="title">请输入书写要点，每一点以"@@"分隔开</label>
+							</li>
+							<li>
+								<input id="wordNote" type="text" name="_note" style="margin-left:-1px;"/>
+							</li>
+							<li>
+								<input id="submitPhoto" type="submit" class="btn" value="提交 " style="margin-left:-1px;" >
+							</li>
+						</ul>
+					</FORM>
+				</div>
+			</div>
+		</div>
+		</body>
+		<!-- <script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/UpdateRecord.js"></script> -->
+		<!-- <script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/UpdateWordPhoto.js"></script> -->
+ </html>

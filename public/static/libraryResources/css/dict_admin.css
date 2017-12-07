@@ -1,0 +1,138 @@
+.set_box_c {
+	height: 450px;
+}
+
+.set_box input {
+	padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.set_box select{
+	outline: none;
+	width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.set_box #path{
+	width: 40%;
+}
+
+._selectbtn {
+	background-color: #4652c2;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 3px;
+	border: 0px;
+	width: 100px;
+}
+
+._upbtn {
+	background-color: #4652c2;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 3px;
+	border: 0px;
+	margin-top: 35px;
+}
+
+._search_box{
+	
+	display: inline-block;
+}
+
+.dict_search_box{
+	min-height: 580px;
+}
+
+._search_box input{
+	padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    outline: none;
+}
+
+.search_btn2{
+	width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: url(../img/search.png) no-repeat center;
+    background-size: 100%;
+    cursor: pointer;
+    position: relative;
+	top: 10px;
+}
+.dicr_pagejumper{
+	width: 100%;
+	text-align: center;
+}
+
+.dict_fontBlock {
+	width: 650px;
+	height: 500px;
+	padding: 5px;
+	background: #eee;
+	margin: 10px;
+	float: left;
+	border: 5px solid #fff;
+}
+.dict_fontBlock img{
+	display: block;
+	padding: 10px;
+	margin: 10px;
+	width: 450px;
+	height: 450px;
+	background: #fff;
+}
+.dict_fontBlock ul{
+	
+	display: block;
+	margin-left: 520px;
+	margin-top: -370px;
+	width: 90px;
+}
+.dict_fontBlock ul li{
+	font-size: 16px;
+	display: block;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.admin_del{
+	cursor: pointer;
+	display: none;
+	width: 20px;
+	height: 20px;
+	background: url(../img/ico/delete_.png);
+	background-size: 100%;
+	position: absolute;
+	top: -5px;
+	left: 200px;
+}
+
+.admin_infor{
+	cursor: pointer;
+	position: absolute;
+	top: 43%;
+	left: 65%;
+}
+
+._upbtn2{
+	margin-left: 530px;
+    height: 30px;
+    width: 80px;
+}
+
+._updates{
+	width: 100px;
+	outline: none;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	text-align: center;
+}

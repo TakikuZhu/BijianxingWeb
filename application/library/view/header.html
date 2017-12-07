@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/index/css/common.css" />	
+		<!-- GOOGLE FONTS-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="../../static/libraryResources/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../static/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../../static/libraryResources/css/library.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/copyboooks2.css" />
+		<script type="text/javascript" src="../../static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="../../static/libraryResources/js/CopyBooks2.js" ></script>
+	</head>
+
+	<body class="_fullBody">
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：通用页头
+       -->
+		<header>
+			<img src="../../static/index/img/logo.png" alt="图标" />
+			<h1><i id="top_tit">书法天地</i></h1>
+			<ul class="_liMenu_1">
+				<li>
+					<a href="../../">首页</a>
+				</li>
+				<li>
+					<a href="">字库</a>
+				</li>
+				<li>
+					<a href="">教材</a>
+				</li>
+				<li>
+					<a href="">课程</a>
+				</li>
+				<li>
+					<a href="../../index/index/index">行吧</a>
+				</li>
+				<li>
+					<a href="">商城</a>
+				</li>
+				<li>
+					<a href="">拍卖</a>
+				</li>
+				<li>
+					<a href="">联系我们</a>
+				</li>
+			</ul>
+			<div id="login_box">
+				{empty name='Think.session.user_name'}
+				<span id="l_login"><a href="../index/User/index">登录</a></span>
+				<span id="l_register"><a href="{:url('index/User/registerPage')}">注册</a></span>
+				{else /}
+				<label id="l_logined"><img id="headPic" src="__PUBLIC__/static/user/headimg/{$Think.session.user_photo}"/><label>{$Think.session.user_name}</label></label>
+				<ul id="l_login_list" data-type="0">
+					<li><a id="changeinfo" href="javascript:void(0)">修改账户信息</a></li>
+					<li><a id="changepwd" href="javascript:void(0)">修改密码</a></li>
+					<li><a href="{:url('index/Message/displayside')}">查看私信消息</a></li>
+					<li><a href="{:url('index/User/ext')}">退出登录</a></li>
+				</ul>
+				{/empty}
+			</div>
+			<script type="text/javascript">
+				$("#login_box").on("click", function(){
+					if($("#l_login_list").attr("data-type") == 0){
+						$("#l_login_list").attr("data-type", "1")
+						$("#l_login_list").css("display", "block")
+					}else{
+						$("#l_login_list").attr("data-type", "0")
+						$("#l_login_list").css("display", "none")
+					}
+				})
+			</script>
+		</header>
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+      -->

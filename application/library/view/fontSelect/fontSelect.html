@@ -1,0 +1,173 @@
+{include file="header"/}
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+        -->
+        
+		<div class="main_box">
+			<div class="tit">
+				<label>字库</label>
+			</div>
+			<div class="left_box">
+				<ul>
+					<li  ><a href="dict1">看图识字</a></li>
+					<li  ><a href="dict2">生词同步</a></li>
+					<li><a href="dict">书法字典</a></li>
+					<li><a href="index">字帖生成</a></li>
+					<li class="active"><a href="fontSelect">集字功能</a></li>
+				</ul>
+			</div>
+			<div class="right_box">
+				<!--<div class="right_box_bg"></div>-->
+				<div class="menu_box">
+					<div class="set_box">
+						<label class="tit_sm">字帖设置</label>
+						<ul>
+							<li>
+								<label>名称       </label>
+								<input type="text" id="_name"  placeholder="比肩行"/>
+							</li>
+							<li id='_mesBox'>
+								<label>内容       </label>
+								<textarea id='_mes'  placeholder="白日依山尽 黄河入海流"></textarea>
+							</li>
+							<li>
+								<label>字体       </label>
+								<select id='_fontFam'>
+									<option value="楷书">楷书</option>
+									<option value="隶书">隶书</option>
+									<option value="行书">行书</option>
+									<option value="草书">草书</option>
+									<option value="篆书">篆书</option>
+									<option value="魏碑">魏碑</option>
+								</select>
+							</li>
+							
+							
+							<li>
+								<label>作者首选</label>
+								<select id="_auther1">
+									<option value="默认">比肩行</option>
+								</select>
+							</li>
+							<li>
+								<label>作者次选</label>
+								<select id="_auther2">
+									<option value="默认">比肩行</option>
+								</select>
+							</li>
+							<li>
+								<label>作者三选</label>
+								<select id="_auther3">
+									<option value="默认">比肩行</option>
+								</select>
+							</li>
+							<li>
+								<label>样式      </label>
+								<select id="typesetting">
+									<option value="黑白">请选择样式</option>
+									<option value="黑白">黑白</option>
+									<option value="白黑">白黑</option>
+									<option value="金黑">金黑</option>
+									<option value="黑红">黑红</option>
+									<option value="黄色">黄色</option>
+								</select>
+							</li>
+							<li>
+								<label>格式       </label>
+								<select id='_celltype'>
+									<option value="0">请选择</option>
+									<option value="tf">条幅</option>
+									
+									<option value="zt1">中堂</option>
+									<option value="yl">楹联</option>
+									<option value="df1">斗方</option>
+									<option value="sj">手卷</option>
+									<option value="hf">横幅</option>
+									<option value="ts">团扇</option>
+									
+									<option value="be1">匾额</option>
+								</select>
+							</li>
+							<li>
+								<label>落款       </label>
+								<input type="text" placeholder="比肩行" id="_sign" />
+							</li>
+							<li>
+								<span id='_preview'>预览字帖</span>
+							</li>
+						</ul>
+					</div>
+					<div class="usr_box user_box2">
+						<label class="tit_sm">我的字帖</label>
+						<div id="usr_box1" >
+							
+						</div>
+					
+					
+						<div class="pagejumper">
+							<ul class="pagination" id="page2">
+							</ul>
+							<div class="pageJump" style="display: none;">
+								<span>跳转到</span>
+								<input type="text" />
+								<span>页</span>
+								<button type="button" class="button">确定</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+					<div class="show_box" style="background: #FFFFFF;">
+					<label class="tit_sm">字帖预览</label>
+					<div class="show_save">
+						
+						<div class="_down _down2">
+							
+						</div>
+						
+						<div class="_save">
+							
+						</div>
+					</div>
+					<div id="copyBooks" class="font_select" style="margin:0px auto;background: #FFFFFF;min-height: 725px;"></div>
+					
+					<div id="tb_show" style="display: none;">
+							<div class="_down _down2 _down3" style="display: none;">
+								
+							</div>
+							<div id="tb_show_img">
+								
+							</div>
+							
+					</div>
+					<script type="text/javascript" src="../../static/libraryResources/js/pager.js"></script>
+					<script type="text/javascript" defer="defer" src="../../static/libraryResources/js/jsPdf.debug.js"></script>
+					<script type="text/javascript" defer="defer" src="../../static/libraryResources/js/html2canvas.js"></script>
+					<script type="text/javascript" src="../../static/libraryResources/lib/layer/layer.js"></script>
+					<script type="text/javascript" defer="defer" src="../../static/libraryResources/js/fontSelect.js" ></script>
+					<script type="text/javascript" defer="defer" src="../../static/libraryResources/js/fontSelect2.js" ></script>
+					<script type="text/javascript" src="../../static/libraryResources/js/canvas2image.js"></script>
+					<link rel="stylesheet" href="../../static/libraryResources/css/pager.css" />
+					<script type="text/javascript">
+						
+						$(document).ready(function(){ 
+							$('#_preview').on('click', function(){
+								var str = $("#_celltype").val();
+								var reg=/^[\u4E00-\u9FA5]+$/;
+								var sr = $("#_mes").val();
+								
+								if(!reg.test(sr)){
+										alert("请输入汉字");	
+									}else{
+										$("#copyBooks").getOptions(str).initDraw().fillDraw();
+									}
+							})
+						})
+	
+					</script>
+				</div>
+			</div>
+		</div>
+{include file="footer"/}

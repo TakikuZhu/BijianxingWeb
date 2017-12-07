@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/css/cloud-admin.css">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/css/themes/default.css" id="skin-switcher">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/css/responsive.css">
+
+		<link href="__PUBLIC__/static/user/old/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- ANIMATE -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/css/animatecss/animate.min.css" />
+		<!-- DATE RANGE PICKER -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+		<!-- TODO -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/js/jquery-todo/css/styles.css" />
+		<!-- FULL CALENDAR -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/js/fullcalendar/fullcalendar.min.css" />
+		<!-- GRITTER -->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/js/gritter/css/jquery.gritter.css" />
+		<script src="__PUBLIC__/static/user/old/layui/layui.js" charset="UTF-8"></script>
+		<link href="__PUBLIC__/static/user/old/layui/css/layui.css" rel="stylesheet" media="all">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/user/old/js/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.min.css" />
+		<style type="text/css">
+			.navbar .nav.navbar-nav.pull-right {
+				min-width: 135px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- HEADER -->
+		<header class="navbar clearfix" id="header">
+			<div class="container">
+				<div class="navbar-brand">
+					<!-- COMPANY LOGO -->
+					<!-- /COMPANY LOGO -->
+					<!-- TEAM STATUS FOR MOBILE -->
+					<div class="visible-xs">
+						<a href="#" class="team-status-toggle switcher btn dropdown-toggle">
+							<i class="fa fa-users"></i>
+						</a>
+					</div>
+					<!-- /TEAM STATUS FOR MOBILE -->
+					<!-- SIDEBAR COLLAPSE -->
+					<div id="sidebar-collapse" class="sidebar-collapse btn">
+						<i class="fa fa-bars" data-icon1="fa fa-bars" data-icon2="fa fa-bars"></i>
+					</div>
+					<!-- /SIDEBAR COLLAPSE -->
+				</div>
+				<!-- NAVBAR LEFT -->
+
+				<!-- /NAVBAR LEFT -->
+				<!-- BEGIN TOP NAVIGATION MENU -->
+				<ul class="nav navbar-nav pull-right">
+					<!-- BEGIN NOTIFICATION DROPDOWN -->
+					<!-- END NOTIFICATION DROPDOWN -->
+					<!-- BEGIN INBOX DROPDOWN -->
+
+					<!-- END TODO DROPDOWN -->
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+					<li class="dropdown user" id="header-user" style="float: right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img alt="" src="__PUBLIC__/static/user/headimg/{$Think.session.user_photo}" />
+							<span class="username">{$Think.session.user_name}</span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="{:url('User/mine')}" style="font-size: 14px;font-family: '微软雅黑';"><i class="fa fa-cog"></i>修改账户信息</a>
+							</li>
+							<li>
+								<a href="{:url('User/ext')}" style="font-size: 14px;font-family: '微软雅黑';"><i class="fa fa-power-off"></i>退出登录</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown user" style="float: right">
+						<a href="mai" style="font-size: 14px;font-family: '微软雅黑';">首页</a>
+					</li>
+					<!-- END USER LOGIN DROPDOWN -->
+				</ul>
+				<!-- END TOP NAVIGATION MENU -->
+			</div>
+		</header>
+		<!-- PAGE -->
+
+		<section id="page">
+			<!-- SIDEBAR -->
+			<div id="sidebar" class="sidebar">
+				<!-- <div class="col-md-10"> -->
+				<div class="sidebar-menu nav-collapse">
+					<div class="divide-20"></div>
+					<!-- /SEARCH BAR -->
+
+					<!-- SIDEBAR MENU -->
+					<ul>
+						<li>
+							<a href="mine">
+								<i class="fa fa-tachometer fa-fw"></i>
+								<span class="menu-text" style="font-size: 18px;font-family: '微软雅黑';">我的信息</span>
+								<span class="selected"></span>
+							</a>
+						</li>
+						<li class="active">
+							<a href="security">
+								<i class="fa fa-bookmark-o fa-fw"></i>
+								<span class="menu-text" style="font-size: 18px;font-family: '微软雅黑';">安全设置</span>
+								<span class="selected"></span>
+							</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</section>
+		<div id="main-content">
+
+			<div class="container">
+				<div class="row">
+					<div id="content" class="col-lg-12">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="page-header">
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<!-- BOX-->
+						
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i class="fa fa-table"></i>安全设置</h4>
+
+									</div>
+									<div class="box-body">
+										<form id="form0" class="form-horizontal" role="form">
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-3">
+													<input id="showbtn" type="submit" value="修改密码" class="btn btn-danger" style="font-size: 14px;font-family: '微软雅黑';">
+												</div>
+											</div>
+										</form>
+										<form id="form" class="form-horizontal" style="display: none;" role="form">
+											<div class="form-group">
+												<label class="col-sm-4 control-label" style="font-size: 14px;font-family: '微软雅黑';">原密码</label>
+												<div class="col-sm-5">
+													<input type="password" value="" required="" maxlength="15" class="form-control" id="pwd0" name="pwd0">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label" style="font-size: 14px;font-family: '微软雅黑';">新密码</label>
+												<div class="col-sm-5">
+													<input type="password" value="" placeholder="6-15位大小写英文字母、数字或符号的组合" required="" maxlength="15" class="form-control" id="pwd" name="pwd">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-4 control-label" style="font-size: 14px;font-family: '微软雅黑';">确认密码</label>
+												<div class="col-sm-5">
+													<input type="password" placeholder="请再次输入密码" required="" maxlength="15" class="form-control" value="" id="pwd2" name="pwd2">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-6 col-sm-3">
+													<input type="submit" value="保存密码" class="btn btn-danger" style="font-size: 14px;font-family: '微软雅黑';">
+												</div>
+											</div>
+										</form>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- </section> -->
+						<!-- /BOX -->
+					</div>
+					<!-- /SIDEBAR MENU -->
+				</div>
+			</div>
+			<!-- </div> -->
+
+			<script src="__PUBLIC__/static/user/old/js/jquery/jquery-2.0.3.min.js"></script>
+			<!-- JQUERY UI-->
+			<script src="__PUBLIC__/static/user/old/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+			<!-- BOOTSTRAP -->
+			<script src="__PUBLIC__/static/user/old/bootstrap-dist/js/bootstrap.min.js"></script>
+			<script src="__PUBLIC__/static/bootstrap/js/md5.js"></script>
+			<!-- DATE RANGE PICKER -->
+			<script src="__PUBLIC__/static/user/old/js/bootstrap-daterangepicker/moment.min.js"></script>
+
+			<script src="__PUBLIC__/static/user/old/js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+			<!-- SLIMSCROLL -->
+			<script type="text/javascript" src="__PUBLIC__/static/user/old/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/static/user/old/js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+			<!-- COOKIE -->
+			<script type="text/javascript" src="__PUBLIC__/static/user/old/js/jQuery-Cookie/jquery.cookie.min.js"></script>
+			<!-- CUSTOM SCRIPT -->
+			<script src="__PUBLIC__/static/user/old/js/script.js"></script>
+			<script>
+				jQuery(document).ready(function() {
+					// App.setPage("widgets_box");  //Set current page
+					App.init(); //Initialise plugins and elements
+				});
+				$('#form0').submit(
+					function(e){
+						e.preventDefault();
+						document.getElementById('form').style.display="";
+					}
+				)
+				
+				$('#form').submit(
+					function(e) {
+						e.preventDefault();
+						var pwd = document.getElementById('pwd').value;
+						var pwd2 = document.getElementById('pwd2').value;
+						var m = ""
+						if(pwd.length < 6 || pwd2.length < 6) {
+							m += "密码至少为6位\n";
+						}
+						if(pwd != pwd2) {
+							m += "两次密码输入不一致！\n";
+						}
+						if(m != "") {
+							alert(m);
+						} else {
+							var fd = new FormData($('#form')[0]);
+							$.ajax({
+								type: "post",
+								url: "changePwd",
+								cache: false,
+								async:true,
+								data: {
+									'pwd0':hex_md5($("#pwd0").val()),
+									'pwd':hex_md5($("#pwd").val()),
+									'pwd2':hex_md5($("#pwd2").val())
+								},
+								success: function(r) {
+									var message = "";
+									if(r == '0') {
+										message += "原密码错误！\n";
+										alert(message);
+									}
+									if(message == "") {
+										message = "修改成功！";
+										alert(message);
+										location.href = "security";
+									}	
+								},
+								error: function(r) {
+									alert("修改失败！");
+								}
+							});
+						}
+
+					}
+				);
+			</script>
+	</body>
+
+</html>

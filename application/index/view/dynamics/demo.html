@@ -1,0 +1,106 @@
+{include file="header" /}
+<style>
+	body {
+		background: #f4f4f4  ! important;
+	}
+</style>
+<div class="row">
+	<div class="col-md-1">
+
+	</div>
+
+	<div class="col-md-8" style="background:#fff ;">
+
+		<h2>{$theme}</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<p class="text-left" style="font-size: 14px;color: #ccc;">发布时间：{$time}</p>
+			</div>
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4">
+				<p class="text-right" style="font-size: 14px;color: #ccc;">
+					<span class="glyphicon glyphicon-book" aria-hidden="true">
+					</span>{$number}次&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-star" aria-hidden="true">
+					</span>{$collect}次&nbsp;&nbsp;
+					得分:{$score} (满分100)
+				</p>
+			</div>
+		</div>
+		<hr style="border-top:1px solid #ccc;    margin: 0 0 20px 0;" />
+		 {$txt}
+	</div>
+
+	<link rel="stylesheet" href="../../static/index/index.css" />
+	<div class="col-md-3">
+		<div class="asidee">
+			<div class="right_box user_info">
+				<dl class="inf_bar">
+					<dt class="csdn-tracking-statistics" data-mod="popu_381">
+                    <a href="javascript:jumpIndex()" target="_blank">
+                        <img src="../../static/user/headimg/{$photo}" class="avatar_pic">
+                    </a>
+                    <span class="medals" title="">
+                <svg class="icon" aria-hidden="true">
+                    
+                </svg>
+              </span>
+                </dt>
+					<dd>
+						<h3 class="csdn-tracking-statistics" data-mod="popu_380"><a href="javascript:jumpIndex()" target="_blank" id="uid">{$name}</a></h3>
+						<span class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:btn_click()">＋关注</a></span>
+						<span class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpLCG({$perId})">发消息</a></span>
+
+					</dd>
+				</dl>
+				<div class="inf_number_box">
+					<dl>
+						<dt>原创</dt>
+						<dd>{$dycount}</dd>
+					</dl>
+					<dl>
+						<dt>粉丝</dt>
+						<dd id="fan">
+							<a href="../detail1/detail1.html">{$fans}</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>喜欢</dt>
+						<dd>
+							<a href="../detail2/detail2.html">{$atten}</a>
+						</dd>
+					</dl>
+					<hr>
+					<div class="seat">座右铭：{$seatrt}</span>
+						</br>
+						<a class="newdyn" href="javascript:jumpAdd()"><img src="../../static/index/add.png" width="56" ; height="56"></a>
+						</br>
+						</br>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript">
+		function jump() {
+			$.ajax({
+				type: "post",
+				url: "../../index/comment/displaycomment",
+				async: true,
+				cache: false,
+				data: {},
+				success: function(data) {},
+				error: function() {
+					alert("服务器出错了");
+				}
+			});
+		}
+	</script>
+	<!--</td>
+</table>-->
+<br>
+	{include file="comment/comment" /}

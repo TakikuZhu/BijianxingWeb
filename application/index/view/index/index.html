@@ -1,0 +1,171 @@
+﻿{include file="header" /}
+<style>
+	body {
+		background: #f4f4f4 ! important;
+	}
+</style>
+<!--
+        	作者：wyh
+        	时间：2017-09-17
+        	描述：页面内容区域
+      -->
+
+<link rel="stylesheet" href="../../static/index/index.css" />
+<!--<link rel="stylesheet" href="index.css" />-->
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<!--导航div-->
+	<div class="col-md-8" style="padding-bottom: 100px;">
+		<div class="floor floor1 w1190">
+
+			<div id="main" class="main">
+				<div class="menu">
+					<ul>
+						<li><span><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpAll()" style="line-height: 0.5;">全部动态</a></span></li>
+						<li><span><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpSelf()" style="line-height: 0.5;">我的动态</a></span></li>
+						<li><span><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpCollect()" style="line-height: 0.5;">我的收藏</a></span></li>
+						<li><span><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpAdd()" style="line-height: 0.5;">+创建新动态</a></span></li>
+					</ul>
+
+				</div>
+				</br>
+				<ul id="waterfall" class="masonry" style='position:relative; z-index:999; top:0;'>
+					{volist name="list" id="dynamic"}
+					<li>
+
+						<div>
+
+							<div>
+								<a href="javascript:jumpZT({$dynamic.dynamic_id})"><img src="../../static/upload/image/{$dynamic.image}" width="220" ; height="124"></a>
+							</div>
+							<br>
+							<div class="clearfix">
+								<p>
+									<a href="javascript:jumpZT({$dynamic.dynamic_id})" target="_blank">{$dynamic.theme} </a>
+								</p>
+								<!--<input id="{$dynamic.dynamic_id}" type="button" value="test" onclick="return getid(this.id)" /> -->
+								<p><span class="jb">{$dynamic.time}</span></p>
+							</div>
+						</div>
+					</li>
+					{/volist}
+
+				</ul>
+
+				<br>
+
+			</div>
+
+		</div>
+		
+		<div class="render">
+
+			{$list->render()}
+
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="aside">
+			<div class="right_box user_info">
+				<dl class="inf_bar">
+					<dt class="csdn-tracking-statistics" data-mod="popu_381">
+                    <a href="javascript:jumpIndex()" target="_blank">
+                        <img src="../../static/user/headimg/{$photo}" class="avatar_pic">
+                    </a>
+                    <span class="medals" title="">
+                <svg class="icon" aria-hidden="true">
+                    
+                </svg>
+              </span>
+                </dt>
+					<dd class="ddodd">
+						<h3 class="csdn-tracking-statistics" data-mod="popu_380"><a href="javascript:jumpIndex()" class="ao" id="uid">{$name}</a></h3>
+
+					</dd>
+				</dl>
+				<div class="inf_number_box">
+					<dl>
+						<dt>原创</dt>
+						<dd>{$dycount}</dd>
+					</dl>
+					<dl>
+						<dt>粉丝</dt>
+						<dd id="fan">
+							<a href="../detail1/detail1.html">{$fans}</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>关注</dt>
+						<dd>
+							<a href="../detail2/detail2.html">{$atten}</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>收藏</dt>
+						<dd>{$clcount}</dd>
+					</dl>
+
+					<div class="seat"><span class="txt_seat">座右铭：{$seatrt}</span> </div>
+					</br>
+					<div id="ok">
+
+						<!--                       					 <a class="newdyn" href="javascript:jumpAdd()"  ><img src="../../../public/static/index/add.png" width="56"; height="56" ></a>
+-->
+					</div>
+					</br>
+					</br>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+{include file="footer" /}
+
+<script>
+	function btn_click(id) {
+		window.location.href = "../../index/detail1/Attention?us_id=" + id;
+	}
+</script>
+
+<script type="text/javascript">
+	function jumpZT(id) {
+		window.location.href = "../../index/dynamics/index?dynamic_id=" + id;
+
+	}
+</script>
+<script type="text/javascript">
+	function jumpLCG(id) {
+		window.location.href = "../../index/Message/createNewTalk?user_id=" + id;
+
+	}
+</script>
+
+<script type="text/javascript">
+	function jumpAdd() {
+		window.location.href = "../../index/dynamics/post";
+
+	}
+</script>
+<script type="text/javascript">
+	function jumpSelf() {
+		window.location.href = "../../index/index/index";
+
+	}
+</script>
+<script type="text/javascript">
+	function jumpAll() {
+		window.location.href = "../../index/index/indexAll";
+
+	}
+</script>
+
+<script type="text/javascript">
+	function jumpCollect() {
+		window.location.href = "../../index/index/indexCollect";
+
+	}
+</script>

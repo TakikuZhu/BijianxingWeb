@@ -1,0 +1,147 @@
+{include file="header" /}
+<!--
+        	作者：zhuting
+        	时间：2017-09-17
+        	描述：页面内容区域
+      -->
+
+<!--<img src="../../static/index/img/new.png" alt="图标" />-->
+<style>
+	body {
+		background: #f4f4f4! important;
+	}
+</style>
+
+
+<div class="row">
+
+	<div class="col-lg-1">
+
+	</div>
+	<div class="col-lg-8">
+		<span>发表新动态</span>
+		<form id="form" class="form-horizontal" role="form">
+			<div class="row">
+				<div class="col-md-7">
+					<div class="input-group">
+						<span class="input-group-addon">标题</span>
+						<input type="text" class="form-control" id="theme" name="theme" value="{$theme}" >
+						<span class="input-group-addon">（上限15字）</span>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="input-group">
+						<span class="input-group-addon">上传封面</span>
+
+						<input id="file" class="form-control" name="file" type="file" />
+
+					</div>
+				</div>
+			</div>
+			<!-- 加载编辑器的容器 -->
+			<script id="container" name="content" type="text/plain">
+			</script>
+			<!-- 配置文件 -->
+			<script type="text/javascript" src="../../static/utf8-php/ueditor.config.js"></script>
+			<!-- 编辑器源码文件 -->
+			<script type="text/javascript" src="../../static/utf8-php/ueditor.all.js"></script>
+			<!-- 实例化编辑器 -->
+			<script type="text/javascript">
+				var ue = UE.getEditor('container', {
+					//						toolbars: [
+					//							['undo', 'redo'],
+					//							['insertimage', ]
+					//						],
+					autoHeightEnabled: false,
+					autoFloatEnabled: true
+				});
+			</script>
+			<br>
+			<div class="btn-group">
+
+				<INPUT type="button" class="btn" onclick="add()" value=" 提交 ">
+			</div>
+			<br>
+		</form>
+	</div>
+	<div class="col-lg-3">
+		<link rel="stylesheet" href="../../static/index/index1.css" />
+		<div class="aside ">
+			<div class="right_box user_info ">
+				<dl class="inf_bar ">
+					<dt class="csdn-tracking-statistics " data-mod="popu_381 ">
+                    <a href="javascript:jumpIndex() " target="_blank ">
+                        <img src="../../static/user/headimg/{$photo} " class="avatar_pic ">
+                    </a>
+                    <span class="medals " title=" ">
+                <svg class="icon " aria-hidden="true ">
+                    
+                </svg>
+              </span>
+                </dt>
+					<dd class="ddodd ">
+						<h3 class="csdn-tracking-statistics " data-mod="popu_380 "><a href="javascript:jumpIndex() " class="ao " id="uid ">{$name}</a></h3> 
+					</dd>
+				</dl>
+				<div class="inf_number_box ">
+					<dl>
+						<dt>原创</dt>
+						<dd>{$dycount}</dd>
+					</dl>
+					<dl>
+						<dt>粉丝</dt>
+						<dd id="fan ">
+							<a href="../detail1/detail1.html ">{$fans}</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>关注</dt>
+						<dd>
+							<a href="../detail2/detail2.html ">{$atten}</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>收藏</dt>
+						<dd>{$clcount}</dd>
+					</dl>
+
+					<div class="seat "><span class="txt_seat ">座右铭：{$seatrt}</span> </div>
+					</br>
+					<div id="ok ">
+						<span class="node " data-mod="popu_379 "><a class="btn btn-redborder-small " id="span_add_follow " href="javascript:jumpAdd() " >创建新动态</a></span>
+					</div>
+					</br>
+					</br>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+	function add() {
+		var fd = new FormData($('#form')[0]);
+
+		$.ajax({
+			type: "post",
+			url: "add",
+			async: true,
+			cache: false,
+			data: fd,
+			processData: false,
+			contentType: false,
+			success: function(data) {
+				alert("发表成功！");
+				window.location.href = "../../index/dynamics/index?dynamic_id=" + data;
+			},
+			error: function() {
+				alert("服务器出错了");
+			}
+		});
+	}
+</script>
+
+{include file="footer" /}

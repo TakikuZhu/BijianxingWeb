@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+	<!--
+    	作者：wrc4096@gmail.com
+    	时间：2017-10-12
+    	描述：行吧界面
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../static/css/mui.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet">
+		<script type="text/javascript" src="../../../static/js/jquery-3.2.1.js" ></script>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 59px;padding-left: 13px;padding-right: 13px;background-color:#e3ddd4;">
+			
+			<input id="searchText" type="search" style="height: 25px;width: 70%;margin-top: 28px;float: left;" placeholder="请输入书法家">	
+			<button id="btnSearch" type="button" class="mui-btn mui-btn-outlined" style="border:2px solid #6E6545;height:25px;width:25%;margin-top: 21px;float: right;line-height: 25px;padding: 0px;">搜索</button>
+		</header>
+		
+		
+        	<div style="margin-bottom: 50px;margin-top: 59px;background: #E3DDD4;">
+			<div id="slider" class="mui-slider" style="height: 100%; overflow: visible;background: #E3DDD4;">  
+		        <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">  
+		            <a class="mui-control-item mui-active" href="#item1mobile">  
+		                热门  
+		            </a>  
+		            <a class="mui-control-item" href="#item2mobile">  
+		                关注 
+		            </a>  
+		            <a class="mui-control-item" href="#item3mobile">  
+		                                       我的  
+		            </a>
+		        </div>  
+        		<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>  
+		        <div class="mui-slider-group">  
+		            <div id="item1mobile" class="mui-slider-item mui-control-content mui-active" style="margin-top: 0px;"> 
+		            	<div class="mui-card">
+		            		{volist name="list1" id="dynamic"}
+								<!--页眉，放置标题-->
+								<div class="mui-card-header mui-card-media">
+									<img src="../../../static/user/headimg/{$dynamic.user_photo}" style="width: 34px;"/>
+									<div class="mui-media-body">
+										{$dynamic.user_name}
+										<p>发表于 {$dynamic.time}</p>
+									</div>
+								</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<span>{$dynamic.theme}</span>
+									<br />
+									<a href="javascript:post({$dynamic.dynamic_id})">
+										<span style="width: 90%; height: 120px; padding-left: 10px;">
+											<img src="../../../static/upload/image/{$dynamic.image}" style="width: 34px;"/>
+										</span>
+									</a>
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-card-footer" style="display: block;border-bottom: #E3DDD4 5px solid;">
+									<span>浏览{$dynamic.read_num}次</span>
+									<div style="float: right; text-align: center;">
+										<a href="javascript:post({$dynamic.dynamic_id})">
+											<img src="../../../static/imgs/criteria.png" style="width: 20px; height: 20px;"/>
+										</a>
+										<span style="font-size: 20px;">{$dynamic.comment_num}</span>
+									</div>
+								</div>
+							{/volist}
+						</div>	
+					</div>
+		            <div id="item2mobile" class="mui-slider-item mui-control-content" style="margin-top: 0px;">
+		             <div class="mui-card">
+		             	{volist name="list2" id="dynamic"}
+							<!--页眉，放置标题-->
+							<div class="mui-card-header mui-card-media">
+								<img src="../../../static/user/headimg/{$dynamic.user_photo}" style="width: 34px;"/>
+								<div class="mui-media-body">
+									{$dynamic.user_name}
+									<p>发表于 {$dynamic.time}</p>
+								</div>
+							</div>
+							<!--内容区-->
+							<div class="mui-card-content">
+								<span>{$dynamic.theme}</span>
+								<br />
+								<a href="javascript:post({$dynamic.dynamic_id})">
+									<span style="width: 90%; height: 120px; padding-left: 10px;">
+										<img src="../../../static/upload/image/{$dynamic.image}" style="width: 34px;"/>
+									</span>
+								</a>
+							</div>
+							<!--页脚，放置补充信息或支持的操作-->
+							<div class="mui-card-footer" style="display: block;border-bottom: #E3DDD4 5px solid;">
+								<span>浏览{$dynamic.read_num}次</span>
+								<div style="float: right; text-align: center;">
+									<a href="javascript:post({$dynamic.dynamic_id})">
+										<img src="../../../static/imgs/criteria.png" style="width: 20px; height: 20px;"/>
+									</a>
+									<span style="font-size: 20px;">{$dynamic.comment_num}</span>
+								</div>
+							</div>
+						{/volist}
+						</div>         
+		            </div> 
+		            <div id="item3mobile" class="mui-slider-item mui-control-content" style="margin-top: 0px;">
+		            	<div class="mui-card">
+		            	    {volist name="list3" id="dynamic"}
+							<!--页眉，放置标题-->
+							<div class="mui-card-header mui-card-media">
+								<img src="../../../static/user/headimg/{$dynamic.user_photo}" style="width: 34px;"/>
+								<div class="mui-media-body">
+									{$dynamic.user_name}
+									<p>发表于 {$dynamic.time}</p>
+								</div>
+							</div>
+							<!--内容区-->
+							<div class="mui-card-content">
+								<span>{$dynamic.theme}</span>
+								<br />
+								<a href="javascript:post({$dynamic.dynamic_id});">
+									<span style="width: 90%; height: 120px; padding-left: 10px;">
+										<img src="../../../static/upload/image/{$dynamic.image}" style="width: 34px;"/>
+									</span>
+								</a>
+							</div>
+							<!--页脚，放置补充信息或支持的操作-->
+							<div class="mui-card-footer" style="display: block;border-bottom: #E3DDD4 5px solid;">
+								<span>浏览{$dynamic.read_num}次</span>
+								<a href="javascript:deleteDynamic({$dynamic.dynamic_id})">删除</a>
+								<div style="float: right; text-align: center;">
+									<a href="javascript:post({$dynamic.dynamic_id});">
+										<img src="../../../static/imgs/criteria.png" style="width: 20px; height: 20px;"/>
+									</a>
+									<span style="font-size: 20px;">{$dynamic.comment_num}</span>
+								</div>
+							</div>
+						    {/volist}
+						</div>      
+		            </div>     
+		        </div>  
+		  </div>
+		</div>
+		
+        
+		<nav class="mui-bar mui-bar-tab" style="background: #e3ddd4;">
+			<a id="square" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/homepage.png" />
+				<span class="mui-tab-label span">广场</span>
+			</a>
+			<a id="forum" class="mui-tab-item mui-active">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/bar.png" />
+				<span class="mui-tab-label">行吧</span>
+			</a>
+			<a id="plus" class="mui-tab-item">
+				<img class="mui-icon" style="width: 40px;height: 40px;" src="../../../static/imgs/bottomMenu/write.png" />
+			</a>
+			<a id="study" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/fonts.png" />
+				<span class="mui-tab-label">字库</span>
+			</a>
+			<a id="my" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/head.png" />
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="../../../static/js/bottomChange.js"></script>
+		<script src="../../../static/js/mui.js"></script>
+		
+        <script type="text/javascript">
+		
+			mui.init({
+				pullRefresh:{
+					container:"#mui-content",
+					down:{
+						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+				        color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+				        height:'50px',//可选,默认50px.下拉刷新控件的高度,
+				        range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+				        offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+				        auto: true,//可选,默认false.首次加载自动上拉刷新一次
+				        callback :test() //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					}
+				}
+			});
+			
+			function post(id) {
+				window.location.href = "../../phone/forum/forum_post?dynamic_id=" + id;
+			}	
+
+			function deleteDynamic(id) {
+				mui.confirm('是否删除？', '', ['取消', '删除'], function(e) {
+						if(e.index == 1) {
+							$.ajax({
+								type: "post",
+								url: "../../phone/Forum/deleteDynamic",
+								async: true,
+								data: {
+									'dynamic_id': id
+								},
+								success: function(data) {
+									if(data == "1") {
+										window.location.reload(true);
+									} else {
+										alert("删除失败");
+									}
+								},
+								error: function() {
+									alert("服")
+								}
+							});
+						} else {
+							//window.location.href = "../../index/index/index"
+						}
+					}, 'div')
+				
+			}			
+			
+	$(function() {
+		//页面初始化操作
+		$("#btnSearch").on("click", function() {
+		var user_name = document.getElementById("searchText").value;
+		if(user_name==""){
+			mui.toast("查询不能为空");
+			return false;
+		}
+			$.ajax({
+				type: "post",
+				url: "../../phone/Forum/searchforum",
+				async: true,
+				data: {
+					'user_id': {$user_id},
+					'user_name': user_name
+				},
+				success: function(data) {
+					if(data == "0") {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					} else {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+	})		
+			function test(){
+				//mui.toast("刷新完毕")
+			}
+			
+		</script>
+	</body>
+
+</html>

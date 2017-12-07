@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+	<!--
+    	作者：wrc4096@gmail.com
+    	时间：2017-10-13
+    	描述：看图识字单个字的界面
+    -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+
+	</head>
+
+	<body style="background: #ffffff;">
+		<header class="mui-bar mui-bar-nav" style="height: 59px;padding-left: 13px;padding-right: 13px;background-color:#e3ddd4;">
+
+			<div class="character_library_search" style="margin-top: 20px;margin-left: 5px;">
+					<div style="width: 10%;float:left;">
+						<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #000000;height: 30px;margin-top: 0px;"></a>
+					</div>
+					<div style="width: 60%;float: left;">
+						<input type="search" id="_font" style="height: 30px;" placeholder="请输入查询字">
+					</div>
+					<div style="width: 15%;float: left;padding-left: 5px;">
+						<button id="search_btn" onclick="searchResult()" style="background: #6e6545;height: 30px;margin-top:5px;color: #FFFFFF;">查询</button>
+					</div>
+
+					<div style="width: 10%;float: right;">
+						<a href="#popover">
+							<button id="filter" style="height: 30px;margin-top: 5px;">筛选</button>
+						</a>
+					</div>
+				</div>
+
+			<div id="popover" class="mui-popover">
+				<ul class="mui-table-view mui-grid-view mui-grid-9 ">
+					<li class="mui-table-view-cell ">
+						<span style="color: #6E6545;">笔体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>毛笔</label>
+						<input name="penType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>硬笔</label>
+						<input name="penType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>粉笔</label>
+						<input name="penType" type="radio" value="3">
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell">
+						<span style="color: #6E6545;">字体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>隶书</label>
+						<input name="bookType" type="radio" value="4">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>篆书</label>
+						<input name="bookType" type="radio" value="5">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>楷书</label>
+						<input name="bookType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>行书</label>
+						<input name="bookType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>草书</label>
+						<input name="bookType" type="radio" value="3">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<div style="padding-top: 0;margin-top: 59px;margin-bottom: 50px;">
+			<div id="slider" class="mui-slider" style="height: 100%;background: #ffffff;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">
+						字形
+					</a>
+					<a class="mui-control-item" href="#item2mobile">
+						书写视频
+					</a>
+					<a class="mui-control-item" href="#item3mobile">
+						说文解字
+					</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active" style="border-bottom: currentColor;">
+						<img id="wordPhoto" src="" style="width: 100%;" />
+						<div style="text-align: center; font-size: 20px; margin-top: 20px;">
+							<span>书写要点：</span><br />
+							<span id="wn1"></span><br />
+							<span id="wn2"></span><br />
+							<span id="wn3"></span>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content" style="border-bottom: currentColor;">
+						<video id="wordVideo" src="" style="width: 100%; height: 240px;" controls="controls"></video>
+						<span>简介:</span>
+						<span>这是一个测试视频</span>
+						<div class="my_search" style="margin-top: 200px;">
+							<!--<div class="mui-search" style="width: 80%;float: left;">
+								<input type="search" class="mui-input-clear" placeholder="说点什么">
+							</div>
+							<div style="width:18%;float: right;">
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined">评论</button>
+							</div>-->
+						</div>
+					</div>
+
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						说文解字
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+
+		<script type="text/javascript">
+			mui.init()
+
+			function search() {
+				window.location.href = "flashcard.html";
+			}
+			window.onload = function() {
+				function parseUrl() {
+					var url = location.href;
+					var i = url.indexOf('?');
+					if(i == -1) return;
+					var querystr = url.substr(i + 1);
+					var arr1 = querystr.split('&');
+					var arr2 = new Object();
+					for(i in arr1) {
+						var ta = arr1[i].split('=');
+						arr2[ta[0]] = ta[1];
+					}
+					return arr2;
+				}
+				var v = parseUrl(); //解析所有参数
+				var wordPhoto = decodeURI(v['wordphoto']);
+				
+				var wordVideo = decodeURI(v['wordvideo']);
+				var shuoWen = decodeURI(v['shuowen']);
+				var note1 = decodeURI(v['note1']);
+				//alert(note1);
+				var note2 = decodeURI(v['note2']);
+				var note3 = decodeURI(v['note3']);
+				
+				 
+				//var wordPhoto = parseUrl('wordphoto');
+				//alert(wordPhoto);
+				//var wordPhoto = eval('('+photoUrl + ')');
+				//var videoUrl = parseUrl('wordvideo');
+				//var wordVideo = eval('('+videoUrl + ')');
+				//var shuoText= parseUrl('shuowen');
+				//var shuoWen = eval('('+ shuoText + ')');
+				//var note1 = parseUrl('note1');
+				//var note2 = parseUrl('note2');
+				//var note3 = parseUrl('note3'); //就是你要的结果
+
+				document.getElementById("wordPhoto").src = wordPhoto;
+				document.getElementById("wordVideo").src = wordVideo;
+				document.getElementById("item3mobile").innerHTML = shuoWen;
+				//$(".font_search).innerHTML = wordArr[2];
+				document.getElementById("wn1").innerHTML = note1;
+				document.getElementById("wn2").innerHTML = note2;
+				document.getElementById("wn3").innerHTML = note3;
+				//document.getElementById("wn4").innerHTML = "4. " + wordArr[3][3];
+				//document.getElementById("wordScore").innerHTML = wordArr[4];
+
+				
+
+			}
+		</script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+	</body>
+
+</html>

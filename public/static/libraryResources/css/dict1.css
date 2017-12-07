@@ -1,0 +1,276 @@
+.search_box{
+	/*background: #FFFFFF;*/
+	min-height: 120px;
+	margin:50px 300px 0 70px;
+}
+
+.search_box ul li{
+	list-style-type:none;
+	margin-top:20px ;
+	position: relative;
+}
+
+.search_box select{
+	outline: none;
+	padding: 2px;
+	margin:  0 20px;
+	width: 120px;
+	height: 30px;
+	position: inherit;
+	border-radius: 5px;
+	text-align: center;
+	left: 0;
+}
+
+.search_box option{
+	text-align: center;
+}
+
+.search_box input{
+	border-radius: 5px;
+	margin-left: 5px;
+	border: 1px solid #ccc;
+	padding: 3px;
+}
+
+.new_word{
+	display:inline-block;
+	margin: 10px;
+	height: 60px;
+	width: 500px;
+	border: 1px solid #CCCCCC;
+}
+
+.new_word a{
+	color: blue;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-top: 10px;
+	top: 10px;
+}
+
+.search_box hr{
+	/*width: 575px;*/
+	height:1px;
+	border:none;
+	border-top:1px solid #CCCCCC;
+}
+
+.styleRadio{
+	margin: 10px;
+}
+
+.search_btn{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	background: url(../img/search.png) no-repeat center;
+	background-size: 100%;
+	cursor: pointer;
+	left: 250px;
+	top:0px;
+}
+
+.search_table{
+	/*background: #FFFFFF;*/
+	margin:0px 300px 0 70px;
+	height: 650px;
+	display: none;
+}
+
+.font_search{
+	position: relative;
+	/*background: #CCCCCC;*/
+	margin-top: 10px;
+	height: 150px;
+}
+
+.font_search img {
+	height: 130px;
+	width: 130px;
+	margin: 20px 0px 0px 10px;
+}
+
+.font_search span{
+	position:absolute;
+	top: -10px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.font_search ul{
+	list-style-type:none;
+	position: absolute;
+	top:10px;
+	left: 300px;
+}
+
+.font_search li{
+	margin-top: 5px;
+}
+
+.font_search input{
+	border-radius: 5px;
+	margin-left: 0px;
+	border: 1px solid #ccc;
+	padding: 3px;
+}
+
+.font_search button{
+	width: 90px;
+	height: 25px;
+	color: #606060;  
+    border: solid 1px #b7b7b7;  
+    background: #fff;  
+   	border-radius:5px;
+   	cursor: pointer;
+}
+
+.font_search video{
+	height: 130px;
+	width: 250px;
+	margin: 20px 0px 0px 0px;
+}
+
+.share{
+	font-size: 13px;
+	color: #B2B2B2;
+	margin-left: 50px;
+}
+
+.share_way{
+	width: 30px;
+	height: 30px;
+	/*position: absolute;*/
+	cursor: pointer;
+	border-radius: 50%;
+	margin-left: 10px;
+	float: left;
+}
+
+.weibo{
+	background: url(../img/icon_weibo_24.png) no-repeat center;
+	background-size: 100%;
+}
+
+.weixin{
+	background: url(../img/wechat.png) no-repeat center;
+	background-size: 100%;
+}
+.qq{
+	background: url(../img/qqkonjian.png) no-repeat center;
+	background-size: 100%;
+}
+
+.title{
+	font-weight: 900;
+}
+
+.comment {
+	margin: 20px 90px 0px 110px;
+	position: relative;
+	min-height: 300px;
+}
+.comment_left{
+	
+}
+.chatBox {
+	display: block;
+	width: 700px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+}
+._head {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	background: #ccc;
+	margin: 20px 0 0 0;
+}
+._name {
+	display: block;
+	color: rgb(233,50,6);
+	font-weight: bolder;
+	margin: -60px 0 0 80px;
+} 
+._mes {
+	display: block;
+	margin: 20px 0 0 80px;
+	font-size: 14px;
+}
+._btm {
+	display: block;
+	margin: 20px 0 0 80px;
+	color: #ccc;
+}
+._btm * {
+	font-size: 14px;
+}
+._good {
+	display: block;
+	float: right;
+}
+._rep {
+	display: block;
+	float: right;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+.comment_right{
+	display: block;
+	width: 400px;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	
+}
+.comment_right textarea {
+	font-size: 14px;
+	display: block;
+	width: 400px;
+	height: 110px;
+	border: 1px solid #ccc;
+	outline: none;
+	resize: none;
+	padding: 10px;
+	padding-bottom: 40px;
+}
+.comment_right textarea:focus {
+	box-shadow: 0 0 5px 1px #6cf;
+}
+#_push {
+	display: block;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	background: rgb(243,50,6);
+	color: #fff;
+	padding: 0 10px;
+	font-size: 16px;
+	line-height: 40px;
+	position: absolute;
+	top: 166px;
+	right: -22px;
+	z-index: 1;
+	cursor: pointer;
+}
+.comment_right_tit {
+	display: block;
+	border-left: 5px solid yellow;
+	margin: 10px 0;
+	padding-left: 10px;
+}
+.comment_right_tit * {
+	font-size: 18px;
+}
+.comment_right_tit span i {
+	color: rgb(243,50,6);
+	display: inline-block;
+	margin: 0 5px;
+}
+.comment_right_tit label{
+	margin-right: 140px;
+}
+
+

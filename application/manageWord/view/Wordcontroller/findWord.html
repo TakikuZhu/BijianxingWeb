@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/common.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/library.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/copyboooks2.css" />
+		<link rel="stylesheet" href="/bijianxing/public/static/libraryResources/css/dict1.css" />
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/CopyBooks2.js" ></script>
+	</head>
+	<body class="_fullBody">
+		<div class="main_box">
+			<div class="right_box" style="height:1000px;">
+				<div>
+					<a style="font-size: 24px;" href="test4">添加字</a>
+					<a style="font-size: 24px;" href="test5">删除字</a>
+					<a style="font-size: 24px;" href="test6">更新字</a>
+					<a style="font-size: 24px; color: #0000FF;" href="test7">查询字</a>
+				</div>
+				<div class="right_box_bg"></div>
+				<div class="search_box">
+					<ul>
+						<li>
+							<label class="title">请输入要查询的字</label>
+							<input id="wordName" type="text" name="_name"/>
+							<script>
+								function delnote() {
+									$('#Version').children().remove();
+									$('#Grade').children().remove();
+									$('#Course').children().remove();
+								}
+							</script>
+							<button id="findWord" style="width:80px; background-color:#fff;" onclick="delnote()">查询生字</button>
+						</li>
+						<li>
+							<label class="title">书体</label>
+							<select id="bookType" >
+								<option value="">请选择书体</option>
+								<option value="1">毛笔</option>
+								<option value="2">硬笔</option>
+								<option value="3">粉笔</option>
+							</select>
+							<label class="title">字体</label>
+							<select id="wordType" >
+								<option value="">请选择字体</option>
+								<option value="1">楷书</option>
+								<option value="2">行书</option>
+								<option value="3">草书</option>
+								<option value="4">隶书</option>
+								<option value="5">篆书</option>
+								<option value="6">魏碑</option>
+							</select>
+						</li>
+						<li>
+							<ul>
+								<li><label class="title">原生字信息</label></li>
+								<li><label class="title" >版本</label><div id="Version"></div></li>
+								<li><label class="title" >年级</label><div id="Grade"></div></li>
+								<li><label class="title" >课程</label><div id="Course"></div></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="search_table">
+					<div class="font_search">
+						<span class="title">字形</span>
+						<img id="wordPhoto" src="/bijianxing/public/static/libraryResources/img/test.jpg" width="100" height="100"/>
+						<ul id="wordNote">
+							<li>书写要点：</li>
+							<li id="wn1">1.</li>
+							<li id="wn2">2.</li>
+							<li id="wn3">3.</li>
+							<li id="wn4">4.</li>
+						</ul>
+					</div>
+					<div class="font_search">
+						<span class="title">书写视频</span>
+						<video id="wordVideo" controls>
+							<source src="http://www.w3school.com.cn/i/movie.ogg" type="video/ogg	"></source>
+						</video>
+						<ul>
+							<li>该视频目前得分：<label id="wordScore">0</label></li>
+						</ul>
+					</div>
+					<div>
+						<div class="font_search">
+						<span class="title">说文解字</span>
+							<div style="background:white; margin-left:100px; width:500px; height:300px">
+								<p id="wordIntrText"></p>
+								<div id="wordIntrPhoto" style="margin-left:-100px; width:40px; height:40px; border:0px solid #fff;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</body>
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/FindRecord.js"></script>
+		<script type="text/javascript" src="/bijianxing/public/static/libraryResources/js/FindNewRecord.js"></script>
+</html>

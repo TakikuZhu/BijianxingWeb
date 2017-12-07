@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/libraryResources/css/common.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/libraryAdmin.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/copyboooks2.css" />
+		<script type="text/javascript" src="../../static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="../../static/libraryResources/js/CopyBooks2.js" ></script>
+	</head>
+	<body class="_fullBody" style="overflow: hidden;">
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：通用页头
+       -->
+		<!--<header>
+			<img src="../../static/libraryResources/img/logo.png" alt="图标" />
+			<h1><i id="top_tit">书法天地</i></h1>
+			<ul class="_liMenu_1">
+				<li><a href="">首页</a></li>
+				<li><a href="">字库</a></li>
+				<li><a href="">教材</a></li>
+				<li><a href="">课程</a></li>
+				<li><a href="">行吧</a></li>
+				<li><a href="">商城</a></li>
+				<li><a href="">拍卖</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p><span id="l_login">登陆</span><span id="l_register">注册</span></p>
+		</header>-->
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+       -->
+       <h4 style="padding: 10px; margin: 10px; font-size: 18px; font-family: '微软雅黑'; font-weight: 500;">集字管理</h4>
+		<div class="main_box">
+			<!--<div class="tit">
+				<label>字库</label>
+			</div>-->
+			<!--<div class="left_box">
+				<ul>
+					<li  class="active"><a href="#">字库上传</a></li>
+					
+				</ul>
+			</div>-->
+			<div class="right_box" style="width: 90%; margin: 0; border: none;">
+				<!--<div class="right_box_bg"></div>-->
+				<div class="menu_box">
+					<form action="{:url('library/font_controller/AddFont')}" enctype="multipart/form-data" method="post">
+						<div class="set_box set_box_c" style="background: #eee;">
+							<label class="tit_sm">字体上传</label>
+							<ul>
+								<li>
+									<label>名称</label>
+									<input type="text" name="_name" placeholder="请输入所上传的字  如:笔"/>
+								</li>
+								<li>
+									<label>作者</label>
+									<input type="text" name="_auther" placeholder="标准字库为'默认'"/>
+								</li>
+								<li>
+									<label>书体</label>
+									<select id='_fontStyle' name="_fontStyle">
+										<option value="毛笔">毛笔</option>
+										<option value="硬笔">硬笔</option>
+										<option value="粉笔">粉笔</option>
+									</select>
+								</li>
+								<li>
+									<label>字体</label>
+									<select id='_fontFam' name="_fontFam">
+										<option value="楷书">楷书</option>
+										<option value="隶书">隶书</option>
+										<option value="行书">行书</option>
+										<option value="草书">草书</option>
+										<option value="篆书">篆书</option>
+										<option value="魏碑">魏碑</option>
+									</select>
+								</li>
+						
+								<li>
+									<label>字形</label>
+									<select id='_figure' name="_figure">
+										<option value="全实">全实</option>
+										<option value="中空">中空</option>
+										<option value="浅底">浅底</option>
+									</select>
+								</li>
+								<li>
+									<label>上传图片文件</label>
+									<br />
+									<input type="text" name="path" id="path" readonly="readonly"/>
+									<input type="button" class="_selectbtn" onclick="img.click()" value="选择文件" />
+									<input type="file" style="display: none;" id="img" name="image[]" multiple="multiple" onchange="path.value = this.value"/>
+									<input type="submit" class="_upbtn" style="margin-top: 30px;" value="上传" />
+								</li>
+							</ul>
+						</div>
+					</form>				
+				</div>
+					<div class="show_box" style="background: #eee;">
+					<label class="tit_sm">字体查找</label>
+					<div id="copyBooks">
+						<div class="fa-search-plus">
+							<div class="_search_box">
+								<span>请输入所查找的字体：</span>
+								<input id="admin_font" type="text" />
+								<div class="search_btn2"></div>
+							</div>
+							<hr />
+							<div id="search_box" class="dict_search_box">
+								
+							</div>
+							
+						</div>
+						<div class="pagejumper dicr_pagejumper">
+								<ul class="pagination" id="page2">
+								</ul>
+								<div class="pageJump" style="display: none; ">
+									<span>跳转到</span>
+									<input type="text" />
+									<span>页</span>
+									<button type="button" class="button">确定</button>
+								</div>
+						</div>
+					</div>
+					
+					<div id="tb_box" style="display: none;">
+						
+					</div>
+					<script type="text/javascript">
+						
+					</script>
+					<script type="text/javascript" src="../../static/libraryResources/js/pager.js"></script>
+					<script type="text/javascript" src="../../static/libraryResources/js/dict_admin.js"></script>
+					<script type="text/javascript" src="../../static/libraryResources/lib/layer/layer.js"></script>
+					<link rel="stylesheet" href="../../static/libraryResources/css/dict_admin.css" />
+					<link rel="stylesheet" href="../../static/libraryResources/css/pager.css" />
+				</div>
+			</div>
+		</div>
+		<!--<footer>
+			<div>
+				<p>版权所有：比肩&nbsp;2017-2018&nbsp;鲁：ICP备06020633号&nbsp;鲁公安备案
+					<a href="#">管理登录</a>
+				</p>
+			</div>
+			<div><label>微信公众号：</label><img src="../../static/libraryResources/img/test.jpg" /><label>手机APP：</label><img src="../../static/libraryResources/img/test.jpg" /></div>
+		</footer>-->
+		</body>
+		
+		</html>

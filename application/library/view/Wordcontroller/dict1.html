@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/libraryResources/css/common.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/library.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/copyboooks2.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/dict1.css" />
+		<script type="text/javascript" src="../../static/libraryResources/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="../../static/libraryResources/js/CopyBooks2.js" ></script>
+		<style>
+			#share a{ width:25px; height:25px; padding:0; margin:0;}
+			#share a.bds_tsina{background:url(../../static/libraryResources/img/share/weibo.png) no-repeat;}
+			#share a.bds_weixin{background:url(../../static/libraryResources/img/share/wechat.png) no-repeat;}
+			#share a.bds_qzone{background:url(../../static/libraryResources/img/share/qzone.png) no-repeat;}
+		</style>
+	</head>
+	<body class="_fullBody">
+		<header>
+			<img src="../../static/libraryResources/img/logo.png" alt="图标" />
+			<h1><i id="top_tit">书法天地</i></h1>
+			<ul class="_liMenu_1">
+				<li><a href="">首页</a></li>
+				<li><a href="">字库</a></li>
+				<li><a href="">教材</a></li>
+				<li><a href="">课程</a></li>
+				<li><a href="">行吧</a></li>
+				<li><a href="">商城</a></li>
+				<li><a href="">拍卖</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<p><span id="l_login">登陆</span><span id="l_register">注册</span></p>
+		</header>
+		<div class="main_box">
+			<div class="tit">
+				<label>字库</label>
+			</div>
+			<div class="left_box">
+				<ul>
+					<li  class="active"><a href="dict1">看图识字</a></li>
+					<li  ><a href="dict2">生字同步</a></li>
+					<li  ><a href="dict">书法字典</a></li>
+					<li  ><a href="index">字帖生成</a></li>
+					<li  ><a href="fontSelect">集字功能</a></li>
+				</ul>
+			</div>
+			<div class="right_box" style="height:1000px;">
+				<div class="right_box_bg"></div>
+				<div class="search_box">
+					<ul>
+						<li>
+							<label class="title">请输入要查询的字</label>
+							<input id="wordName" type="text" name="_name" />
+							<div class="search_btn" onclick=""></div>
+							<label id="warning"></label>
+						</li>
+						<li>
+							<label class="title">书体</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="1" />毛笔</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="2" />硬笔</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="3" />粉笔</label>
+							<hr />
+						</li>
+						<li>
+							<label class="title">字体</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="1" />楷书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="2" />行书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="3" />草书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="4" />隶书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="5" />篆书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="6" />魏碑</label>
+							<hr />
+						</li>
+					</ul>
+				</div>
+				
+				<div class="search_table">
+					<div class="font_search">
+						<span class="title">字形</span>
+						<img id="wordPhoto" src="../../static/libraryResources/img/test.jpg" width="100" height="100"/>
+						<ul id="wordNote">
+							<li>书写要点：</li>
+							<li id="wn1">1.</li>
+							<li id="wn2">2.</li>
+							<li id="wn3">3.</li>
+							<li id="wn4">4.</li>
+						</ul>
+					</div>
+					<div class="font_search">
+						<span class="title">书写视频</span>
+						<video id="wordVideo" controls>
+							<source src="http://www.w3school.com.cn/i/movie.ogg" type="video/ogg	"></source>
+						</video>
+						<ul>
+							<li>该视频目前得分：<label id="wordScore">0</label></li>
+							<li>
+								<input type="text" id="myScore" placeholder="请输入0-100分数"/>
+								<button id="addScore" class="" onclick="">给视频打分</button>
+							</li>
+							<li>
+								<label class="share">分享到</label>
+							</li>
+							<li>
+								<div id="share">
+									<div class="bdsharebuttonbox">
+										<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+										<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+										<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+									</div>
+								</div>
+								<script>
+									window._bd_share_config={"common":{"bdSnsKey":{},"bdText":$('#top_tit').innerHTML,"bdUrl":"https://www.baidu.com","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"10"},"share":{}};
+									with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+								</script>
+							</li>
+						</ul>
+					</div>
+					<div class="font_search">
+						<span class="title">二维码</span>
+						<img id="qrCode" src="../../static/libraryResources/img/78ec574f959cc4de4a05f0b1f92d96d0.jpg" />
+					</div>
+					<div>
+						<div class="font_search">
+						<span class="title">说文解字</span>
+							<div style="background:white; margin-left:100px; width:500px; height:300px">
+								<p id="wordIntrText"></p>
+								<div id="wordIntrPhoto" style="margin-left:-100px; width:40px; height:40px; border:0px solid #fff;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="comment">
+			<label>评论区：</label>
+			<hr />
+			<div class = "comment_left">
+				<div class="chatBox">
+					<img class="_head" />
+					<label id="userName" class="_name">asdasd</label>
+					<p id="userComment" class="_mes">asdsfssedsfcsdzdcx</p>
+					<p class="_btm"><label id="commentDate" class="_time">2017-8-16</label><label id="reply" class="_rep">回复</label><label id="thumbup" class="_good"><i></i><span>15</span></label></p>
+				</div>
+			</div>
+			<div class = "comment_right">
+				<p class="comment_right_tit"><label>我来说两句 </label><span><i id="userCount">0</i>人参与</span><span><i id="commentCount">0</i>条评论</span></p>
+				<textarea id="myComment" placeholder="来说两句吧..."></textarea>
+				<button id="_push" onclick="">登录并发表</button>
+			</div>
+		</div>
+		<footer>
+			<div>
+				<p>版权所有：比肩&nbsp;2017-2018&nbsp;鲁：ICP备06020633号&nbsp;鲁公安备案
+					<a href="#">管理登录</a>
+				</p>
+			</div>
+			<div><label>微信公众号：</label><img src="../../static/libraryResources/img/test.jpg" /><label>手机APP：</label><img src="../../static/libraryResources/img/test.jpg" /></div>
+		</footer>
+		</body>
+		<script type="text/javascript" src="../../static/libraryResources/js/GetWord.js"></script>
+		<script type="text/javascript" src="../../static/libraryResources/js/AddComment.js"></script>
+		<script type="text/javascript" src="../../static/libraryResources/js/AddScore.js"></script>
+</html>

@@ -1,0 +1,67 @@
+textarea {
+  resize: none;
+}
+#score_box input {
+  float: right;
+  width: 100px;
+  height: 35px;
+}
+#score_box a.btn {
+  float: right;
+  height: 35px;
+}
+#collect_box a.btn {
+  float: right;
+  height: 35px;
+}
+#comment_main_box div {
+  padding: 0px 7px 0 7px;
+}
+#write_box a.btn {
+  float: right;
+  height: 35px;
+}
+#show_box p#show_box_title {
+  margin: 5px 0 20px 0;
+  height: 25px;
+  font-size: 20px;
+}
+#show_box hr {
+  margin: 0 0 0 0;
+}
+#show_box .comment_box {
+  position: relative;
+  line-height: 28px;
+}
+#show_box .comment_box .comment_info {
+  margin-left: 46px;
+}
+#show_box .comment_box .comment_info .detail_info {
+  display: inline-block;
+}
+#show_box .comment_box .comment_info .detail_info .detail_name {
+  font-size: 15px;
+}
+#show_box .comment_box .comment_info .detail_info .detail_time {
+  float: right;
+  font-size: 12px;
+}
+#show_box .comment_box .comment_photo {
+  display: inline-block;
+  position: absolute;
+  top: 25px;
+  width: 45px;
+  height: 45px;
+  margin: 0 5px 0 0;
+  padding: 0;
+  margin-top: -20px;
+}
+#show_box .comment_box .comment_content {
+  padding-left: 60px;
+}
+#show_box .comment_box .comment_content p {
+  margin: 0px;
+}
+footer {
+  float: left;
+}

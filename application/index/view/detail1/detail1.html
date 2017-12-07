@@ -1,0 +1,186 @@
+{include file="header" /}
+<style>
+	body {
+		background: #f4f4f4 ! important;
+	}
+</style>
+		<link rel="stylesheet" href="../../static/index/index.css" />
+		</br>
+		<div class="row">
+			<div class="col-md-1">
+			
+		</div>
+		<div class="col-md-8">
+	
+				
+		<div class="WB_frame_c">
+					<div id="Pl_Official_RelationFans__89" anchor="-50"><div class="WB_cardwrap S_bg2">
+    <!--列表模块-->
+    <div class="PCD_connectlist">
+        <div class="WB_innerwrap">
+            <!--筛选tab-->
+            <div class="WB_tab_b">
+                <div class="opt_choose">
+                    <div class="inner S_line2 clearfix">
+                    	
+                        <ul class="tab_ul W_fl">
+                            <!--当前态-->
+                            <li class="tab_li"><a bpfilter="page" href="/5851772625/fans?pids=Pl_Official_RelationFans__89&amp;relate=fans&amp;f=1" class="tab_item S_line1 tab_cur"><span class="W_f14 S_txt1">粉丝</span>
+                            <em class="attach S_txt1" node-type="count">{$fans}</em></a></li>
+                            <!--/当前态-->
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <!--/筛选tab-->
+                        <!--粉丝列表-->
+            <div class="follow_box">
+                <div class="follow_inner">
+                	{volist name="list" id="user"}
+                                        <ul class="follow_list">
+                                                                        <li class="follow_item S_line2" node-type="userItem" style="">
+                            <dl class="clearfix">
+                                <dt class="mod_pic">
+                                    <a href="javascript:jumpOther({$user.user_id})">
+                                        <img width="50" height="50" alt="凝恋娇美寂" src="../../static/user/headimg/{$user.user_photo}">
+                                    </a>
+                                </dt>
+                                <dd class="mod_info S_line1">
+                                    <div class="info_name W_fb W_f14">
+                                <a target="_blank" usercard="id=6326547901&amp;refer_flag=1005050005_" title="凝恋娇美寂" alt="凝恋娇美寂" href="javascript:jumpOther({$user.user_id})" class="S_txt1">{$user.user_name}</a> 	                                                                                                                        <a><i class="W_icon icon_female"></i></a>                                   	                                        </div>
+                                    <div class="info_connect">
+                                        <span class="conn_type">关注 <em class="count">{$user.focus_num}</em></span>
+                                        <span class="conn_type W_vline S_line1">粉丝<em class="count">{$user.fans_num}</em></span>
+                                    </div>
+                                    
+                                                                            <div class="info_intro"><em class="S_txt2">座右铭:</em><span>{$user.motto}</span></div>
+                                </dd>
+                                {if condition="Exist($user.user_id) eq 1"}
+                                                                <dd class="opt_box" node-type="opt_box">
+                    <span class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:btn_click({$user.user_id})">＋关注</a></span>                                                                                                      
+                                </dd>
+                                {else /} <dd class="opt_box" node-type="opt_box">
+                    <span class="csdn-tracking-statistics" data-mod="popu_379">已互相关注</span>                                                                                                      
+                                </dd>
+								{/if}
+                                                            </dl>
+                        </li> 
+                                                
+                                            </ul>
+                                            {/volist} 
+		                                                    {$list->render()}
+                    
+                    
+                </div>
+                            </div>
+            <!--/粉丝列表-->
+                    </div>
+    </div>
+    <!--/列表模块-->
+</div>
+</div>
+					
+			</div>
+
+</div>
+<div class="col-md-3">
+  <div class="aside">
+        <div class="right_box user_info">
+            <dl class="inf_bar">
+                <dt class="csdn-tracking-statistics" data-mod="popu_381">
+                    <a href="javascript:jumpIndex()" target="_blank">
+                        <img src="../../static/user/headimg/{$photo}" class="avatar_pic">
+                    </a>
+                    <span class="medals" title="">
+                <svg class="icon" aria-hidden="true">
+                    
+                </svg>
+              </span>
+                </dt>
+                <dd class="ddodd">
+                    <h3 class="csdn-tracking-statistics" data-mod="popu_380"><a href="javascript:jumpIndex()" target="_blank" id="uid">{$name}</a></h3>
+                    
+                    {if condition="Same() neq 1"}
+                    <span class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:btn_click({$perId})">＋关注</a></span>
+                    <span class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpLCG({$perId})">发私信</a></span>
+					{else /}
+					{/if}
+                </dd>
+            </dl>
+            <div class="inf_number_box">
+                <dl>
+                    <dt>原创</dt>
+                    <dd>{$dycount}</dd>
+                </dl>
+                <dl>
+                    <dt>粉丝</dt>
+                    <dd id="fan"><a href="../detail1/detail1.html">{$fans}</a></dd>
+                </dl>
+                <dl>
+                    <dt>关注</dt>
+                    <dd><a href="../detail2/detail2.html">{$atten}</a></dd>
+                </dl>
+                <dl>
+                    <dt>收藏</dt>
+                    <dd>{$clcount}</dd>
+                </dl>
+                
+				<div class="seat"><span class="txt_seat">座右铭：{$seatrt}</span> </div>
+                       </br>
+                       <div id="ok">
+                       					                        	<span class="node" data-mod="popu_379"><a class="btn btn-redborder-small " id="span_add_follow" href="javascript:jumpAdd()" >创建新动态</a></span>
+
+                       					 
+</br></br>
+            </div>
+	 
+        </div>
+        
+			
+
+
+    </div>
+
+</div>	
+</div>	
+
+{include file="footer" /}
+
+
+<script>
+
+  function btn_click(id)
+{
+	window.location.href = "../../index/detail1/Attention?us_id="+id;
+}
+</script>
+
+
+
+<script>
+  function jumpD2()
+{
+	window.location.href = "../../index/detail2/detail2";
+}
+</script>
+
+<script>
+
+  function exis(id)
+{
+	window.location.href = "../../index/detail1/Exist?us_id="+id;
+}
+</script>
+
+
+<script type="text/javascript">
+  	
+  	function jumpAdd() {
+  		window.location.href = "../../index/dynamics/post";
+	
+	}
+
+
+
+  </script>

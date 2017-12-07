@@ -1,0 +1,173 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+/*
+ * 页头样式，勿动
+ */
+header {
+	width: 100%;
+	background: #fff;
+	height: 120px;
+	position: relative;
+	min-width: 1200px;
+}
+header a{
+	font-size: 14px;
+}
+header img {
+	margin: 10px 30px;
+	height: 100px;
+}
+#top_tit {
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	font-family: "隶书";
+	font-size: 60px;
+	font-weight: 100;
+	line-height: 120px;
+}
+header ._liMenu_1 {
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+	margin: 0px;
+}
+header div {
+	display: block;
+	position: relative;
+	top: -120px;
+	left: 85%;
+	width: 200px;
+	/*margin-left: 500px;*/
+	cursor: pointer;
+}
+#login_box{
+	margin-top: -15px;
+}
+header div span {
+	padding: 0 10px;
+}
+/*
+ * 页脚样式，勿动
+ */
+footer {
+	font-size: 12px;
+	background: #fff;
+	height: 100px;
+	display: block;
+	width: 100%;
+	min-width: 1200px;
+	border-top: 2px solid #ccc;
+	margin-top: 30px;
+}
+footer div {
+	float: left;
+	padding-left: 100px;
+}
+footer div p {
+	line-height: 100px;
+}
+footer div p a {
+	margin-left: 30px;
+	color: #ddd;
+}
+footer div label {
+	line-height: 100px;
+	float: left;
+	padding-left: 50px;
+}
+footer div img{
+	float: left;
+	display: block;
+	height: 80px;
+	width: 80px;
+	margin: 10px;
+}
+/*
+ * 通用类
+ */
+/*
+ * 不显示
+ */
+._hid {
+	display: none;
+}
+/*
+ * li并排显示
+ */
+._liMenu_1 {
+	text-align: right;
+}
+._liMenu_1 li{
+	display: block;
+	float: left;
+	list-style: none;
+	padding: 10px 20px;
+}
+/*
+ * 全屏body
+ */
+._fullBody {
+	position: relative;
+}
+.tit {
+	background: #ff4081;
+	height: 70px;
+	min-width: 1200px;
+	width: 100%;
+	text-align: center;
+	line-height: 70px;
+	margin-bottom: 10px;
+}
+#login_box {
+		z-index: 1;
+}
+
+#login_box span{
+	/*display: none;*/
+}
+#l_logined {
+	position: relative;
+	cursor: pointer;
+}
+#l_logined span{
+	display: block;
+	width: 100px;
+	position: absolute;
+	top:-25px;
+	left: 80px;
+}
+#l_login_list{
+	display: none;
+	margin-top: -20px;
+	width: 150px;
+	box-shadow: 0 0 3px 1px #6cf;
+}
+#l_login_list li{
+	display: block;
+	width: 150px;
+	padding: 10px;
+	list-style: none;
+	text-align: left;
+	background: #fff;
+}
+#l_login_list li a{
+	padding:5px;
+}
+#l_login_list li:hover{
+	background: #eee;
+	text-decoration: none;
+}
+#headPic{
+	width: 50px;
+	height: 50px;
+	border-radius:25px ;
+}

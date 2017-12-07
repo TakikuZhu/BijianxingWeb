@@ -1,0 +1,314 @@
+{include file="header"/}
+<link rel="stylesheet" type="text/css" href="../../../static/comment/css/msg_list.css" />
+<link rel="stylesheet" type="text/css" href="../../../static/comment/css/pagination.css" />
+<script src="../../../static/comment/js/jquery.pagination.js" defer="defer" type="text/javascript" charset="utf-8"></script>
+<div id="main_box" class="col-lg-12">
+	<div id="side_box" class="col-lg-3 zlist-group">
+		<a href="../../index/Message/displayside" id="system_header" class="list-group-item itemhead">全部消息</a>
+		<a href="#" id="system_notice" class="list-group-item  menu_con itemcss active">系统通知</a>
+		<a href="#" id="system_tip" class="list-group-item  menu_con itemcss">系统提示</a>
+		<a href="#" id="msg_notice" class="list-group-item  menu_con itemcss">互动消息</a>
+		{volist name="side_list" id="side"}
+		<a href="#" class="per_side list-group-item menu_con itemcss"><span class="user_id">{$side.user_id}</span>{$side.user_name}</a>
+		{/volist}
+	</div>
+	<div id="msg_box" class="col-lg-6 col-lg-offset-1">
+		<ul>
+
+		</ul>
+		<div id="pagination" class="M-box4"></div>
+		<div id="input_box">
+			<textarea class="form-control" rows="3" cols="" placeholder="文明上网，礼貌用语"></textarea>
+			<a class="btn btn-default" id="send_talk_msg">发送</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		//页面加载完毕默认显示系统通知
+		$(document).ready(function() {
+			showMsg(0);
+			$.ajax({
+				type: "get",
+				url: "../../index/Message/checkMsgByTopicAndId",
+				async: true,
+				success: function(data) {
+					if(data[0]>0){
+						var str1 = "<span class=\"msg_num\">"+data[0]+"</span>";
+						$("#system_tip").append(str1);
+					}
+					if(data[1]>1){
+						var str2 = "<span class=\"msg_num\">"+data[1]+"</span>";
+						$("#msg_notice").append(str2);
+					}
+				},
+				error: function() {
+					alert("服务器出错了")
+				}
+			});
+			
+			$.ajax({
+				type: "get",
+				url: "../../index/Message/checkMsgByUserId",
+				async: true,
+				success: function(data) {
+					data = eval("{(" + data + ")}");
+					var a_list = $(".per_side");
+					for(var i=0;i<a_list.length;i++){
+						for(var j=0;j<data.length;j++){
+							if(a_list.eq(i).find(".user_id").text()==data[j].user_id&&data[j].num!=0){
+								var str1 = "<span class=\"msg_num\">"+data[j].num+"</span>";
+								a_list.eq(i).append(str1);
+							}
+						}
+					}
+				},
+				error: function() {
+					alert("服务器出错了")
+				}
+			});
+		})
+
+		//得到未读消息数目
+//		$.ajax({
+//			type: "get",
+//			url: "../../index/Message/checkMsg",
+//			async: true,
+//			success: function(data) {
+//				alert(data);
+//			},
+//			error: function() {
+//				alert("服务器出错了")
+//			}
+//		});
+
+		// 得到系统通知、消息提示
+		var showMsg = function(topic) {
+			var url = "../../index/Message/getMsgByTopic";
+			var topic_name;
+			if(topic == 1 || topic == 2) {
+				url = "../../index/Message/getMsgByTopicAndId";
+			}
+			switch(topic) {
+				case 0:
+					topic_name = "系统通知"
+					break;
+				case 1:
+					topic_name = "系统提示"
+					break;
+				case 2:
+					topic_name = "互动消息"
+					break;
+			}
+			$.ajax({
+				type: "get",
+				url: url,
+				async: true,
+				data: {
+					'topic': topic
+				},
+				success: function(reg) {
+					if(reg.length > 0) {
+						$("#pagination").css("display", "block");
+						$('#pagination').pagination({
+							totalData: reg.length,
+							showData: 5,
+							coping: false,
+							callback: function(api) {
+								$("#msg_box ul").text("");
+								var str = "";
+								for(var i = api.getCurrent() * 5 - 5; i < api.getCurrent() * 5 && i < reg.length; i++) {
+									str += "<div class=\"li_box\"><li><div class=\"info\"><span class=\"msg_id\">" + reg[i].msg_id + "</span>";
+									str += "<span class=\"flag_id\">" + reg[i].flag_id + "</span>";
+									str += "<span class=\"topic\">" + topic_name + "</span>";
+									str += "<img class=\"del\" src = \"../../../static/comment/img/del.jpg\"/>"
+									str += "<span class=\"time\">" + reg[i].time + "</span></div>";
+									str += "<p>" + reg[i].content + "</p>"
+									str += "</li></div>";
+								}
+								$("#msg_box ul").append(str);
+							}
+						}, function(api) {
+							$("#msg_box ul").text("");
+							var str = "";
+							for(var i = 0; i < 5 && i < reg.length; i++) {
+								str += "<div class=\"li_box\"><li><div class=\"info\"><span class=\"msg_id\">" + reg[i].msg_id + "</span>";
+								str += "<span class=\"flag_id\">" + reg[i].flag_id + "</span>";
+								str += "<span class=\"topic\">" + topic_name + "</span>";
+								str += "<img class=\"del\" src = \"../../../static/comment/img/del.jpg\"/>"
+								str += "<span class=\"time\">" + reg[i].time + "</span></div>";
+								str += "<p>" + reg[i].content + "</p>"
+								str += "</li></div>";
+							}
+							$("#msg_box ul").append(str);
+						});
+					} else {
+						$("#pagination").css("display", "none");
+						var str = "<p>没有记录！</p>"
+						$("#msg_box ul").append(str);
+					}
+				}
+			})
+
+		}
+		// 得到对话消息
+		var showTalk = function(sender_id) {
+			$.ajax({
+				type: "get",
+				url: "../../index/Message/getmesgbyuserid",
+				async: true,
+				data: {
+					'sender_id': sender_id
+				},
+				success: function(reg) {
+					if(reg.length > 0) {
+						$("#pagination").css("display", "block");
+						$('#pagination').pagination({
+							totalData: reg.length,
+							showData: 5,
+							coping: false,
+							callback: function(api) {
+								$("#msg_box ul").text("");
+								var str = "";
+								for(var i = api.getCurrent() * 5 - 5; i < api.getCurrent() * 5 && i < reg.length; i++) {
+									str += "<div class=\"li_box\"><img class=\"header_photo\" src=" + "../../../static/user/headimg/"+reg[i].user_photo + "><li><p class=\"info\"><span class=\"msg_id\">" + reg[i].msg_id + "</span>";
+									str += "<span class=\"name\">" + reg[i].user_name + "</span>";
+									str += "<img class=\"del\" src = \"../../../static/comment/img/del.jpg\"/>"
+									str += "<span class=\"time\">" + reg[i].time + "</span><p>";
+									str += "<p>" + reg[i].content + "</p>"
+									str += "</li></div>";
+								}
+								$("#msg_box ul").append(str);
+							}
+						}, function(api) {
+							$("#msg_box ul").text("");
+							var str = "";
+							for(var i = 0; i < 5 && i < reg.length; i++) {
+								str += "<div class=\"li_box\"><img class=\"header_photo\" src=" +  "../../../static/user/headimg/"+reg[i].user_photo + "><li><p class=\"info\"><span class=\"msg_id\">" + reg[i].msg_id + "</span>";
+								str += "<span class=\"name\">" + reg[i].user_name + "</span>";
+								str += "<img class=\"del\" src = \"../../../static/comment/img/del.jpg\"/>"
+								str += "<span class=\"time\">" + reg[i].time + "</span><p>";
+								str += "<p>" + reg[i].content + "</p>"
+								str += "</li></div>";
+							}
+							$("#msg_box ul").append(str);
+						});
+					} else {
+						$("#pagination").css("display", "none");
+						var str = "<p>没有聊天记录！</p>"
+						$("#msg_box ul").append(str);
+					}
+				}
+			})
+		}
+
+		//页面点击通知侧边栏
+		$("#system_notice").on("click", function() {
+			if(!$(this).hasClass("active")) {
+				//隐藏右侧内容 更改左侧状态
+				$("#msg_box ul").html("");
+				$("#side_box").find(".active").eq(0).removeClass("active");
+				//添加右侧内容 更改左侧状态 
+				showMsg(0);
+				$("#input_box").css("display", "none");
+				$(this).addClass("active");
+			}
+		})
+		//页面点击通知侧边栏
+		$("#system_tip").on("click", function() {
+			if(!$(this).hasClass("active")) {
+				//隐藏右侧内容 更改左侧状态
+				$("#msg_box ul").html("");
+				$("#side_box").find(".active").eq(0).removeClass("active");
+				//添加右侧内容 更改左侧状态 
+				showMsg(1);
+				$("#input_box").css("display", "none");
+				$(this).addClass("active");
+				$(this).find(".msg_num").css("display", "none");
+			}
+		})
+		//页面点击提示侧边栏
+		$("#msg_notice").on("click", function() {
+			if(!$(this).hasClass("active")) {
+				//隐藏右侧内容 更改左侧状态
+				$("#msg_box ul").html("");
+				$("#side_box").find(".active").eq(0).removeClass("active");
+				//添加右侧内容 更改左侧状态 
+				showMsg(2);
+				$("#input_box").css("display", "none");
+				$(this).addClass("active");
+				$(this).find(".msg_num").css("display", "none");
+			}
+		})
+		//页面点击人物侧边栏 渲染聊天输入款
+		$("#side_box").delegate(".per_side", "click", function() {
+			if(!$(this).hasClass("active")) {
+				//隐藏右侧内容 更改左侧状态
+				$("#msg_box ul").html("");
+				$("#side_box").find(".active").eq(0).removeClass("active");
+				//添加右侧内容 更改左侧状态 显示输入框
+				var sender_id = $(this).find("span.user_id").eq(0).text();
+				showTalk(sender_id);
+				$("#input_box").css("display", "block");
+				$(this).addClass("active");
+				$(this).find(".msg_num").css("display", "none");
+			}
+		})
+
+		//添加新的聊天信息
+		$("#send_talk_msg").on("click", function() {
+			var receiver_id = $("#side_box a.active").find(".user_id").text();
+			var content = $("#input_box textarea");
+			$.ajax({
+				type: "post",
+				url: "../../index/Message/addtalkmsg",
+				async: true,
+				data: {
+					'receiver_id': receiver_id,
+					'content': content.val()
+				},
+				success: function(data) {
+					if(data == "0") {
+						showTalk(receiver_id);
+						alert("已发送");
+						content.val("");
+					}
+				},
+				error: function() {
+					alert("服务器出错了")
+				}
+			});
+		})
+
+		//点击页面跳转到详细动态页面
+		$("#msg_box ul").delegate("li", "click", function() {
+			if($("#side_box a.active").eq(0).attr("id") == "msg_notice") {
+				var flag_id = $(this).find(".flag_id").eq(0).text();
+				window.location.href = "../../index/Dynamics/index?dynamic_id=" + flag_id;
+			}
+		})
+
+		//点击页面删除消息
+		$("#msg_box ul").delegate(".del", "click", function() {
+			var msg_id = $(this).parents("li").find(".msg_id").text();
+			var li_box = $(this).parents(".li_box").eq(0);
+			$.ajax({
+				type: "post",
+				url: "../../index/Message/deleteMsg",
+				async: true,
+				data: {
+					'msg_id': msg_id
+				},
+				success: function(data) {
+					if(data == "0") {
+						li_box.remove();
+					}
+				},
+				error: function() {
+					alert("服务器出错了")
+				}
+			});
+		})
+	})
+</script>
+{include file="footer"/}

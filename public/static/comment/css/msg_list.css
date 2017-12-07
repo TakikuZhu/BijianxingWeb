@@ -1,0 +1,113 @@
+#main_box {
+  padding-top: 20px;
+  background-color: #f4f4f4;
+  text-align: ;
+}
+#side_box {
+  width: 13%;
+  max-height: 500px;
+  overflow: auto;
+  margin: 0 40px 0 200px;
+  padding: 0 0px 240px 0;
+  border-radius: 3px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: #d9d9d9;
+}
+#side_box a {
+  padding-left: 40px;
+  border-right-width: 0px;
+}
+#side_box a .msg_num {
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  background-color: orange;
+  font-size: 12px;
+  color: white;
+  width: 16.8px;
+  float: right;
+}
+#side_box #system_header {
+  background-color: #f9f9f9;
+}
+#side_box .active,
+#side_box :hover {
+  background-color: #d9d9d9;
+  border-radius: 3px;
+}
+#side_box .user_id {
+  display: none;
+}
+#side_box * {
+  font-size: 14px;
+}
+#msg_box {
+  margin-left: 50px;
+  min-height: 430px;
+  background-color: white;
+}
+#msg_box * {
+  font-size: 16px;
+}
+#msg_box ul {
+  padding: 0px;
+  line-height: 30px;
+}
+#msg_box ul .header_photo {
+  display: inline-block;
+  position: absolute;
+}
+#msg_box ul .li_box {
+  margin-top: 10px;
+  border-top: solid;
+  border-width: 1px;
+  border-color: #d4d4d4;
+}
+#msg_box ul .li_box .header_photo {
+  width: 38px;
+  height: 38px;
+}
+#msg_box ul .li_box li {
+  list-style: none;
+  margin-left: 40px;
+}
+#msg_box ul .li_box li .info {
+  margin-top: 5px;
+}
+#msg_box ul .li_box li .info * {
+  font-size: 12px;
+  margin-right: 15px;
+}
+#msg_box ul .li_box li .info .msg_id {
+  display: none;
+}
+#msg_box ul .li_box li .info .flag_id {
+  display: none;
+}
+#msg_box ul .li_box li .info .topic {
+  font-size: 15px;
+}
+#msg_box ul .li_box li .info .time {
+  float: right;
+}
+#msg_box ul .li_box li .info .del {
+  float: right;
+}
+#msg_box #pagination {
+  margin: 20px 0px 0px 50px;
+}
+#msg_box #input_box {
+  display: none;
+  margin: 20px 0 0 0;
+}
+#msg_box #input_box a {
+  margin: 8px 0px 0 0;
+  float: right;
+}
+#msg_box #input_box textarea {
+  resize: none;
+}
+footer {
+  float: left;
+}

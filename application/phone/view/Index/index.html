@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--
+	时间：2017-10-10
+	描述：xinyi
+-->
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet">
+		<link href="../../../static/css/myChange.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 59px;padding-left: 13px;padding-right: 13px;background-color:#e3ddd4;">
+			
+			<div class="character_library_search" style="margin-top: 20px;margin-left: 5px;">
+					
+					<div style="width: 70%;float: left;">
+						<input type="search" id="_font" style="height: 30px;" placeholder="请输入查询字">
+					</div>
+					<div style="width: 15%;float: left;padding-left: 5px;">
+						<button id="search_btn" onclick="searchResult()" style="background: #6e6545;height: 30px;margin-top:5px;color: #FFFFFF;">查询</button>
+					</div>
+
+					<div style="width: 10%;float: right;">
+						<a href="#popover">
+							<button id="filter" style="height: 30px;margin-top: 5px;">筛选</button>
+						</a>
+					</div>
+				</div>
+			
+			
+		</header>
+		<div id="popover" class="mui-popover" >
+
+				<ul class="mui-table-view mui-grid-view mui-grid-9 ">
+					<li class="mui-table-view-cell ">
+						<span style="color: #6E6545;">笔体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>毛笔</label>
+						<input name="penType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>硬笔</label>
+						<input name="penType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>粉笔</label>
+						<input name="penType" type="radio" value="3">
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell">
+						<span style="color: #6E6545;">字体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>隶书</label>
+						<input name="bookType" type="radio" value="4">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>篆书</label>
+						<input name="bookType" type="radio" value="5">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>楷书</label>
+						<input name="bookType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>行书</label>
+						<input name="bookType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>草书</label>
+						<input name="bookType" type="radio" value="3">
+						</div>
+					</li>
+				</ul>
+			</div>
+		<div style="background: #ffffff; margin-bottom: 60px; margin-top: 59px;">
+			<div id="slider" class="mui-slider" style="height: 150px;">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../../../static/imgs/4.jpg" class="slider_image">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../../../static/imgs/1.jpg" class="slider_image">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../../../static/imgs/2.jpg" class="slider_image">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../../../static/imgs/3.jpg" class="slider_image">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../../../static/imgs/4.jpg" class="slider_image">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../../../static/imgs/1.jpg" class="slider_image">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<ul class="mui-table-view mui-grid-view mui-grid-9" style="margin-top: 10px;background: #FFFFFF;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="../../phone/word/dictPage">
+						<img class="mui-icon" src="../../../static/imgs/middleMenu/imageToFonts.png" />
+						<div class="mui-media-body">看图识字</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="../../phone/Unfamiliar/dictPage">
+						<img class="mui-icon" src="../../../static/imgs/middleMenu/unfamiliar.png" />
+						<div class="mui-media-body">生字同步</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="../../phone/dictionary/dictPage">
+						<img class="mui-icon" src="../../../static/imgs/middleMenu/dictionary.png" />
+						<div class="mui-media-body">书法字典</div>
+					</a>
+				</li>
+				
+			</ul>
+			
+			<div id="slider" class="mui-slider" style="height: 100%;background: #E3DDD4;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="background: #FFFFFF;margin-top: 1px;">
+					<a class="mui-control-item mui-active" href="#item1mobile" style="color: #000000;">
+						精选
+					</a>
+				</div>
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>-->
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active"  style="margin-top: 0px;">
+						<div class="mui-card" >
+							{volist name="list1" id="dynamic"}
+							<!--页眉，放置标题-->
+							<div class="mui-card-header mui-card-media">
+								<img src="../../../static/user/headimg/{$dynamic.user_photo}" style="width: 34px;"/>
+								<div class="mui-media-body">
+									{$dynamic.user_name}
+									<p>发表于 {$dynamic.time}</p>
+								</div>
+							</div>
+							<!--内容区-->
+							<div class="mui-card-content">
+								<span>{$dynamic.theme}</span>
+								<br />
+								<a  id="clickContent" href="javascript:post({$dynamic.dynamic_id})">
+									<span style="width: 90%; height: 120px; padding-left: 10px;">
+										<img src="../../../static/upload/image/{$dynamic.image}" style="width: 34px;"/>
+									</span>
+								</a>
+							</div>
+							<!--页脚，放置补充信息或支持的操作-->
+							<div class="mui-card-footer" style="display: block;border-bottom: #E3DDD4 5px solid;">
+								<span>浏览{$dynamic.read_num}次</span>
+								<div style="float: right; text-align: center;">
+									<a id="criteria" href="javascript:post({$dynamic.dynamic_id})">
+										<img src="../../../static/imgs/criteria.png" style="width: 20px; height: 20px;"/>
+									</a>
+									<span style="font-size: 20px;">{$dynamic.comment_num}</span>
+								</div>
+							</div>
+							{/volist}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="background: #e3ddd4;">
+			<a id="square" class="mui-tab-item mui-active">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/homepage.png"/>
+				<span class="mui-tab-label">广场</span>
+			</a>
+			<a id="forum" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/bar.png"/>
+				<span class="mui-tab-label">行吧</span>
+			</a>
+			<a id="plus" class="mui-tab-item">
+				<img class="mui-icon" style="width: 40px;height: 40px;" src="../../../static/imgs/bottomMenu/write.png" />
+			</a>
+			<a id="study" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/fonts.png"/>
+				<span class="mui-tab-label">字库</span>
+			</a>
+			<a id="my" class="mui-tab-item">
+				<img class="mui-icon" src="../../../static/imgs/bottomMenu/head.png"/>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="../../../static/js/bottomChange.js"></script>
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var slider = mui("#slider");
+			var gallery = mui('.mui_slider');
+			gallery.slider({
+				interval: 5000 //自动轮播时间间隔
+			})
+			
+			function searchResult() {
+				var wordName = $("#_font").val();
+				var bookType = $("input[name='penType']:checked").val();
+				var wordType = $("input[name='bookType']:checked").val();
+
+				if((wordName == null) || (wordName == "")) {
+					mui.toast("请重新输入所查询的字");
+				} else {
+					//window.location.href = "../../phone/word/getResult?wordname="+wordName+"&booktype=" + bookType+ "&wordtype=" + wordType;
+					$.ajax({
+						type: "get",
+						url: "../../phone/word/getWordController?wordname=" + wordName + "&booktype=" + bookType + "&wordtype=" + wordType,
+						async: true,
+						cache: false,
+						success: function(reg) {
+							var wordArr = [];
+							for(key in reg) {
+								wordArr.push(reg[key]);
+							}
+							console.log(wordArr);
+							
+							if(wordArr.length != null) {
+								//window.location.href = "../../phone/word/getResult";
+								var wordPhoto = wordArr[0];
+								var wordVideo= wordArr[1];
+								var shuoWen = wordArr[2];
+								//$(".font_search).innerHTML = wordArr[2];
+								var note1 = "1. " + wordArr[3][0];
+								var note2= "2. " + wordArr[3][1];
+								var note3= "3. " + wordArr[3][2];
+								window.location.href = "../../phone/word/getResult?wordphoto="+wordPhoto+"&wordvideo=" + wordVideo+ "&shuowen=" + shuoWen + "&note1=" + note1 + "&note2=" + note2 + "&note3=" + note3;
+					
+								//document.getElementById("wn4").innerHTML = "4. " + wordArr[3][3];
+								//document.getElementById("wordScore").innerHTML = wordArr[4];
+							}
+						},
+						error: function() {
+							mui.toast("该字不存在，请检查您的输入是否正确1");
+						}
+					});
+					
+				}
+				
+			}
+			
+			function post(id) {
+				window.location.href = "../../phone/forum/forum_post?dynamic_id=" + id;
+			}
+			
+				document.getElementById("clickContent").addEventListener('tap', function() {
+		var a = false;
+				$.ajax({
+					type: "get",
+					url: "../../phone/user/checkLogin",
+					cache: false,
+					async: false,
+					success: function(data) {
+						if(data == 1) {
+							a = true;
+						} else if(data == 0) {
+							a = false;
+						}
+					},
+					error: function() {
+						mui.toast('服务器出错了!!!')
+					}
+				});
+				if(!a) {
+					mui.confirm('是否前往登录？', '您还没登录', ['取消', '登录'], function(e) {
+						if(e.index == 1) {
+							window.location.href = "../../phone/user/loginPage"
+						} else {
+							window.location.href = "#"
+						}
+					}, 'div')
+				} else {
+					window.location.href = "../forum/forum";
+				}
+	})
+			
+				document.getElementById("criteria").addEventListener('tap', function() {
+		        var a = false;
+				$.ajax({
+					type: "get",
+					url: "../../phone/user/checkLogin",
+					cache: false,
+					async: false,
+					success: function(data) {
+						if(data == 1) {
+							a = true;
+						} else if(data == 0) {
+							a = false;
+						}
+					},
+					error: function() {
+						mui.toast('服务器出错了!!!')
+					}
+				});
+				if(!a) {
+					mui.confirm('是否前往登录？', '您还没登录', ['取消', '登录'], function(e) {
+						if(e.index == 1) {
+							window.location.href = "../../phone/user/loginPage"
+						} else {
+							window.location.href = "#"
+						}
+					}, 'div')
+				} else {
+					window.location.href = "../forum/forum";
+				}
+	})
+		</script>
+	</body>
+
+</html>

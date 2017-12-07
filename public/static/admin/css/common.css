@@ -1,0 +1,81 @@
+.userMan tbody a
+{
+	color:#009ACD;
+    text-decoration:none;
+
+}
+.itemhead{
+	font-family: 微软雅黑;
+	line-height: 50px;
+	background: rgba(255,250,205,.8);
+	font-size: 20px;
+	font-style:bold;
+}
+.itemcss{
+	font-family: 微软雅黑;
+	line-height: 40px;
+	font-size: 18px;
+}
+.noticename{
+	font-size: 16px;
+}
+.noticecon{
+	font-size: 10px;
+}
+.menu{
+	line-height: 70px;
+	background: rgba(255,250,205,.8);
+}
+.menu div a{
+	text-align: center;
+	color: #000;
+	font-size: 28px;
+	cursor: pointer;
+}
+.menu div a:hover{
+	color: blueviolet;
+	text-decoration: none;
+}
+#carousel-example-generic {
+	max-height: 300px;
+	overflow: hidden;
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+#carousel-example-generic img{
+	width: 100%;
+}
+#carousel-example-generic a{
+	margin: 0 15px;
+}
+
+.artical {
+	margin-top: 230px;
+}
+.main_box {
+	margin-top: 300px;
+}
+.search_row {
+	margin: 30px auto;
+	text-align: center;
+}
+
+.right_box {
+	padding: 0px;
+	margin-left: 10px;
+}
+.right_box nav{
+	text-align: center;
+}
+.tit {
+	text-align: center;
+}
+.back1{
+	background: black;
+}
+.back2{
+	background: red;
+}
+.myHid {
+	display: none;
+}

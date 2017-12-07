@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/index/css/common.css" />
+		<link rel="stylesheet" href="../../static/index/css/index.css" />
+		<script type="text/javascript" src="../../static/index/js/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="../../static/index/js/common.js" ></script>
+		<style type="text/css">
+			#login_box{
+				margin-top: 0px;
+			}
+		</style>
+	</head>
+	<body class="_fullBody">
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：通用页头
+       -->
+		<header>
+			<img src="../../static/index/img/logo.png" alt="图标" />
+			<h1 id="top_tit"><i>书法天地</i></h1>
+			<ul class="_liMenu_1">
+				<li><a href="">首页</a></li>
+				<li><a href="../../library/dict1">字库</a></li>
+				<li><a href="">教材</a></li>
+				<li><a href="">课程</a></li>
+				<li><a href="javascript:jumpIndex()">行吧</a></li>
+				<li><a href="">商城</a></li>
+				<li><a href="">拍卖</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<div id="login_box">
+				{empty name='Think.session.user_name'}
+				<span id="l_login"><a>登录</a></span>
+				<span id="l_register"><a href="{:url('User/registerPage')}">注册</a></span>
+				{else /}
+				<label id="l_logined"><img id="headPic" src="__PUBLIC__/static/user/headimg/{$Think.session.user_photo}"/><label>{$Think.session.user_name}</label></label>
+				<ul id="l_login_list" data-type="0">
+					<li><a id="changeinfo" href="javascript:void(0)">修改账户信息</a></li>
+					<li><a id="changepwd" href="javascript:void(0)">修改密码</a></li>
+					<li><a href="{:url('Message/displayside')}">查看私信消息</a></li>
+					<li><a href="{:url('User/ext')}">退出登录</a></li>
+				</ul>
+				{/empty}
+			</div>
+		</header>
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+       -->
+        
+		<div class="main_box">
+		</div>
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：通用页脚
+        -->
+		<footer>
+			<div><p>版权所有：比肩&nbsp;2017-2018&nbsp;鲁：ICP备06020633号&nbsp;鲁公安备案<a href="../../admin">管理登录</a></p></div>
+			<div><label>微信公众号：</label><img src="../../static/index/img/test.jpg" /><label>手机APP：</label><img src="../../static/index/img/test.jpg" /></div>
+		</footer>
+		{include file="user/load"}
+	</body>
+</html>
+
+
+<script type="text/javascript">
+  	
+  	function jumpIndex() {
+  		window.location.href = "../../index/index/index";
+	
+	}
+</script>

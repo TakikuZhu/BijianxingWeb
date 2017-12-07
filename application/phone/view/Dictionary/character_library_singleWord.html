@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		
+
+		<!-- 主页面容器 -->
+		<div class="mui-inner-wrap mui-transitioning">
+			<!-- 主页面标题 -->
+			<header class="mui-bar mui-bar-nav" style="height: 59px;background: #E3DDD4;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+				
+				
+			</header>
+			
+			<div class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll" style="height: 100%;">
+					<!-- 主界面具体展示内容 -->
+					<div style="width: 100%; height: 70%;">
+						<img id="single_result" src="" style="width: 100%; height: 100%;" />
+					</div>
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+							<span>字：</span>
+							<div id = "zjWord" class="mui-media-body">于</div>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+							<span>字体：</span>
+							<div id="zjwordType" class="mui-media-body">楷书</div>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+							<span>字迹：</span>
+							<div id="zjBelong" class="mui-media-body">无</div>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+							<span>书家：</span>
+							<div id="zjAuthor" class="mui-media-body">颜真卿</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mui-off-canvas-backdrop"></div>
+		</div>
+		</div>
+
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			window.onload = function(){
+				function parseUrl() {
+					var url = location.href;
+					var i = url.indexOf('?');
+					if(i == -1) return;
+					var querystr = url.substr(i + 1);
+					var arr1 = querystr.split('&');
+					var arr2 = new Object();
+					for(i in arr1) {
+						var ta = arr1[i].split('=');
+						arr2[ta[0]] = ta[1];
+					}
+					return arr2;
+				}
+				var v = parseUrl(); //解析所有参数
+				var wordPhoto = decodeURI(v['photourl']);
+				var zjWord = decodeURI(v['zjword']);
+				var zjWordType = decodeURI(v['zjwordType']);
+				var zjWordBelong = decodeURI(v['zj_belong']);
+				var zjWordAuthor = decodeURI(v['zj_author']);
+				document.getElementById("single_result").src = wordPhoto;
+				document.getElementById("zjWord").innerHTML = zjWord;
+				document.getElementById("zjwordType").innerHTML = zjWordType;
+				document.getElementById("zjBelong").innerHTML = zjWordBelong;
+				document.getElementById("zjAuthor").innerHTML = zjWordAuthor;
+				
+			}
+		</script>
+	</body>
+
+</html>

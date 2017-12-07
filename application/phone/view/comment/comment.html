@@ -1,0 +1,261 @@
+<link rel="stylesheet" href="../../../static/css/comment.css" />
+<script src="../../../static/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../../static/js/jquery-3.2.1.js" ></script>
+
+<div id="comment_main_box" class="row" style="background-color: #FFFFFF;">
+	<div class="col-md-7 col-md-offset-1">
+		<div style="border: #E3DDD4 1px solid;margin-top: 20px;">
+		<div style="width: 30%;float:right;padding:0px;text-align: right;">
+		{include file="collection/focus"}
+		</div>
+		<div style="width: 30%;float:right;padding:0px;text-align: right;">
+		{include file="collection/collection"}
+		</div>
+		</div>
+		<div id="write_box" style="margin-top: 2px;padding: 0px;">
+			<textarea id="com_content" rows="2" placeholder="来说两句吧！" class="form-control" style="margin-top: 2px;margin-bottom: 2px;"></textarea>
+			<a id="add_dy_com" class="btn btn-primary" style="color: #000000;border:1px solid #000000;padding:6px;">评论</a>
+		</div>
+		<div id="show_box" style="margin-top: 40px;border: #E3DDD4 1px solid;">
+			<p id="show_box_title">评论区<small>（已有{$list->total()}条评论）</small></p>
+			{volist name="list" id="comment"}
+			<hr />
+			<div class="comment_box">
+				<div class="comment_photo">
+					<img src="../../../static/user/headimg/{$comment.sender.user_photo}" style="width: 34px;"/>
+				</div>
+				<div class="comment_info">
+					<div class="detail_info">
+						<a name={$comment.sender_id} class="detail_name" href="" ">{$comment.sender.user_name}</a>
+						<span class="detail_time">{$comment.time}</span>
+						
+					</div>
+					<span class="reply_btn"  style="float: right;color:#000000;"><a href="#reply" style="color:#000000;"><small>回复</small></a></span>
+				</div>
+				<div class="comment_content">
+					<p>{$comment.content}</p>
+					
+				</div>
+				
+				<div id="reply" class="mui-popover mui-popover-bottom mui-popover-action " style="height: 50px;margin-left:-25px;background: #E3DDD4;" >
+			    <div class="mui-search" style="width: 80%;height:33px;float: left; ">
+			    <textarea id="rep_content" rows="1" placeholder="来说两句吧！" class="form-control" style="margin-top: 2px;margin-bottom: 2px;"></textarea>
+				
+			    </div>
+			    <div style="width:20%;float: right; text-align:center;height:33px;line-height:33px;margin-top:5px; ">
+				
+				<span class="reply_com_btn" style="float: right;width:100%;border:1px solid #000000;"><small>回复</small></span>
+			    </div>
+                </div>
+				
+			</div>
+			{/volist} {$list->render()}
+		</div>
+	</div>
+</div>
+
+<div id="reply_box" style="display: none;background-color: #FFFFFF;">
+	<span style="display: none;" id="story_id">receiver_id</span>
+	<textarea id="reply_com_content" rows="4" placeholder="来说两句吧！" class="form-control"></textarea>
+	<a id="reply_dy_com" style="float: right;margin-top: 10px;" class="btn btn-primary">回复</a>
+</div>
+<script type="text/javascript">
+	$(function() {
+		//页面初始化操作
+		$(document).ready(function() {
+			//判断当前用户是否已经收藏该动态
+			$.ajax({
+				type: "get",
+				url: '../../phone/collection/checkcollect',
+				async: true,
+				success: function(data) {
+					if(data == "1") {
+						//当前用户已经收藏该动态
+						$("#un_collect").css("display", "none");
+						$("#collect").css("display", "block");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+		
+		//输入框位置
+		$("#rep_content").on('focus',function(){
+        	var _this = this
+        	setTimeout(function(){
+        		_this.scrollIntoViewIfNeeded();
+        	},200);
+        })
+		
+		
+		
+		
+		
+		//点击回复
+		$("#show_box").delegate(".reply_com_btn", "click", function() {
+			$("#story_id").text($(this).parents(".comment_box").find(".detail_name").attr("name"));
+			var content = $("#rep_content").val();
+			var receiver_id = $("#story_id").text();
+			if(content==""){
+				mui.toast("回复不能为空");
+				return false;
+			}
+			$.ajax({
+				type: "post",
+				url: "../../phone/Comment/replycomment",
+				async: true,
+				data: {
+					'content': content,
+					'receiver_id': receiver_id
+				},
+				success: function(data) {
+					if(data == "1") {
+						//页面添加新的评论
+						mui.toast("回复评论成功");
+						window.location.reload(true);
+					} else {
+						mui.toast("回复评论失败!");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+
+		
+		$(document).ready(function() {
+			//判断当前用户是否已经关注
+			$.ajax({
+				type: "get",
+				url: '../../phone/collection/checkfocus',
+				async: true,
+				success: function(data) {
+					if(data == "1") {
+						//当前用户已经收藏该动态
+						$("#un_focus_img").css("display", "none");
+						$("#focus_img").css("display", "block");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+
+		//点击评论按钮新增评论
+		$("#add_dy_com").on("click", function() {
+			var content = $("#com_content").val();
+			if(content==""){
+				mui.toast("评论不能为空");
+				return false;
+			}
+			$.ajax({
+				type: "post",
+				url: "../../phone/comment/addcomment",
+				async: true,
+				data: {
+					'content': content,
+				},
+				success: function(data) {
+					if(data == "0") {
+						//页面添加新的评论
+						mui.toast("添加评论成功");
+						window.location.reload(true);
+					} else {
+						mui.toast("添加评论失败!")
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+
+		})
+
+		
+		//点击收藏按钮收藏该动态
+		$("#collect_btn").on("click", function() {
+			$.ajax({
+				type: "post",
+				url: "../../phone/Collection/collect",
+				async: true,
+				success: function(data) {
+					if(data == "0") {
+						$("#un_collect").css("display", "none");
+						$("#collect").css("display", "block");
+					} else {
+						mui.toast("收藏失败!");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+		
+		$("#focus_btn").on("click", function() {
+			$.ajax({
+				type: "post",
+				url: "../../phone/Collection/focus_user",
+				async: true,
+				success: function(data) {
+					if(data == "0") {
+						$("#un_focus_img").css("display", "none");
+						$("#focus_img").css("display", "block");
+					} else if (data == "2"){
+						mui.toast("不能关注自己!");
+					} else {
+						mui.toast("关注失败!");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+
+		//点击动态取消收藏该动态
+		$("#discollect_btn").on("click", function() {
+			$.ajax({
+				type: "post",
+				url: "../../phone/collection/cancelcollect",
+				async: true,
+				success: function(data) {
+					if(data == "0") {
+						$("#un_collect").css("display", "block");
+						$("#collect").css("display", "none");
+					} else {
+						mui.toast("取消收藏失败!");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+
+		})
+		
+		$("#disfocus_btn").on("click", function() {
+			$.ajax({
+				type: "post",
+				url: "../../phone/collection/cancelfocus",
+				async: true,
+				success: function(data) {
+					if(data == "0") {
+						$("#un_focus_img").css("display", "block");
+						$("#focus_img").css("display", "none");
+					} else {
+						mui.toast("取消关注失败!");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+
+		})
+	})
+</script>

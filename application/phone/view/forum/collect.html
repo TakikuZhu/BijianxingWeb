@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../static/css/mui.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet">
+		<script type="text/javascript" src="../../../static/js/jquery-3.2.1.js" ></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 59px;padding-left: 13px;padding-right: 13px;background-color:#e3ddd4;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 21px;width: 10%; color: #000000;"></a>
+			<input id="searchText" type="search" style="height: 25px;width: 70%;margin-top: 28px;margin-left: 5px; float: left;" placeholder="请输入书法家">	
+			<button id="btnSearch" type="button" class="mui-btn mui-btn-outlined" style="border:2px solid #6E6545;height:25px;width:20%;margin-top: 21px;float: right;line-height: 25px;padding: 0px;">搜索</button>
+		</header>
+		
+		
+        	<div style="margin-bottom: 50px;margin-top: 59px;background: #e3ddd4;">
+			<div id="slider" class="mui-slider" style="height: 100%; overflow: visible;">   
+        		<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>  
+		        <div class="mui-slider-group">  
+		            <div id="item1mobile" class="mui-slider-item mui-control-content mui-active" > 
+		            	<div class="mui-card">
+		            		{volist name="list" id="dynamic"}
+								<!--页眉，放置标题-->
+								<div class="mui-card-header mui-card-media">
+									<img src="../../../static/user/headimg/{$dynamic.user_photo}" style="width: 34px;"/>
+									<div class="mui-media-body">
+										{$dynamic.user_name}
+										<p>发表于 {$dynamic.time}</p>
+									</div>
+								</div>
+								<!--内容区-->
+								<div class="mui-card-content">
+									<span>{$dynamic.theme}</span>
+									<br />
+									<a href="javascript:post({$dynamic.dynamic_id})">
+										<span style="width: 90%; height: 120px; padding-left: 10px;">
+											<img src="../../../static/upload/image/{$dynamic.image}" style="width: 34px;"/>
+										</span>
+									</a>
+								</div>
+								<!--页脚，放置补充信息或支持的操作-->
+								<div class="mui-card-footer"style="display: block;">
+									<span>浏览{$dynamic.read_num}次</span>
+									<div style="float: right; text-align: center;">
+										<a href="javascript:post({$dynamic.dynamic_id})">
+											<img src="../../../static/imgs/criteria.png" style="width: 20px; height: 20px;"/>
+										</a>
+										<span style="font-size: 20px;">{$dynamic.comment_num}</span>
+									</div>
+								</div>
+							{/volist}
+						</div>	
+					</div>
+		        </div>  
+		  </div>
+		</div>
+		
+		<script src="../../../static/js/mui.js"></script>
+		
+        <script type="text/javascript">
+			window.onload = function(){
+	      		
+	      		
+	      	}
+			mui.init({
+				pullRefresh:{
+					container:"#mui-content",
+					down:{
+						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+				        color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+				        height:'50px',//可选,默认50px.下拉刷新控件的高度,
+				        range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+				        offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+				        auto: true,//可选,默认false.首次加载自动上拉刷新一次
+				        callback :test() //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					}
+				}
+			});
+			
+			function post(id) {
+				window.location.href = "../../phone/forum/forum_post?dynamic_id=" + id;
+			}		
+			
+	$(function() {
+		$("#btnSearch").on("click", function() {
+		var user_name = document.getElementById("searchText").value;
+		if(user_name==""){
+			mui.toast("查询不能为空");
+			return false;
+		}
+			$.ajax({
+				type: "post",
+				url: "../../phone/Forum/searchforum",
+				async: true,
+				data: {
+					'user_id': {$user_id},
+					'user_name': user_name
+				},
+				success: function(data) {
+					if(data == "0") {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					} else {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		})
+		
+		//页面初始化操作
+		function collection(user_id, dynamic_id) {
+			$("#un_collect").css("display", "none");
+		    $("#collect").css("display", "block");
+			//判断当前用户是否已经收藏该动态
+			$.ajax({
+				type: "get",
+				url: '../../phone/forum/checkcollect',
+				async: true,
+				data: {
+					'user_id': user_id,
+					'dynamic_id': dynamic_id
+				},
+				success: function(data) {
+					if(data = "1") {
+						//当前用户已经收藏该动态
+						$("#un_collect").css("display", "none");
+						$("#collect").css("display", "block");
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+		}
+	})	
+	function test(){
+				//mui.toast("刷新完毕")
+	}
+		</script>
+	</body>
+
+</html>

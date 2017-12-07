@@ -1,0 +1,878 @@
+.container {
+  position: relative;
+  width: 1024px;
+  height: 800px;
+  margin: 0 auto;
+}
+.container .nav_box {
+  width: 100%;
+  height: 130px;
+}
+.container .nav_box .nav_tit {
+  width: 100%;
+  height: 45px;
+  background: url(../img/top.jpg) no-repeat center;
+  box-shadow: 0 0 10px  #BBBBBB;
+  text-align: center;
+  position: relative;
+}
+.container .nav_box .nav_tit p {
+  line-height: 45px;
+  font-size: 25px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.container .nav_box .nav_tit #user_name {
+  position: absolute;
+  right: 25px;
+  top: 16px;
+  font-size: 16px;
+  color: #000000;
+}
+.container .nav_box .nav_tit #user_name #logout_btn {
+  font-size: 14px;
+  padding-left: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.container .nav_box .nav_a_box {
+  background: #FFFFFF;
+  position: relative;
+  height: 50px;
+  box-sizing: border-box;
+  margin: 20px auto;
+  width: 960px;
+}
+.container .nav_box .nav_a_box .nav_a {
+  width: 120px;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center ;
+  box-shadow: 0 0 8px #BBBBBB;
+  transition: margin-top 1s, height 1s, padding-top 1s;
+}
+.container .nav_box .nav_a_box .nav_a a {
+  text-decoration: none;
+  display: block;
+  height: 50px;
+  color: #000000;
+}
+.container .nav_box .nav_a_box .nav_a:hover,
+.container .nav_box .nav_a_box .nav_a.active {
+  background-color: #cc0001;
+  font-weight: bold;
+  margin-top: -8px;
+  height: 58px;
+  padding-top: 8px;
+}
+.container .nav_box .nav_a_box .nav_a:hover a,
+.container .nav_box .nav_a_box .nav_a.active a {
+  color: #FFFFFF;
+}
+.container .nav_box .nav_a_box .nav_a #kaohe_ul {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  z-index: 999999;
+  display: none;
+}
+.container .nav_box .nav_a_box .nav_a #kaohe_ul li {
+  margin-top: 5px ;
+  height: 40px;
+  background-color: #FFFFFF ;
+  text-align: center;
+  box-shadow: 0 0 8px  #BBBBBB;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+.container .nav_box .nav_a_box .nav_a #kaohe_ul li a {
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  color: #000000;
+}
+.container .nav_box .nav_a_box .nav_a #kaohe_ul li:hover {
+  background-color: #cc0001;
+}
+.container .nav_box .nav_a_box .nav_a #kaohe_ul li:hover a {
+  color: #FFFFFF;
+}
+.content {
+    width: 100%;
+    position: absolute;
+    top: 220px;
+    right: 50px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+
+.content .right_box {
+  background-color: #FFFFFF;
+  position: relative;
+  box-sizing: border-box;
+  float: right;
+  width: 260px;
+  overflow: auto;
+  border: solid 1px #bbbbbb;
+  min-height: 500px;
+  max-height: 1000px;
+  box-shadow: 0 0 10px 2px #BBBBBB;
+}
+.content .right_box .right_tit {
+  width: 100%;
+  height: 40px;
+  background-color: #cc0001;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 40px;
+  color: #000000;
+  text-align: center;
+}
+.content .right_box .mid_text {
+  width: 100%;
+  height: 40px;
+  background-color: #66FFFF;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 40px;
+  color: #000000;
+  text-align: center;
+}
+.content .right_box .apply_info_btn1 {
+  position: relative;
+}
+.content .right_box .apply_info_btn2 {
+  position: relative;
+}
+.container .content .right_box {
+      position: absolute;
+    right: 20px;
+    top: -230px
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px #BBBBBB;
+  float: left;
+  width: 792px;
+  min-height: 450px;
+  max-height: 1000px;
+  overflow: auto;
+  margin-left: 10px;
+}
+.container .content .right_box .tb_name {
+  text-align: center;
+  color: #000000;
+  font-size: 15px;
+}
+.container .content .right_box #other_btn {
+  position: relative;
+  right: 10px;
+  bottom: 10px;
+}
+
+.content .right_box .WB_cardwrap {
+    margin: 0 0 10px 0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+.content .right_box .W_person_info {
+    height: 165px;
+    overflow: hidden;
+}
+.content .right_box .W_person_info .cover {
+    position: relative;
+    height: 75px;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+.content .right_box .W_person_info .cover .headpic {
+    width: 60px;
+    height: 60px;
+    padding: 3px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -20px;
+    left: 43%;
+    margin-left: -30px;
+}
+
+.content .right_box .WB_main_r {
+    width: 280px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.content .right_box .W_person_info .WB_innerwrap {
+	  /*margin: 0;*/
+    padding: 16px 16px 9px 16px;
+}
+.content .right_box .W_person_info .nameBox {
+    height: 14px;
+    line-height: 16px;
+    padding-top: 5px;
+    text-align:center;
+}
+
+.content .right_box .user_atten {
+    height: 34px;
+    overflow: hidden;
+    margin: 10px 0 0 0;
+}
+
+.content .right_box .user_atten li {
+    float: left;
+    width: 65px;
+    text-align: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+.content .right_box .S_line1, .W_btn_prev, .W_btn_next, .W_btn_b {
+    border-color: #d9d9d9;
+}
+.content .right_box .user_atten li:last-child {
+    border: 0;
+}
+
+//detail
+
+#main ul {
+    _height: 1%;
+    width: 800px;
+    overflow: auto;
+    
+  
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+#main ul li {
+    border: 1px solid #CCC;
+    float: left;
+    display: inline;
+    list-style: none;
+    margin: 6px 0;
+    background: #FFF;
+    
+    margin-bottom: 10px;
+    margin-right: 30px;
+}
+
+#main_wrapper #main_header_logo {
+    height: auto;
+    margin: 0 auto 10px;
+    line-height: 1px;
+    width: 980px;
+}
+
+.nav_bar {
+    margin: auto;
+    width: 980px;
+    background-color: #F8CBCB;
+    
+}
+
+.nav_bar .nav_item, .nav_bar .nav_cur {
+    display: inline-block;
+    zoom: 1;
+    height: 32px;
+    vertical-align: top;
+}
+
+.nav_bar .nav_item, .nav_bar .nav_cur {
+    display: inline-block;
+    zoom: 1;
+    height: 32px;
+    vertical-align: top;
+}
+
+#main {
+    width: 1190px;
+    margin: auto;
+    
+    }
+
+#main {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+}
+.floor1 {
+    margin-top: 30px;
+}
+
+.w1190 {
+    width: 1190px;
+    margin: 0 auto;
+}
+.ibody {
+    font-family: 宋体, 微软雅黑, arial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(220, 220, 220);
+    border-image: initial;
+    background: url(http://tb2.bdstatic.com/tb/static-itieba3/img/ibg_f2378a1.png) right top repeat-y;
+}
+.w978 {
+    clear: both;
+    width: 978px;
+    _width: 980px;
+    margin: 0 auto;
+}
+.clearfix {
+    zoom: 1;
+}
+
+
+.fleft {
+    float: left;
+}
+
+
+.w750 {
+    width: 750px;
+}
+
+#follow .user {
+    height: 85px;
+    padding-top: 15px;
+    border-bottom: #ccc dashed 1px;
+}
+
+#follow .user .left {
+    float: left;
+    width: 65px;
+}
+
+.face_link {
+    background: #FFF;
+    border: 1px solid #D4D4D4;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50px;
+}
+
+
+#follow .user .mid {
+    float: left;
+    line-height: 23px;
+}
+
+#follow .user .right {
+    float: right;
+    width: 75px;
+}
+
+
+#aside_person_info {
+    margin: 5px 10px 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D0DBED;
+}
+
+
+
+
+
+.fright {
+    float: right;
+}
+
+.w228 {
+    width: 228px;
+}
+
+
+.right_set {
+    float: right;
+}
+.aside_p_info_head {
+    border-bottom: solid 1px #d0dbed;
+    font-size: 12px;
+    line-height: 25px;
+}
+.aside_p_info_head .a_p_title {
+    font-weight: 700;
+}
+
+
+.aside_person_info_wraper {
+    margin: 10px 0 15px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.aside_userface_border {
+    border: 1px solid #D4D4D4;
+    padding: 1px;
+    background: #fff;
+    text-align: center;
+    width: 64px;
+    height: 64px;
+}
+.aside_userface_wraper {
+    float: left;
+    margin-top: 5px;
+}
+
+.aside_user_profile {
+    float: left;
+    margin-left: 9px;
+}
+
+.aside_user_name {
+    font-weight: 700;
+}
+.aside_user_fans {
+    margin-top: 5px;
+}
+
+.H_title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #f25a66;
+    padding-left: 24px;
+    text-align: center;
+    display:block;
+}
+
+.txt_area {
+    font-family: 宋体, 微软雅黑, arial;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(220, 220, 220);
+    border-image: initial;
+    background: url(http://tb2.bdstatic.com/tb/static-itieba3/img/ibg_f2378a1.png) right top repeat-y;
+}
+
+.follow-btn {
+    width: 69px;
+    height: 25px;
+    line-height: 25px;
+    background-color:#660066;
+    color: #fff;
+    border: 1px solid #e5e5e5;
+    -moz-border-radius: 18.5px 0 0 18.5px;
+    -o-border-radius: 18.5px 0 0 18.5px;
+    -webkit-border-radius: 18.5px 0 0 18.5px;
+    border-radius: 18.5px 0 0 18.5px;
+}
+
+.newdyn
+{
+	position: relative;
+	float: right;
+	bottom: 5px;
+	margin-right: 30px;
+}
+
+
+.aside .right_box {
+	   position: absolute;
+	   right: 80px;
+    background-color: #fff;
+    width: 260px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.aside dl.inf_bar dt {
+        width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    overflow: visible;
+    position: relative;
+    margin: 0 auto;
+}
+
+.aside dl.inf_bar dt span.medals {
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: -12px;
+    left: 17px;
+    z-index: 3;
+}
+#main ul li span.jb{
+    font: "微软雅黑";
+    font-size: 12px;
+}
+
+
+.aside dl.inf_bar dd h3 {
+    font-size: 14px;
+    color: #4f4f4f;
+    font-weight: bold;
+    line-height: 26px;
+    padding: 3px 0;
+    margin: -5px 0 10px;
+    height: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 220px;
+    text-align: center;
+    }
+    
+.aside dl.inf_bar .ddodd .ao{
+	margin: 0 auto;
+	display: block;
+	vertical-align:middle;
+	
+}
+    
+  .aside dl.inf_bar .ddodd{
+	margin: 0 0 22px 20px;
+	
+}  
+    
+.aside .inf_number_box {
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 10px;
+    height:190px;
+}
+
+.aside .inf_number_box dl {
+    display: inline-block;
+    width: 22%;
+    text-align: center;
+}
+
+.aside dl.inf_bar dt span.medals .icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: -.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.btn-redborder-small {
+    display: inline-block;
+    height: 24px;
+    border-radius: 4px;
+    min-width: 52px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #e41d1d;
+    padding: 0 20px;
+    border: 1px solid #de686d;
+    background: #f3f7f9;
+}
+
+.aside .inf_number_box dl dt {
+    font-size: 14px;
+    color: #788087;
+    margin-bottom: 6px;
+}
+
+.aside .inf_number_box dl dd {
+    font-size: 14px;
+    color: #4f4f4f;
+    width: 100%;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.aside .inf_number_box dl dd a{
+    font-size: 14px;
+    
+    width: 100%;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+
+.aside dl.inf_bar dt img.avatar_pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 1px #e4edf4;
+}
+.seat{
+	text-align: left;
+	font:"微软雅黑";
+	font-size: 14px;
+	
+}
+
+.asidee .right_box {
+	   position: absolute;
+    background-color: #fff;
+    width: 260px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    padding-top: 20px;
+    margin-bottom: 20px;
+    height:355px;
+}
+
+.asidee dl.inf_bar {
+    margin: 0 0 22px 20px;
+}
+
+.asidee dl.inf_bar dt {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    overflow: visible;
+    position: relative;
+}
+
+.asidee dl.inf_bar dt span.medals {
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: -12px;
+    left: 17px;
+    z-index: 3;
+}
+
+
+.asidee dl.inf_bar dd h3 {
+    font-size: 14px;
+    color: #4f4f4f;
+    font-weight: bold;
+    line-height: 26px;
+    padding: 3px 0;
+    margin: -5px 0 10px;
+    height: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 181px;
+    }
+    
+.asidee .inf_number_box {
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 10px;
+    height:190px;
+}
+
+.asidee .inf_number_box dl {
+    display: inline-block;
+    width: 22%;
+    text-align: center;
+}
+
+.asidee dl.inf_bar dt span.medals .icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: -.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
+.asidee .inf_number_box dl dt {
+    font-size: 14px;
+    color: #788087;
+    margin-bottom: 6px;
+}
+
+.asidee .inf_number_box dl dd {
+    font-size: 14px;
+    color: #4f4f4f;
+    width: 100%;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.asidee .inf_number_box dl dd a{
+    font-size: 14px;
+    
+    width: 100%;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+
+.asidee dl.inf_bar dt img.avatar_pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 1px #e4edf4;
+}
+.asidee.seat{
+	font:"微软雅黑";
+	font-size: 14px;
+}
+#main ul li.render
+{
+	align-content: center;
+}
+
+.pagination {
+   width: 293px; 
+   margin-left: auto; 
+   margin-right: auto;
+   display:block;
+}
+
+.WB_frame_c {
+    width: 1200px;
+    
+    font-size: 12px;
+
+    position: relative;
+    margin: 0 auto;
+}
+
+.WB_tab_b .inner {
+    height: 38px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 0 6px;
+    font-size: 12px;
+}
+
+.PCD_connectlist .follow_box .follow_inner {
+    padding: 1px 16px 16px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.PCD_connectlist .follow_box .follow_item {
+    position: relative;
+    margin-top: -1px;
+    padding: 16px 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+    font-size: 12px;
+}
+.PCD_connectlist .follow_box .mod_pic {
+    float: left;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+.PCD_connectlist .follow_box .mod_info {
+    margin-left: 65px;
+    vertical-align: top;
+    zoom: 1;
+    font-size: 12px;
+}
+
+.PCD_connectlist .follow_box .opt_box {
+    position: absolute;
+    top: 16px;
+    right: 0px;
+    font-size: 0;
+}
+
+.S_bg2, blockquote, .W_btn_b, .W_input, .SW_fun_bg {
+    background-color: #fff;
+}
+
+body, legend, .W_input:focus, .S_txt1, .W_btn_b, .SW_fun .S_func1 {
+    color: #333;
+    text-decoration: none;
+    
+}
+
+.W_f14 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+address, caption, cite, code, dfn, em, th, var, i {
+    font-style: normal;
+    font-weight: normal;
+}
+.S_line2 {
+    border-color: #f2f2f5;
+}
+
+.PCD_connectlist .follow_box .info_connect, .PCD_connectlist .follow_box .info_add, .PCD_connectlist .follow_box .info_intro, .PCD_connectlist .follow_box .info_relation, .PCD_connectlist .follow_box .info_from, .PCD_connectlist .follow_box .info_recent {
+    margin-top: 8px;
+}
+
+.PCD_connectlist .follow_box .info_connect .conn_type {
+    padding: 0 10px 0 0;
+}
+
+.PCD_connectlist .follow_box .info_connect .W_vline {
+    display: inline;
+    width: auto;
+    padding: 0 10px;
+}
+
+.S_line1, .W_btn_prev, .W_btn_next, .W_btn_b {
+    border-color: #d9d9d9;
+}
+
+.W_vline {
+    border-left-width: 1px;
+    border-left-style: solid;
+    width: 0;
+    overflow: hidden;
+}
+
+.WB_frame_a, .WB_frame_a_fix, .WB_frame_b, .WB_frame_c, .WB_frame_d, .WB_main_l, .WB_main_c, .WB_main_r, .WB_main_cr, .WB_main_a, .WB_toptips {
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.S_txt2, .W_input, .W_btn_b_disable, .W_btn_b_disable:hover {
+    color: #808080;
+    text-decoration: none;
+}
+
+.PCD_connectlist .follow_box .mod_pic img {
+    border-radius: 50%;
+}
+.node{
+	position: relative;
+	float: right;
+	margin-bottom: 20px;
+}
+.txt_seat{
+	text-align: left;
+	word-wrap:break-word; 
+	width:260px;
+	
+	
+}
+.menu {
+    
+    height: 38px;
+    clear: both;
+    display: block;
+    font-family: "Microsoft YaHei" !important;
+    
+    margin: 0 auto;
+}
+
+.menu li {
+    float: left;
+    line-height: 38px;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 20px;
+    }

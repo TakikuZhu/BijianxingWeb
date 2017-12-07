@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav" style="height: 59px;background: #E3DDD4;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+			<a class="mui-icon mui-icon-bars mui-pull-right" href="#more" style="margin-top: 24px;color: #000000;"></a>
+			<h1 class=" mui-title "></h1>
+		</header>
+		
+		
+		<div id="more" class="mui-popover mui-popover-bottom mui-popover-action " style="text-align:center;" >
+			<!-- JiaThis Button BEGIN -->
+			<!--<ul class="mui-table-view mui-grid-view mui-grid-9" >-->
+			<div class="jiathis_style_32x32 mui-table-view mui-grid-view mui-grid-9" style="margin:0px;padding-left:40px;" >
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_qzone" ></a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_tsina"></a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_tqq"></a>
+				</li>
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_renren"></a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_weixin"></a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" style="border: 0px;">
+				<a class="jiathis_button_cqq"></a>
+				</li>
+				
+			</div>
+	
+			<!--</ul>-->
+			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+			<!-- JiaThis Button END -->
+
+		</div>
+		<div style=" margin-top: 60px;background-color: #FFFFFF;border: #E3DDD4 1px dashed;padding:2px;">
+			<div style="margin:10px;border: #E3DDD4 2px dashed;">
+				<div style="padding-bottom: 5px;border-bottom: #E3DDD4 1px dashed;">
+					<span style="align-content: center;font-size: 20px;font-weight: bold;">{$theme}</span>
+					<br />
+				</div>
+				<div style="margin-top: 10px;">
+					<span style="font-size: 18px;font-weight: 100;">
+			{$content}
+			</span>
+					<br />
+				</div>
+			</div>
+			{include file="comment/comment" /}
+		</div>
+
+		
+
+		<script src="../../../static/js/mui.min.js"></script>
+		<script type="text/javascript ">
+			mui.init()
+		</script>
+	</body>
+
+</html>

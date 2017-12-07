@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+	<!-- 字库搜索结果 -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<!-- 主页面容器 -->
+		<div class="mui-inner-wrap" style="background-color: #FFFFFF;">
+			<!-- 主页面标题 -->
+			<header class="mui-bar mui-bar-nav" style="height: 59px;width:100%;background: #E3DDD4;">
+
+				<div class="character_library_search" style="margin-top: 20px;margin-left: 5px;">
+					<div style="width: 10%;float:left;">
+						<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #000000;height: 30px;margin-top: 0px;"></a>
+					</div>
+					<div style="width: 60%;float: left;">
+						<input type="search" id="_font" style="height: 30px;" placeholder="请输入查询字">
+					</div>
+					<div style="width: 15%;float: left;padding-left: 5px;">
+						<button id="search_btn" onclick="searchResult()" style="background: #6e6545;height: 30px;margin-top:5px;color: #FFFFFF;">查询</button>
+					</div>
+
+					<div style="width: 10%;float: right;">
+						<a href="#popover">
+							<button id="filter" style="height: 30px;margin-top: 5px;">筛选</button>
+						</a>
+					</div>
+				</div>
+
+			</header>
+			<div id="popover" class="mui-popover" >
+				<ul class="mui-table-view mui-grid-view mui-grid-9 ">
+					<li class="mui-table-view-cell ">
+						<span style="color: #6E6545;">笔体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>毛笔</label>
+						<input name="penType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left ">
+						<label>硬笔</label>
+						<input name="penType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>粉笔</label>
+						<input name="penType" type="radio" value="3">
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell">
+						<span style="color: #6E6545;">字体</span>
+						<br>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>隶书</label>
+						<input name="bookType" type="radio" value="4">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>篆书</label>
+						<input name="bookType" type="radio" value="5">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>楷书</label>
+						<input name="bookType" type="radio" value="1" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>行书</label>
+						<input name="bookType" type="radio" value="2">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+						<label>草书</label>
+						<input name="bookType" type="radio" value="3">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="search_box" class="mui-content mui-scroll-wrapper" style="margin-top: 60px;background-color: #FFFFFF;">
+
+		</div>
+
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+
+			function searchResult() {
+				$('#search_box').children().remove();
+				var wordName = $("#_font").val();
+				var bookType = $("input[name='penType']:checked").val();
+				var wordType = $("input[name='bookType']:checked").val();
+
+				if((wordName == null) || (wordName == "")) {
+					mui.toast("请重新输入所查询的字");
+				} else {
+					//window.location.href = "../../phone/word/getResult?wordname="+wordName+"&booktype=" + bookType+ "&wordtype=" + wordType;
+					$.ajax({
+						type: "get",
+						url: "../../phone/dictionary/getWordController?wordname=" + wordName + "&booktype=" + bookType + "&wordtype=" + wordType,
+						async: true,
+						cache: false,
+						success: function(reg) {
+							var wordArr = [];
+							for(key in reg) {
+								wordArr.push(reg[key]);
+							}
+							console.log(wordArr);
+
+							if(wordArr.length != null) {
+
+								for(var i = 0; i < wordArr.length; i++) {
+									! function(i) {
+										var imgNode = document.createElement('img');
+										var div1 = document.getElementById('search_box');
+										imgNode.setAttribute('src', wordArr[i]);
+										var photoId = i + 1;
+										div1.appendChild(imgNode);
+										//通过闭包为动态生成的图片添加链接
+										imgNode.setAttribute('id', photoId);
+										$.ajax({
+											type: "get",
+											url: "../../phone/dictionary/getzjWordController?photoid=" + photoId,
+											async: true,
+											cache: false,
+											success: function(reg) {
+												var wordArr = [];
+												for(key in reg) {
+													wordArr.push(reg[key]);
+												}
+												console.log(wordArr);
+
+												if(wordArr.length != null) {
+
+													var photoUrl = wordArr[0];
+													var zj_word = wordArr[1];
+													var zj_wordType = wordArr[2];
+													var zj_belong = wordArr[3];
+													var zj_author = wordArr[4];
+													document.getElementById(photoId).addEventListener('click', function() {
+														window.location.href = "../../phone/dictionary/getResult?photourl=" + photoUrl+ "&zjword=" + zj_word + "&zjwordType=" + zj_wordType+ "&zj_belong=" + zj_belong + "&zj_author=" + zj_author;
+													});
+
+												}
+
+											},
+
+											error: function() {
+												mui.toast("该字不存在，请检查您的输入是否正确1");
+
+											}
+										});
+
+									}(i);
+
+									//$('#id').click( getHandler(i) );
+
+									//var wordArr = [];
+									//获取每个图片对应的url
+
+								}
+
+							}
+
+						},
+						error: function() {
+							mui.toast("该字不存在，请检查您的输入是否正确2");
+						}
+					});
+
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

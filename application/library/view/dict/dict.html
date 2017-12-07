@@ -1,0 +1,106 @@
+{include file="header"/}
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+       -->
+        
+		<div class="main_box">
+			<div class="tit">
+				<label>字库</label>
+			</div>
+			<div class="left_box">
+				<ul>
+					<li><a href="dict1">看图识字</a></li>
+					<li><a href="dict2">生词同步</a></li>
+					<li class="active"><a href="dict">书法字典</a></li>
+					<li><a href="index">字帖生成</a></li>
+					<li><a href="fontSelect">集字功能</a></li>
+				</ul>
+			</div>
+			<div class="right_box">
+				<!--<div class="right_box_bg"></div>-->
+				<div class="mesBox">
+					<div>
+						<label>请输入要查询的字:</label>
+						<input id="_font" type="text" placeholder="请输入要查询的字"/>
+						<div class="search_btn"></div>
+					</div>
+					<div class="fontTypeGroup">
+						<label class="fontTypeGroupLable">字体</label>
+						<div>
+							<input type="radio" name="fontType" value="楷书" />
+							<label>楷书</label>
+						</div>
+						<div>
+							<input type="radio" name="fontType" value="行书" />
+							<label>行书</label>
+						</div>
+						<div>
+							<input type="radio" name="fontType" value="草书" />
+							<label>草书</label>
+						</div><div>
+							<input type="radio" name="fontType" value="隶书" />
+							<label>隶书</label>
+						</div>
+						<div>
+							<input type="radio" name="fontType" value="篆书" />
+							<label>篆书</label>
+						</div>
+						<div>
+							<input type="radio" name="fontType" value="魏碑" />
+							<label>魏碑</label>
+						</div>
+					</div>
+					<hr />
+					<div class="fontAuthor">
+						<label>书法家</label>
+						<select id="authers" style="position: inherit;">
+							<option value="默认">比肩行</option>
+						</select>
+					</div>
+					<hr />
+					<div id="search_box" class="dict_search_box">
+						
+							
+						
+						
+					</div>
+					<div class="pagejumper dicr_pagejumper">
+							<ul class="pagination" id="page2">
+							</ul>
+							<div class="pageJump"style="display: none;">
+								<span>跳转到</span>
+								<input type="text" />
+								<span>页</span>
+								<button type="button" class="button">确定</button>
+							</div>
+						</div>
+				</div>
+			</div>
+			
+			<!--<div class="dict_fontBlock" style="display: none;">
+			<img src="../../static/libraryResources/img/阿.bmp" />
+			<ul>
+				<li>阿</li>
+				<li>毛笔</li>
+				<li>楷书</li>
+				<li>毛泽东</li>
+			</ul>
+			</div>-->
+			<div id="tb_box" style="display: none;">
+				
+			</div>
+		</div>
+		
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：通用页脚
+        -->
+        <script type="text/javascript" src="../../static/libraryResources/js/dict.js" ></script>
+        <script type="text/javascript" src="../../static/libraryResources/js/pager.js"></script>
+		<link rel="stylesheet" href="../../static/libraryResources/css/pager.css" />
+		<link rel="stylesheet" href="../../static/libraryResources/css/dict.css" />
+		<script type="text/javascript" src="../../static/libraryResources/lib/layer/layer.js"></script>
+		{include file="footer"/}

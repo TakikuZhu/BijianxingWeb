@@ -1,0 +1,193 @@
+{include file="header"/}
+		<!--
+        	作者：460183968@qq.com
+        	时间：2017-09-17
+        	描述：页面内容区域
+        -->
+        
+		<div class="main_box">
+			<div class="tit">
+				<label>字库</label>
+			</div>
+			<div class="left_box">
+				<ul>
+					<li><a href="dict1">看图识字</a></li>
+					<li><a href="dict2">生词同步</a></li>
+					<li><a href="dict">书法字典</a></li>
+					<li  class="active"><a href="index">字帖生成</a></li>
+					<li><a href="fontSelect">集字功能</a></li>
+				</ul>
+			</div>
+			<div class="right_box">
+				<!--<div class="right_box_bg"></div>-->
+				<div class="menu_box">
+					<div class="set_box">
+						<label class="tit_sm">字帖设置</label>
+						<ul>
+							<li>
+								<label>名称</label>
+								<input type="text" id="_name" />
+							</li>
+							<li id='_mesBox'>
+								<label>内容</label>
+								<textarea id='_mes'></textarea>
+							</li>
+							<li>
+								<label>书体</label>
+								<select id='_fontStyle'>
+									<option value="毛笔">毛笔</option>
+									<option value="硬笔">硬笔</option>
+									<option value="粉笔">粉笔</option>
+								</select>
+							</li>
+							<li>
+								<label>字体</label>
+								<select id='_fontFam'>
+									<option value="楷书">楷书</option>
+									<option value="隶书">隶书</option>
+									<option value="行书">行书</option>
+									<option value="草书">草书</option>
+									<option value="篆书">篆书</option>
+									<option value="魏碑">魏碑</option>
+								</select>
+							</li>
+							<li>
+								<label>行数</label>
+								<select id='_row'>
+									<option value="2">2行</option>
+									<option value="3">3行</option>
+									<option value="4">4行</option>
+									<option value="5">5行</option>
+									<option value="6" selected="selected">6行</option>
+									<option value="7">7行</option>
+									<option value="8">8行</option>
+								</select>
+							</li>
+							<li>
+								<label>列数</label>
+								<select id="_col">
+									<option value="2">2列</option>
+									<option value="3">3列</option>
+									<option value="4" selected="selected">4列</option>
+									<option value="5">5列</option>
+								</select>
+							</li>
+							<li>
+								<label>字形</label>
+								<select id='_figure'>
+									<option value="全实">全实</option>
+									<option value="中空">中空</option>
+									<option value="浅底">浅底</option>
+								</select>
+							</li>
+							<li>
+								<label>模板</label>
+								<select id="_model">
+									<option>请选择模板</option>
+								</select>
+							</li>
+							<li id="radioGroup">
+								<label>版式</label>
+								<span><input name='typesetting' type="radio" value="0" checked="checked"/>横版</span>
+								<span><input name='typesetting' type="radio" value="1" style="left: 50%;"/>竖版</span>
+							</li>
+							<style>
+								#radioGroup input{
+									position: inherit;
+								}
+								#radioGroup label {
+									margin-right: 1em;
+								}
+							</style>
+							<li>
+								<label>格子</label>
+								<select id='_cell'>
+									<option value="1">米字</option>
+									<option value="2">回宫</option>
+									<option value="3">米字+回宫</option>
+									<option value="4">仅边框</option>
+								</select>
+							</li>
+							<li>
+								<label>落款</label>
+								<input type="checkbox" id='_sign'/>
+							</li>
+							<li>
+								<span id='_preview'>预览字帖</span>
+							</li>
+						</ul>
+					</div>
+					<div class="usr_box user_box2">
+						<label class="tit_sm">我的字帖</label>
+						<div id="usr_box1">
+							
+						</div>
+					
+					
+						<div class="pagejumper">
+							<ul class="pagination" id="page2">
+							</ul>
+							<div class="pageJump" style="display: none;">
+								<span>跳转到</span>
+								<input type="text" />
+								<span>页</span>
+								<button type="button" class="button">确定</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+					<div class="show_box">
+					<label class="tit_sm">字帖预览</label>
+					<div class="show_save">
+						<div class="_down _down2">
+							
+						</div>
+						<div class="_save">
+							
+						</div>
+						
+					</div>
+					<div id="copyBooks"></div>
+					
+					<div id="tb_show" style="display: none;">
+							<div class="_down _down2 _down3" style="display: none;">
+								
+							</div>
+							<div id="tb_show_img">
+								
+							</div>
+							
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../static/libraryResources/js/CopySave.js" ></script>
+					<script type="text/javascript" src="../../static/libraryResources/js/pager.js"></script>
+					<script type="text/javascript" src="../../static/libraryResources/js/jsPdf.debug.js"></script>
+					<script type="text/javascript" defer="defer" src="../../static/libraryResources/js/html2canvas.js"></script>
+					<script type="text/javascript" src="../../static/libraryResources/lib/layer/layer.js"></script>
+					<link rel="stylesheet" href="../../static/libraryResources/css/pager.css" />
+					<script type="text/javascript">
+						$(function(){
+							$("#copyBooks").initGrids();
+						})
+						
+						$("#_preview").on("click",function(){
+							var reg=/^[\u4E00-\u9FA5]+$/;
+							var str = $("#_mes").val();
+							if(!reg.test(str)){
+									alert("请输入汉字");	
+								}else{
+									$("#copyBooks").getOption();
+									$("#copyBooks").children().remove();
+									$("#copyBooks").initGrids().fillAllGrids();
+								}
+						})
+						$(".usr_box1").ready(function(){
+							getSession();
+						})
+						
+					</script>
+{include file="footer"/}

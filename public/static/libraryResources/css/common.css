@@ -1,0 +1,119 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+/*
+ * 页头样式，勿动
+ */
+header {
+	width: 100%;
+	background: #fff;
+	height: 120px;
+	position: relative;
+	min-width: 1200px;
+}
+header img {
+	margin: 10px 30px;
+	height: 100px;
+}
+#top_tit {
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	font-family: "隶书";
+	font-size: 60px;
+	font-weight: 100;
+	line-height: 120px;
+}
+header ._liMenu_1 {
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+}
+header p {
+	position: absolute;
+	top: 10px;
+	right: 40px;
+	cursor: pointer;
+}
+header p span {
+	padding: 0 10px;
+}
+/*
+ * 页脚样式，勿动
+ */
+footer {
+	font-size: 12px;
+	background: #fff;
+	height: 100px;
+	display: block;
+	width: 100%;
+	min-width: 1200px;
+	border-top: 2px solid #ccc;
+	margin-top: 30px;
+}
+footer div {
+	float: left;
+	padding-left: 100px;
+}
+footer div p {
+	line-height: 100px;
+}
+footer div p a {
+	margin-left: 30px;
+	color: #ddd;
+}
+footer div label {
+	line-height: 100px;
+	float: left;
+	padding-left: 50px;
+}
+footer div img{
+	float: left;
+	display: block;
+	height: 80px;
+	width: 80px;
+	margin: 10px;
+}
+/*
+ * 通用类
+ */
+/*
+ * 不显示
+ */
+._hid {
+	display: none;
+}
+/*
+ * li并排显示
+ */
+._liMenu_1 {
+	text-align: right;
+}
+._liMenu_1 li{
+	display: block;
+	float: left;
+	list-style: none;
+	padding: 10px 20px;
+}
+/*
+ * 全屏body
+ */
+._fullBody {
+	position: relative;
+}
+.tit {
+	background: #ff4081;
+	height: 70px;
+	min-width: 1200px;
+	width: 100%;
+	text-align: center;
+	line-height: 70px;
+	margin-bottom: 10px;
+}

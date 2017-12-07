@@ -1,0 +1,36 @@
+
+.mui-bar .mui-btn {
+
+padding: 0px;
+}
+
+input, select, textarea {
+font-family: sans-serif;
+src: url('../fonts/HYGanLanJ.TTF') format('truetype');
+
+}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+margin: 0;
+padding-bottom: 1px;
+padding-top: 1px;
+vertical-align: top;
+border-right: 0px solid #eee;
+border-bottom: 0px solid #eee;
+}
+
+.mui-btn-warning, .mui-btn-yellow {
+color: #fff;
+border: 1px solid #6e6545;
+background-color: #6e6545;
+}
+
+/*@font-face {
+    font-family: HYGanLanJ;
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/HYGanLanJ.TTF') format('truetype');
+}
+
+*{ margin:0; padding: 0;font-size: 16px; font-family: HYGanLanJ; }*/

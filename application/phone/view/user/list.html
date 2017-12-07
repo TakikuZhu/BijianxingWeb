@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+		 <header class="mui-bar mui-bar-nav" style="height: 59px;background: #E3DDD4;">
+			 <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+			
+			<h1 class=" mui-title "></h1>
+		</header> 
+		<div style="margin-top: 65px;">
+			{volist name="list" id="list"}
+		    <div style="background-color: #FFFFFF;border: #E3DDD4 1px solid;margin:2px 5px 0px;">
+				<a href="javascript:post('{$list.user_name}');">
+					<div style="border-bottom: #E3DDD4 1px dashed;">
+					<div class="mui-card-header mui-card-media">
+						<img src="../../../static/imgs/criteria.png" style="width: 34px;"/>
+							<div class="mui-media-body">
+							<p style="font-weight: bold;font-size:18px; color: #000000;margin:0px;padding:5px 0px;">{$list.user_name}</p>	
+							</div>
+					</div>
+					
+					</div>
+					<p style="color: #000000;">&nbsp;{$list.motto}</p>
+				</a>
+				</div>
+			{/volist}
+		</div>
+		
+		<script src="../../../static/js/jquery-3.2.1.js"></script>
+		<script src="../../../static/js/mui.min.js"></script>
+		<script type="text/javascript ">
+			mui.init()
+			function post(name) {
+				$.ajax({
+				type: "post",
+				url: "../../phone/Forum/searchforum",
+				async: true,
+				data: {
+					'user_id': {$user_id},
+					'user_name': name
+				},
+				success: function(data) {
+					if(data == "0") {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					} else {
+						window.location.href = "../../phone/forum/search_forum?user_id=" + data;
+					}
+				},
+				error: function() {
+					mui.toast("服务器出错了")
+				}
+			});
+			}
+		</script>
+	</body>
+
+</html>

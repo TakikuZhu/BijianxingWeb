@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<!--
+	作者：834157649@qq.com
+	时间：2017-11-20
+	描述：这个才是真正的哈哈哈
+-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/login.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="imgDiv" style="height: 320px;width: 100%;">
+			<img src="../../../static/imgs/headH.png" class="imgStyle" />
+		</div>
+		<div class="loginDiv">
+			<div class="left" style="margin-left: 10px;">
+				<img src="../../../static/imgs/name1.png" />
+			</div>
+			<div class="right" style="height: 66px;">
+				<label>用户名：</label>
+				<input id="userName" type="text" placeholder="用户名/手机" style="padding: 0px;" />
+			</div>
+		</div>
+		<div class="loginDiv" style="margin-top: 30px;">
+			<div class="left" style="margin-left: 10px;">
+				<img src="../../../static/imgs/password1.png" />
+			</div>
+			<div class="right" style="height: 66px;">
+				<label>密码：</label>
+				<input id="userPassword" type="password" placeholder="密码" style="padding: 0px;" />
+			</div>
+		</div>
+		
+			
+		<div class="imgLogin" style="margin-top: 20px;padding: 0px;">
+			<input id="btnLogin" type="image" src="../../../static/imgs/login.png" onclick="userLogin()" style="margin-top: 10px;" />
+			<button class="registerButton" id="btnRegister" onclick="register()" style="margin-left: -16px;" >注册</button>
+			<!--Alt="Submit"-->
+			
+		</div>
+		<!--		</form>-->
+
+	</body>
+	<!-- JQUERY -->
+	<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+	<!--<script src="../../../static/js/jquery.backstretch.min.js"></script>
+	<script src="../../../static/js/jquery.cookie.js"></script>-->
+	<!-- BOOTSTRAP -->
+	<script src="../../../static/js/bootstrap.min.js"></script>
+
+	<script src="../../../static/js/md5.js"></script>
+
+	<script type="text/javascript">
+		function userLogin() {
+			var message = "";
+			var phone = document.getElementById('userName');
+			var pwd = document.getElementById('userPassword');
+			if(phone.value == null || phone.value == "") {
+				message += "账号不能为空！\n";
+			} else if(!(/^1[3|4|5|6|7|8][0-9]\d{4,8}$/.test(phone.value))) {
+				message += "账号格式不正确！\n";
+			}
+			if(pwd.value == null || pwd.value == "") {
+				message += "密码不能为空！\n"
+			}
+			if(message != "") {
+				mui.toast(message);
+			} else {
+				$.ajax({
+					type: "post",
+					url: "../../phone/user/login",
+					cache: false,
+					async: true,
+					data: {
+						'account': $("#userName").val(),
+						'pwd': hex_md5($("#userPassword").val())
+					},
+					success: function(data) {
+						if(data == "1") {
+							mui.toast('登录成功！');
+							window.location.href = "../../phone/index/index";
+						} else if(data == "2") {
+							mui.toast('该账号不存在！');
+						} else if(data == "3") {
+							mui.toast('密码错误！');
+							$("#pwd").val() = "";
+						} else {
+							//										alert(data);
+						}
+
+					},
+					error: function() {
+						mui.toast('服务器出错了!');
+					}
+				});
+			}
+		}
+
+		function register() {
+			window.location.href = 'getRegister';
+		}
+	</script>
+
+</html>

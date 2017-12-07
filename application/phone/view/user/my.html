@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+	<!--
+	作者：834157649@qq.com
+	时间：2017-11-20
+	描述：xinyi已加逻辑的界面
+-->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.min.css" rel="stylesheet" />
+		<link href="../../../static/css/myChange.css" rel="stylesheet" />
+		
+	</head>
+
+	<body style="background: #FFFFFF;">
+		<div class="mui-inner-wrap mui-transitioning">
+			<!-- 主页面标题 -->
+			<header class="mui-bar mui-bar-nav" style="height: 57px;background-color:#E3DDD4;">
+
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+				
+				
+				<input type="file" id="head" accept="images/*" capture="camera" style="position: absolute;width: 60.5px;height: 61px;margin-top: 36px;margin-left: 126px;opacity: 0;" />
+				<img class="mui-media-object" id="headImg" src="../../static/user/headimg/{$photo}" style="width: 60.5px;height: 61px;margin-top: 36px;margin-left: 126px;">
+				<div class="mui-media-body" style="padding: 0px 120px;text-align: center; font-size: 15px;">{$user_name}</div>
+
+				<!-- <button type="button" class="mui-btn mui-btn-outlined" style="width: 36px;height: 20px;padding: 0px;margin-top:26px;float: left;border: 0px;font-family: 'HYGanLanJ';font-size: 15px;">取消</button>
+                <button type="button" class="mui-btn mui-btn-warning" style="width: 36px;height: 20px;text-align:center;margin-top:26px;float: right;font-size: 15px;" >完成</button>-->
+
+			</header>
+		</div>
+		<div style="width: 100%;  margin-top: 57px;padding-top: 65px;background-color: #FFFFFF;">
+
+			<p style="border-top:#E3DDD4 1px solid ;padding-left: 10px; border-bottom:#E3DDD4 1px solid; margin-bottom: 0px;">{$motto}</p>
+		</div>
+		<div style="width: 100%; margin-top: 0px;background-color: #FFFFFF;">
+			<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color: #FFFFFF;border-top: 0px;border-bottom: 1px ;padding-bottom: 2px;">
+				<li id="forum" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<span>{$dynamic_count}</span>
+					<div class="mui-media-body">文章</div>
+				</li>
+				<li id="focus" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<span>{$focus_count}</span>
+					<div class="mui-media-body">关注</div>
+				</li>
+				<li id="fans" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<span>{$fans_count}</span>
+					<div class="mui-media-body">粉丝</div>
+				</li>
+			</ul>
+
+		</div>
+		<div class="mui-content">
+			<div class="flashcard_result">
+				<ul class="mui-table-view">
+
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:collectforum()">
+							<img class="mui-media-object mui-pull-left" src="../../static/imgs/my/ok.png" style="width: 21px;height: 21.5px;">
+							<div class="mui-media-body" style="padding-left: 28px;">
+								收藏
+							</div>
+							<span class="mui-navigate-right"></span>
+						</a>
+					</li>
+
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:editPw()">
+							<img class="mui-media-object mui-pull-left" src="../../static/imgs/my/invite.png" style="width: 21px;height: 21.5px;">
+							<div class="mui-media-body" style="padding-left: 28px;">
+								修改密码
+							</div>
+							<span class="mui-navigate-right"></span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="flashcard_single.html">
+							<img class="mui-media-object mui-pull-left" src="../../static/imgs/my/about.png" style="width: 21px;height: 21.5px;">
+							<div class="mui-media-body" style="padding-left: 28px;">
+								关于书法斋
+							</div>
+							<span class="mui-navigate-right"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div style="height: 200px;text-align: center;">
+			<button type="button" class="mui-btn mui-btn-outlined" onclick="closeWindow()"style="width: 50%;height: 42px;padding: 0px;margin:26px 18px 26px 18px;font-size: 15px;color: rgb(132,132,130);">退出账号</button>
+		</div>
+			
+		
+        
+		
+		<script src="../../../static/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script>
+			//更换头像
+			$("#head").change(function() {
+				var file = $(this);
+				var fileObj = file[0];
+				var windowURL = window.URL || window.webkitURL;
+				var dataURL;
+				for(var i = 0; fileObj && fileObj.files && fileObj.files[i]; i++) {
+					dataURL = windowURL.createObjectURL(fileObj.files[i]);
+					$("#headImg").attr('src', dataURL);
+				}
+				
+				var formData = new FormData();
+				formData.append("file",$("#head")[0].files[0]);
+				
+				$.ajax({
+					type: "post",
+					url: "../../phone/user/editHead",
+					cache: false,
+					async: true,
+					processData: false,
+					contentType: false,
+					data: formData,
+					success: function(data) {
+						//									alert(data);
+						if(data == "1") {
+							mui.toast('头像修改成功！')
+							window.location.href = "../../phone/my/my";
+						} else if(data == "2") {
+							mui.toast('修改失败！');
+						} else {
+							mui.toast('出现未知的错误！');
+						}
+					},
+					error: function() {
+						alert("服务器出错了");
+					}
+				});
+			});
+
+			$(function() {
+				$("#forum").on("click", function() {
+					if({$dynamic_count} == 0) {
+						mui.toast("无文章");
+						return false;
+					}
+					window.location.href = "../../phone/forum/search_forum?user_id=" + {$user_id};
+				})
+
+				$("#focus").on("click", function() {
+					if({$focus_count} == 0) {
+						mui.toast("无关注");
+						return false;
+					}
+					window.location.href = "../../phone/my/listPage?type=focus&&user_id=" + {$user_id};
+				})
+				$("#fans").on("click", function() {
+					if({$fans_count} == 0) {
+						mui.toast("无粉丝");
+						return false;
+					}
+					window.location.href = "../../phone/my/listPage?type=fans&&user_id=" + {$user_id};
+				})
+			})
+
+			function collectforum() {
+				if({$collect_count} == 0) {
+					mui.toast("无收藏");
+					return false;
+				}
+				window.location.href = "../../phone/forum/collectPage?user_id=" + {$user_id};
+			}
+
+			function editPw() {
+				window.location.href = "../../phone/user/editPwd";
+			}
+			
+			function closeWindow() {
+			window.location.href = "../../phone/user/loginPage"
+		}
+
+			//检查是否已登录,1：已登录；0：未登录;
+			jQuery(document).ready(function() {
+				var a = false;
+				$.ajax({
+					type: "get",
+					url: "../../phone/user/checkLogin",
+					cache: false,
+					async: false,
+					success: function(data) {
+						if(data == 1) {
+							a = true;
+						} else if(data == 0) {
+							a = false;
+						}
+					},
+					error: function() {
+						mui.toast('服务器出错了!!!')
+					}
+				});
+				if(!a) {
+					mui.confirm('是否前往登录？', '您还没登录', ['取消', '登录'], function(e) {
+						if(e.index == 1) {
+							window.location.href = "../../phone/user/loginPage"
+						} else {
+							window.location.href = "../../phone/index/index"
+						}
+					}, 'div')
+				} else {
+
+				}
+			});
+		</script>
+	</body>
+
+</html>

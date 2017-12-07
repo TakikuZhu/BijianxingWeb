@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+	<!--
+    	作者：wrc4096@gmail.com
+    	时间：2017-10-12
+    	描述：看图识字搜索后的界面
+    -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../../../static/js/mui.min.js"></script>
+		<link href="../../../static/css/mui.css" rel="stylesheet" />
+		<link href="../../../static/css/common.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 59px;background: #E3DDD4;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-top: 24px;color: #000000;"></a>
+			<h1 class="mui-title" style="margin-top: 26px;">生字同步</h1>
+		</header>
+		<!-- 筛选栏 -->
+		<div style="height: 80px;background-color: #FFFFFF;"></div>
+		<div class="character_library_search" style="margin: 0px 0px;padding-left:10px;padding-right:10px;height:50px;background-color: #FFFFFF;">
+
+			<div style="width: 80%;float: left;background-color: #FFFFFF;">
+				<input type="search" id="_font" style="height: 30px;" placeholder="请输入查询字">
+			</div>
+			<div style="width: 15%;float: right;padding-left: 5px;background-color: #FFFFFF;">
+				<button id="search_btn" onclick="searchResult()" style="background: #6e6545;height: 30px;color: #FFFFFF;">查询</button>
+			</div>
+
+		</div>
+		<div>
+			<div style="width: 50%;float: left;background-color: #FFFFFF;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">版本</a>
+					<div class="mui-collapse-content">
+						
+								<label>人教版</label>
+								<input name="penType" type="radio" value="1" checked="checked">
+								</br>
+								<label>北京版</label>
+								<input name="penType" type="radio" value="2">
+								</br>
+								<label>苏教版</label>
+								<input name="penType" type="radio" value="3">
+						
+					</div>
+				</li>
+			</ul>
+			</div>
+			<div style="width: 50%;float: left;background-color: #FFFFFF;">
+			<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">年级</a>
+						<div class="mui-collapse-content">
+								<label>一年级(上)</label>
+								<input name="bookType" type="radio" value="1" checked="checked">
+								</br>
+								<label>一年级(下)</label>
+								<input name="bookType" type="radio" value="2">
+								</br>
+								<label>二年级(上)</label>
+								<input name="bookType" type="radio" value="3">
+								</br>
+								<label>二年级(下)</label>
+								<input name="bookType" type="radio" value="4">
+						</div>
+					</li>
+				</ul>
+				</div>
+
+			
+			
+		</div>
+
+		</div>
+		<div style="height: 500px;background-color: #FFFFFF;"></div>
+		<script src="../../../static/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			function searchResult() {
+				var wordName = $("#_font").val();
+				var bookType = $("input[name='penType']:checked").val();
+				var wordType = $("input[name='bookType']:checked").val();
+
+				if((wordName == null) || (wordName == "")) {
+					mui.toast("请重新输入所查询的字");
+				} else {
+					//window.location.href = "../../phone/word/getResult?wordname="+wordName+"&booktype=" + bookType+ "&wordtype=" + wordType;
+					$.ajax({
+						type: "get",
+						url: "../../phone/unfamiliar/getWordController?wordname=" + wordName + "&booktype=" + bookType + "&wordtype=" + wordType,
+						async: true,
+						cache: false,
+						success: function(reg) {
+							var wordArr = [];
+							for(key in reg) {
+								wordArr.push(reg[key]);
+							}
+							console.log(wordArr);
+							
+							if(wordArr.length != null) {
+								//window.location.href = "../../phone/word/getResult";
+								var wordPhoto = wordArr[0];
+								var wordVideo= wordArr[1];
+								var shuoWen = wordArr[2];
+								//$(".font_search).innerHTML = wordArr[2];
+								var note1 = "1. " + wordArr[3][0];
+								var note2= "2. " + wordArr[3][1];
+								var note3= "3. " + wordArr[3][2];
+								window.location.href = "../../phone/unfamiliar/getResult?wordphoto="+wordPhoto+"&wordvideo=" + wordVideo+ "&shuowen=" + shuoWen + "&note1=" + note1 + "&note2=" + note2 + "&note3=" + note3;
+					
+								//document.getElementById("wn4").innerHTML = "4. " + wordArr[3][3];
+								//document.getElementById("wordScore").innerHTML = wordArr[4];
+							}
+						},
+						error: function() {
+							mui.toast("该字不存在，请检查您的输入是否正确");
+						}
+					});
+					
+				}
+				
+			}
+
+			function search() {
+				window.location.href = "flashcard_result.html";
+			}
+		</script>
+	</body>

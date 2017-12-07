@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title></title>
+	<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="../static/admin/css/common.css" />
+	<link rel="stylesheet" href="../static/admin/css/pagination.css" />
+	<link rel="stylesheet" href="../static/admin/css/header.css" />
+	<script type="text/javascript" src="../static/bootstrap/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/admin/js/common.js"></script>
+	<script type="text/javascript" src="../static/admin/js/menuControl.js"></script>
+	<script type="text/javascript" src="../static/admin/js/myHelper.js"></script>
+	<script type="text/javascript" src="../static/admin/js/jquery.pagination.js"></script>
+	<script type="text/javascript" src="../static/admin/js/pageConfig.js"></script>
+	<script type="text/javascript" src="../static/admin/js/attentionManage.js"></script>
+	<script type="text/javascript" src="../static/admin/js/commentManage.js"></script>
+	<script type="text/javascript" src="../static/admin/js/userManage.js"></script>
+	<script type="text/javascript" src="../static/admin/js/dynamicManage.js"></script>
+	<script type="text/javascript" src="../static/admin/js/adminManage.js"></script>
+	<script type="text/javascript" src="../static/layer/layer.js"></script>
+
+</head>
+
+<body>
+	<header style="border-bottom-style: solid;border-bottom-width: 3px;padding: 0px 0px 0px 0px;border-color: #C0C0C0">
+		<img src="static/admin/img/logo.png" alt="图标" />
+		<h1><i>后台管理系统</i></h1>
+		<ul class="_liMenu_1">
+			<li id="adminid" value={$res}>当前管理账号：{$res}</li>
+			<li><a class="btn btn-sm btn-danger " onclick="admin_logout()">注销</a></li>
+		</ul>
+	</header>
+	<form>
+		<div id="all">
+			<div class="col-lg-2 " style="border-right-style: solid;border-right-width: 3px;padding: 0px 0px 400px 0px;border-color: #C0C0C0">
+				<div class=" list-group">
+					<a class="list-group-item itemhead">控制面板</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="0">用户管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="1">动态管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="2">评论管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="3">通知管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="4">管理员管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="5">生词管理</a>
+					<a href="#" class="list-group-item  menu_con itemcss" data-id="6">集字管理</a>
+					<!--<a href="../../manageWord/Wordcontroller/test4" class="list-group-item  menu_con itemcss" data-id="5">生词管理</a>-->
+					<!--<a href="../../library/admin" class="list-group-item  menu_con itemcss" data-id="6">集字管理</a>-->
+				</div>
+			</div>
+
+			<div style="margin-left: 70px;" class="col-lg-9 col-lg-offset-1 right_box menu_list">
+
+				<div class="col-lg-12 menu_list_div">
+					<br/>
+					<h4 style="font-family: 微软雅黑;">用户管理</h4>
+					<br/>
+					<div class="jumbotron col-lg-12">
+
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>用户名：</span>
+								<input type='text' id='uniput' class='form-control' placeholder='输入用户名' id='article_name' aria-describedby='sizing-addon-n'>
+							</div>
+							<div class='col-lg-6'>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='un_search'>模糊搜索</a>	
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='unacc_search'>精确搜索</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='un_reset'>重置</a>
+
+							</div>
+							<br/>
+							<br/>
+							<br/>
+							<label data-name="column">选择排序方式：</label>
+							<div>
+								<label class='radio-inline'>
+									<input id='acestatus' checked="true" ='true' type='radio' name='ace' value='1'/> 按用户状态
+								</label>
+								<label class='radio-inline'>
+									<input id='aceid' type='radio' name='ace' value='2'/> 按用户粉丝数量
+								</label>
+							</div>
+							<br />
+
+							<table class='table table-bordered table-hover userMan'>
+								<thead class='info'>
+									<td class='col-lg-1'></td>
+									<td class='col-lg-3'>用户名</td>
+									<td class='col-lg-1'>状态</td>
+									<td class='col-lg-1'>粉丝</td>
+									<td class='col-lg-2'>操作</td>
+									<td class='col-lg-2'>操作</td>
+									<td class='col-lg-2'>操作</td>
+								</thead>
+								<tbody id ="userTable">
+
+								</tbody>
+							</table>
+							<div class="M-box1" id="userPage"></div>
+							<br/>
+							<a class='btn btn-sm btn-warning col-lg-1' id='sendMessage'>发送消息</a>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="col-lg-12 myHid menu_list_div">
+					<br/>
+					<h4 style="font-family: 微软雅黑;">动态管理</h4>
+					<br/>
+					<div class="jumbotron col-lg-12">
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+							<div class='input-group col-lg-6 ' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>关键词：</span>
+								<input type='text' id="dynamicid" class='form-control' placeholder='输入关键词' aria-describedby='sizing-addon-n'>
+							</div>
+
+							<div class='col-lg-6 ' >
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1 ' id='didsearch'>搜索</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1 ' id='didreset'>重置</a>
+							</div>
+
+
+
+							<br/>
+							<br/>
+							<label data-name="column">选择排序方式：</label>
+							<div>
+								<label class='radio-inline'>
+									<input  checked="true" ='true' type='radio' name='dynamicidace' value='1'/> 按时间顺序
+								</label>
+								<label class='radio-inline'>
+									<input  type='radio' name='dynamicidace' value='2'/> 按用户归类
+								</label>
+							</div>
+
+							<br/>
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>用户名：</span>
+								<input  type='text' id="dynamicname" class='form-control' placeholder='输入用户名' aria-describedby='sizing-addon-n'>
+							</div>
+							<div  class='col-lg-6 '>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='dnamesearch'>搜索</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='dnameset'>重置</a>
+
+							</div>
+
+
+							<br/>
+							<br/>
+							<label  data-name="column">选择排序方式：</label>
+							<div> 
+								<label  class='radio-inline'>
+									<input checked="true" ='true' type='radio' name='dynamicnameace' value='1'/> 按时间顺序
+								</label>
+							</div>
+							<br/>
+						</div>
+
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+
+							<table class='table table-bordered table-hover userMan'>
+								<thead class='info'>
+									<td class='col-lg-1'><a class='btn btn-sm btn-default' id='select_all'>全选</a></td>
+									<td class='col-lg-2'>发布用户</td>
+									<td class='col-lg-6'>主题</td>
+									<td class='col-lg-2'>发布时间</td>
+									<td class='col-lg-1'>操作</td>
+								</thead>
+								<tbody class="" id="dynamicTable">
+
+								</tbody>
+							</table>
+
+							<div class="M-box1" id="dyPage"></div>
+							<br/>
+							<p>
+
+								<a class='btn btn-warning col-lg-1 btn-sm' id='delete_all'>删除</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 myHid menu_list_div">
+					<br/>
+					<h4 style="font-family: 微软雅黑;">评论管理</h4>
+					<br/>
+					<div class="jumbotron col-lg-12">
+
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>关键词：</span>
+								<input type='text' id="dcid" class='form-control' placeholder='输入关键词' id='article_name' aria-describedby='sizing-addon-n'>
+							</div>
+							<div  class='col-lg-6 ' >
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='dcomments2_search'>搜索动态</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='dcomments_search'>搜索回复</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='dcomments_reset'>重置</a>
+							</div>
+
+							<br/>
+							<br/>
+
+							<label data-name="column">选择排序方式：</label>
+							<div> 
+								<label  class='radio-inline'>
+									<input  checked="true" ='true' type='radio' name='dcommentsace' value='1'/> 按时间顺序
+								</label>
+								<label  class='radio-inline'>
+									<input  type='radio' name='dcommentsace' value='2'/> 按用户归类
+								</label>
+							</div>
+							<br/>
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>用户名：</span>
+								<input  type='text' id="ucid" class='form-control' placeholder='输入用户名' id='article_name' aria-describedby='sizing-addon-n'>
+							</div>
+
+							<div class='col-lg-6 ' >
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='ucomments2_search'>搜索动态</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='ucomments_search'>搜索回复</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='ucomments_reset'>重置</a>
+							</div>
+							<br/>
+							<br/>
+							<label  data-name="column">选择排序方式：</label>
+							<div>
+								<label  class='radio-inline'>
+									<input  checked="true" ='true' type='radio' name='ucommentsace' value='1'/> 按时间顺序
+								</label>
+							</div>
+							<br/>
+						</div>
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+							<table class='table table-bordered table-hover userMan'>
+								<thead class='info'>
+									<td class='col-lg-1'><a class='btn btn-sm btn-default' id='Coselect_all'>全选</a></td>
+									<td class='col-lg-1'>评论用户</td>
+									<td class='col-lg-1'>被评论用户</td>
+									<td class='col-lg-4'>评论内容</td>
+									<td class='col-lg-2'>主题</td>
+									<td class='col-lg-2'>评论时间</td>
+									<td class='col-lg-1'>操作</td>
+								</thead>
+								<tbody class="" id="commentsTable">
+								</tbody>
+
+							</table>
+							<div class="M-box1" id="coPage"></div>
+							<br/>
+							<p>
+								<a class='btn btn-sm btn-warning col-lg-1' id='Codelete_all'>删除</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 myHid menu_list_div">
+					<br/>
+					<h4 style="font-family: 微软雅黑;">通知管理</h4>
+					<br/>
+					<div style="font-size: 14px;font-family: 微软雅黑;" class="jumbotron col-lg-12">
+						<div class='container'>
+							<div class="form-group">
+								<label class='noticename'>通知内容</label>
+								<textarea style="font-size: 14px;font-family: 微软雅黑;resize: none;" class="form-control noticename" id="msgcontent" rows="3"></textarea>
+							</div>
+							<div class=''>
+								<a class='btn btn-primary col-lg-1' id='message_submit'>发布通知</a>
+							</div>
+							<br/>
+							<br/>
+							<br/>
+						</div>
+						<div class='container'>
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-data'>通知时间：</span>
+								<input type='date' class='form-control' placeholder='输入时间' id='attentionDate' aria-describedby='sizing-addon-data'>
+							</div>
+							<div class='col-lg-6 ' >
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='time_search'>个人通知</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='time_search_all'>全体通知</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='time_reset'>重置</a>
+							</div>
+							<br/>
+							<br/>
+							<br/>
+
+							<div class='input-group col-lg-6' style="float:left">
+								<span  class='input-group-addon' id='sizing-addon-data'>通知对象：</span>
+								<input type='text' class='form-control' placeholder='输入用户名' id='attentionOp' aria-describedby='sizing-addon-data'>
+							</div>
+							<div class='col-lg-6 ' >
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='op_search'>个人通知</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='op_search_all'>全体通知</a>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='op_reset'>重置</a>
+							</div>
+							<br/>
+							<br/>
+							<br/>
+							<table class='table table-bordered table-hover userMan'>
+								<thead class='info'>
+									<td class='col-lg-1'><a class='btn btn-sm btn-default' id='Atselect_all'>全选</a></td>
+									<td class='col-lg-6'>通知内容</td>
+									<td class='col-lg-2'>通知对象</td>
+									<td class='col-lg-2'>通知时间</td>
+									<td class='col-lg-1'>操作</td>
+								</thead>
+								<tbody id="attentionTable">
+									
+								</tbody>
+							</table>
+							<div class="M-box1" id="atPage"></div>
+							<br/>
+							<p>
+								<a class='btn btn-warning col-lg-1 btn-sm' id='Atdelete_all'>删除</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 myHid menu_list_div">
+					<br/>
+					<h4 style="font-family: 微软雅黑;">管理员管理</h4>
+					<br/>
+					<div class="jumbotron col-lg-12" style="font-size: 14px;font-family: 微软雅黑;">
+
+						<div class='container'>
+							<label class='noticename'>添加管理员</label>
+							<br/>
+							<br/>
+							<div class="input-group input-group">
+								<span class="input-group-addon" id="sizing-addon2">管理员账号：</span>
+								<input  id="userid" type="text" class="form-control" placeholder="请输入管理员账号" aria-describedby="sizing-addon2">
+							</div>
+							<br/>
+
+							<div class='input-group col-lg-6 ' style="float:left">
+								<span  class="input-group-addon" id="sizing-addon3">管理员密码：</span>
+								<input id="password" type="password" class="form-control" placeholder="请输入密码" aria-describedby="sizing-addon3">
+							</div>
+							<div class="input-group col-lg-6">
+								<span  class="input-group-addon" id="sizing-addon4">确认密码：</span>
+								<input id="password2" type="password" class="form-control" placeholder="请确认密码" aria-describedby="sizing-addon4">
+							</div>
+							<br/>
+							<a class="btn btn-primary col-lg-1" id="add_admin" onclick="admin_register()">添加</a>
+							<br/>
+							<br/>
+							<br/>
+							<label class='noticename'>修改密码</label>
+							<br/>
+							<br/>
+
+							<div class='input-group col-lg-6' style="float:left">
+								<span  class="input-group-addon" id="sizing-addon3">当前密码：</span>
+								<input  id="passwordold" type="password" class="form-control" placeholder="请输入当前密码" aria-describedby="sizing-addon3">
+							</div>
+							<div class="input-group col-lg-6">
+								<span  class="input-group-addon" id="sizing-addon4">新&nbsp;密&nbsp;码&nbsp;：</span>
+								<input  id="passwordnew" type="password" class="form-control" placeholder="请输入新密码" aria-describedby="sizing-addon4">
+							</div>
+							<br/>
+							<a class="btn btn-primary col-lg-1" id="edit_admin" onclick="admin_edit()">修改</a>
+
+						</div>
+						<div style="font-size: 14px;font-family: 微软雅黑;" class='container'>
+							<br/>
+							<label class='noticename'>删除管理员</label>
+							<br/>
+							<br/>
+							<div class='input-group col-lg-6' style="float:left">
+								<span class='input-group-addon' id='sizing-addon-n'>管理员账号：</span>
+								<input type='text' id='adminse' class='form-control' placeholder='输入账号' aria-describedby='sizing-addon-n'>
+							</div>
+							<div class='col-lg-6'>
+								<a class='btn btn-primary col-lg-3 col-lg-offset-1' id='admin_search'>模糊搜索</a>	
+
+							</div>
+							<br/>
+							<br/>
+							<br/>
+
+							<table class='table table-bordered table-hover userMan'>
+								<thead class='info'>
+									<td class='col-lg-3'>账号</td>
+									<td class='col-lg-1'>操作</td>
+									<td class='col-lg-3'>账号</td>
+									<td class='col-lg-1'>操作</td>
+									<td class='col-lg-3'>账号</td>
+									<td class='col-lg-1'>操作</td>
+								</thead>
+								<tbody id ="adminTable">
+
+								</tbody>
+							</table>
+							<div class="M-box1" id="adminPage"></div>
+							<br/>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-lg-12 myHid menu_list_div">
+					<iframe src="../../../manageWord/Wordcontroller/test4" width="100%" height="900" style="border: none; overflow: hidden"></iframe>
+				</div>
+				<div class="col-lg-12 myHid menu_list_div">
+					<iframe src="../../../library/admin" width="100%" height="900" style="border: none; overflow: hidden"></iframe>
+				</div>
+
+			</div>
+		</div>
+	</form>
+	<div id="add_box" style="display: none;" class="col-lg-12">
+		<label class='noticename' style="font-size: 14px;font-family: 微软雅黑;">通知内容</label>
+		<textarea style="resize: none;" class="form-control noticename" id="personcontent" rows="3" style="font-size: 14px;font-family: 微软雅黑;"></textarea>
+		<br/>
+		<p>
+			<a class="btn btn-sm btn-default" id = "send_btn">发送</a>
+		</p>
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+	$(function() {
+		$("#sendMessage").on("click", function() {
+			layer.open({
+				type: 1,
+				title: '发布信息',
+				maxmin: true,
+				area: ['480px', '200px'],
+				content: $("#add_box"),
+				success: function(layero, index) {
+					console.log(layero, index);
+				}
+			});
+		})
+	})
+</script>
+
+
+
+
+</html>
