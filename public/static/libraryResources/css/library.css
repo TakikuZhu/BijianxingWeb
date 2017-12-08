@@ -48,6 +48,7 @@
 	text-align: center;
 	list-style: none;
 	background: #fff;
+    	box-sizing: content-box;
 }
 .right_box_bg{
 	width: 100%;
