@@ -25,6 +25,24 @@
 							<label class="styleRadio"><input class="fontV" type="radio" name="_fontVersion" value="粤教版" />粤教版</label>
 							</div>
 						</li>
+						
+						<li>
+							<label class="title">书体</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="1" />毛笔</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="2" />硬笔</label>
+							<label class="styleRadio"><input type="radio" name="_fontStyle" value="3" />粉笔</label>
+						</li>
+						<li>
+							<label class="title">字体</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="1" />楷书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="2" />行书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="3" />草书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="4" />隶书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="5" />篆书</label>
+							<label class="styleRadio"><input type="radio" name="_fontFam" value="6" />魏碑</label>
+							<!-- <button id="getNewWord" onclick="" style="width:80px; background-color:#fff;">查询生字</button> -->
+							<!--<div class="search_btn"--> <!--style="margin-left:160px; margin-top:225px;"></div>-->
+						</li>
 						<li>
 							<label class="title">年级</label> 
 							<select id="grade" onchange="delnote()">
@@ -60,23 +78,7 @@
 								}
 							</script>
 						</li>
-						<li>
-							<label class="title">书体</label>
-							<label class="styleRadio"><input type="radio" name="_fontStyle" value="1" />毛笔</label>
-							<label class="styleRadio"><input type="radio" name="_fontStyle" value="2" />硬笔</label>
-							<label class="styleRadio"><input type="radio" name="_fontStyle" value="3" />粉笔</label>
-						</li>
-						<li>
-							<label class="title">字体</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="1" />楷书</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="2" />行书</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="3" />草书</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="4" />隶书</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="5" />篆书</label>
-							<label class="styleRadio"><input type="radio" name="_fontFam" value="6" />魏碑</label>
-							<!-- <button id="getNewWord" onclick="" style="width:80px; background-color:#fff;">查询生字</button> -->
-							<div class="search_btn" style="margin-left:160px; margin-top:225px;"></div>
-						</li>
+						
 					</ul>
 				</div>
 				
@@ -120,11 +122,12 @@
 								</script>
 							</li>
 						</ul>
+						<img id="qrCode" src="../../static/libraryResources/img/78ec574f959cc4de4a05f0b1f92d96d0.jpg" style="float: right;"/>
 					</div>
-					<div class="font_search">
+					<!--<div class="font_search">
 						<span class="title">二维码</span>
 						<img id="qrCode" src="../../static/libraryResources/img/78ec574f959cc4de4a05f0b1f92d96d0.jpg" />
-					</div>
+					</div>-->
 					<div class="font_search">
 						<span class="title">说文解字</span>
 							<div style="background:white; margin-left:100px; width:500px; height:180px">

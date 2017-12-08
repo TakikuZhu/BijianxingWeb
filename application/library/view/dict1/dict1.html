@@ -16,12 +16,7 @@
 				<!--<div class="right_box_bg"></div>-->
 				<div class="search_box">
 					<ul>
-						<li>
-							<label class="title">请输入要查询的字</label>
-							<input id="wordName" type="text" name="_name" />
-							<div class="search_btn" onclick=""></div>
-							<label id="warning"></label>
-						</li>
+						
 						<li>
 							<label class="title">书体</label>
 							<label class="styleRadio"><input type="radio" name="_fontStyle" value="1" />毛笔</label>
@@ -37,6 +32,13 @@
 							<label class="styleRadio"><input type="radio" name="_fontFam" value="4" />隶书</label>
 							<label class="styleRadio"><input type="radio" name="_fontFam" value="5" />篆书</label>
 							<label class="styleRadio"><input type="radio" name="_fontFam" value="6" />魏碑</label>
+							<hr />
+						</li>
+						<li style="position: relative;">
+							<label class="title">请输入要查询的字</label>
+							<input id="wordName" type="text" name="_name" />
+							<div class="search_btn" onclick=""></div>
+							<label id="warning"></label>
 							<hr />
 						</li>
 					</ul>
@@ -82,11 +84,12 @@
 								</script>
 							</li>
 						</ul>
+						<img id="qrCode" src="../../static/libraryResources/img/78ec574f959cc4de4a05f0b1f92d96d0.jpg" style="float: right;"/>
 					</div>
-					<div class="font_search">
+					<!--<div class="font_search">
 						<span class="title">二维码</span>
 						<img id="qrCode" src="../../static/libraryResources/img/78ec574f959cc4de4a05f0b1f92d96d0.jpg" />
-					</div>
+					</div>-->
 					<div>
 						<div class="font_search">
 						<span class="title">说文解字</span>

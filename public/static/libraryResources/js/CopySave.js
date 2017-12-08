@@ -307,7 +307,7 @@ $("#tb_show").delegate("._down3","click",function(){
 	var imgData = Img.src;
 	
 	//初始化pdf，设置相应格式
-	var doc = new jsPDF("p", "mm", "a4");
+	var doc = new jsPDF("p","pt","a4");
 	
 	//这里设置的是a4纸张尺寸
 	doc.addImage(imgData, 'png', 0, 0, 210, 297);
