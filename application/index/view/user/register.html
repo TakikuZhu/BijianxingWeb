@@ -43,6 +43,12 @@
 								<div class="divide-40"></div>
 								<form id="form2" method="post" action="">
 								  <div class="form-group">
+									<label style="font-size: 14px;font-family: '微软雅黑';">用户名</label>
+									<i class="fa fa-font"></i>
+									<input type="text" id="user" class="form-control" placeholder="6-15个英文或数字字符" required="" name="user" maxlength="15"
+										onkeyup="value=value.replace(/[^\w\.\/]/ig,'')">
+								  </div>
+								  <div class="form-group">
 									<label style="font-size: 14px;font-family: '微软雅黑';">手机号（即账号）</label>
 									<i class="fa fa-font"></i>
 									<input type="text" id="accountr" class="form-control" placeholder="请输入手机号码" required="" name="user_account" maxlength="11" >
@@ -121,12 +127,20 @@
 		$('#form2').submit(
 					function(e) {
 						e.preventDefault();
+						var user=document.getElementById('user').value;
 						var phone = document.getElementById('accountr').value;
 						var nickname = document.getElementById('nickname').value;
 						var motto = document.getElementById('motto').value;
 						var pwdr = document.getElementById('pwdr').value;
 						var pwdr2 = document.getElementById('pwdr2').value;
 						var message = "";
+						if(user==""||user==null){
+							message+="用户名不能为空！\n";
+						}else if(user.length<6){
+							message+="用户名长度不能小于6个字符！\n";
+						}else if(/^1[3|4|5|6|7|8][0-9]\d{4,8}$/.test(user)){
+							message+="用户名不能为手机号！\n";
+						}
 						if(phone == "" || phone == null) {
 							message += "手机号不能为空！\n";
 						} else if(!(/^1[3|4|5|6|7|8][0-9]\d{4,8}$/.test(phone))) {
@@ -158,6 +172,7 @@
 								cache: false,
 								async: true,
 								data: {
+									'user':$('#user').val(),
 									'accountr': $("#accountr").val(),
 									'nickname': $("#nickname").val(),
 									'motto': $("#motto").val(),
@@ -173,7 +188,10 @@
 										alert("该手机号已被注册！");
 									} else if(data == "3") {
 										alert("该昵称已被注册！");
-									} else {
+									}else if(data=="4"){
+										alert("该用户名已被占用！");
+									}
+									else {
 										alert("出现错误！");
 									}
 								},

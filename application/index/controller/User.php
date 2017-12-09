@@ -26,6 +26,7 @@ class User extends Controller
 		return $this->fetch('register');
 	}
 	public function register(Request $request){
+		$login=$request->param("user");
 		$phone=$request->param("accountr");
 		$nickname=$request->param("nickname");
 		$motto=$request->param("motto");
@@ -40,7 +41,14 @@ class User extends Controller
 		if($n){
 			return json("3");
 		}
+		//判断用户名是否已用**********************************
+		$t=UserModel::get(['user_login'=>$user]);
+		if($t){
+			return json("4");
+		}
 		$user=new UserModel();
+		//******************************
+		$user->user_login=$login;
 		$user->user_name=$nickname;
 		$user->user_phone=$phone;
 		$user->motto=$motto;
@@ -55,11 +63,21 @@ class User extends Controller
 	public function login(Request $request){
 		$phone=$request->param('account');
 		$pwd=$request->param('pwd');
-		$user=UserModel::get(['user_phone'=>$phone]);
-		if(!$user){
+		$user1=UserModel::get(['user_phone'=>$phone]);
+		$t=UserModel::get(['user_login'=>$phone]);
+		$user=null;
+		if(!$user1&&!$t){
 			return json("2");
 		}
-		else if($user->user_pwd!=$pwd){
+		else if($user1){
+			$user=$user1;
+		}
+		else if($t){
+			$user=$t;
+		}
+		if($user==null)
+			return json("2");
+		if($user->user_pwd!=$pwd){
 			return json("3");
 		}
 		else if($user->user_status!='正常')
@@ -97,17 +115,22 @@ class User extends Controller
 		$re['nickname']=$user->user_name;
 		$re['motto']=$user->motto;
 		$re['phone']=$user->user_phone;
+		$re['user']=$user->user_login;
 		return json($re);
 	}
 	public function saveInfo(){
 		$this->check();
 		$re=array(
+		        'phone'=>1,
+				'userlogin'=>1,
 				'nickname'=>1,
 				'headimg'=>1
 			);
 		$file=$_FILES['display'];
 		$nickname=$_REQUEST['nickname'];
 		$motto=$_REQUEST['motto'];
+		$phone=$_REQUEST['phone'];
+		$user_login=$_REQUEST['user'];
 		$id=Session::get('user_id');
 		$user=UserModel::get($id);
 		if($user->motto!=$motto){
@@ -122,6 +145,24 @@ class User extends Controller
 			}
 			else{
 				$re['nickname']=0;
+			}
+		}
+		if($user->user_phone!=$phone){
+			$u=UserModel::get(['user_phone'=>$phone]);
+			if(!$u){
+				$user->user_phone=$phone;
+			}
+			else{
+				$re['phone']=0;
+			}
+		}
+		if($user->user_login!=$user_login){
+			$ss=UserModel::get(['user_login'=>$user_login]);
+			if(!$ss){
+				$user->user_login=$user_login;
+			}
+			else{
+				$re['userlogin']=0;
 			}
 		}
 		$user->save();
