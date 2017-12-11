@@ -808,7 +808,7 @@ class Word extends Model
 			if($word_video_url != null)
 			{
 				$wordVideoId = $word[0]['wi_wv_id'];
-				$wordVideo = Db::name('word_video')->where('wi_id', $wordVideoId)->select();
+				$wordVideo = Db::name('word_video')->where('wv_id', $wordVideoId)->select();
 				if(count($wordVideo))
 				{
 					$url = $wordVideo[0]['wv_video_url'];
@@ -936,7 +936,7 @@ class Word extends Model
 						unlink($urlString);
 					}
 				}
-				Db::name('word_intr')->field(['wi_img_url'])->where('wi_wi_id', $intrId)->update(['wi_img_url' => $intr_photo]);
+				Db::name('word_intr')->field(['wi_img_url'])->where('wi_id', $intrId)->update(['wi_img_url' => $intr_photo]);
 				return "Word Intr update successfully";
 			}
 		}
