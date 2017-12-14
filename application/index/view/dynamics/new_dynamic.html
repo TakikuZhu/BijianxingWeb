@@ -12,7 +12,6 @@
 	}
 </style>
 
-
 <div class="row">
 
 	<div class="col-lg-1">
@@ -25,8 +24,7 @@
 				<div class="col-md-7">
 					<div class="input-group">
 						<span class="input-group-addon">标题</span>
-						<input type="text" class="form-control" id="theme" name="theme" value="{$theme}" >
-						<span class="input-group-addon">（上限15字）</span>
+						<input type="text" class="form-control" id="theme" name="theme" value="{$theme}">
 					</div>
 				</div>
 				<div class="col-md-5">
@@ -38,24 +36,26 @@
 					</div>
 				</div>
 			</div>
-			<!-- 加载编辑器的容器 -->
-			<script id="container" name="content" type="text/plain">
-			</script>
-			<!-- 配置文件 -->
-			<script type="text/javascript" src="../../static/utf8-php/ueditor.config.js"></script>
-			<!-- 编辑器源码文件 -->
-			<script type="text/javascript" src="../../static/utf8-php/ueditor.all.js"></script>
-			<!-- 实例化编辑器 -->
-			<script type="text/javascript">
-				var ue = UE.getEditor('container', {
-					toolbars: [
-					    ['simpleupload','insertimage','insertvideo', 'undo', 'redo','bold', 'italic', 'underline' ,'fontsize','fontfamily'],
-					    ['removeformat',  'autotypeset', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
-					],
-					autoHeightEnabled: false,
-					autoFloatEnabled: true
-				});
-			</script>
+			<div class="col-lg-13" style="margin-top:10">
+				<!-- 加载编辑器的容器 -->
+				<script id="container" name="content" type="text/plain">
+				</script>
+				<!-- 配置文件 -->
+				<script type="text/javascript" src="../../static/utf8-php/ueditor.config.js"></script>
+				<!-- 编辑器源码文件 -->
+				<script type="text/javascript" src="../../static/utf8-php/ueditor.all.js"></script>
+				<!-- 实例化编辑器 -->
+				<script type="text/javascript">
+					var ue = UE.getEditor('container', {
+						toolbars: [
+							['simpleupload', 'insertimage', 'insertvideo', 'undo', 'redo', 'bold', 'italic', 'underline', 'fontsize', 'fontfamily', 'removeformat', 'autotypeset', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'],
+
+						],
+						autoHeightEnabled: false,
+						autoFloatEnabled: true
+					});
+				</script>
+			</div>
 			<br>
 			<div class="btn-group">
 
@@ -80,7 +80,7 @@
               </span>
                 </dt>
 					<dd class="ddodd ">
-						<h3 class="csdn-tracking-statistics " data-mod="popu_380 "><a href="javascript:jumpIndex() " class="ao " id="uid ">{$name}</a></h3> 
+						<h3 class="csdn-tracking-statistics " data-mod="popu_380 "><a href="javascript:jumpIndex() " class="ao " id="uid ">{$name}</a></h3>
 					</dd>
 				</dl>
 				<div class="inf_number_box ">
