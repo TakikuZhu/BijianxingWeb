@@ -48,7 +48,7 @@ class Word extends Model
 						if ($photoInfo)
 						{
 							$word_photo_url = str_replace('\\', "/", $photoInfo->getSaveName());
-							$wp_img_url = "../../static/libraryResources/img/".$word_photo_url;
+							$wp_img_url = "../../../static/libraryResources/img/".$word_photo_url;
 							Db::name('word_photo')->insert(['wp_name' => $word_name, 'wp_img_url' => $wp_img_url,
 									'wp_bt_id' => $book_type, 'wp_wt_id' => $word_type]);
 							$wp_id = Db::name('word_photo')->getLastInsID();
@@ -79,7 +79,7 @@ class Word extends Model
 						if($videoInfo)
 						{
 							$word_video_url = str_replace('\\', "/", $videoInfo->getSaveName());
-							$wv_video_url = "../../static/libraryResources/video/".$word_video_url;
+							$wv_video_url = "../../../static/libraryResources/video/".$word_video_url;
 							Db::name('word_video')->insert(['wv_name' => $word_name, 'wv_video_url' => $wv_video_url,
 									'wv_bt_id' => $book_type, 'wv_wt_id' => $word_type]);
 							$wv_id = Db::name('word_video')->getLastInsID();
@@ -97,7 +97,7 @@ class Word extends Model
 						if($intrPhotoInfo)
 						{
 							$word_intr_photo_url = str_replace('\\', "/", $intrPhotoInfo->getSaveName());
-							$intr_photo_url = "../../static/libraryResources/img/".$word_intr_photo_url;
+							$intr_photo_url = "../../../static/libraryResources/img/".$word_intr_photo_url;
 							Db::name('word_intr')->insert(['wi_name' => $word_name, 'wi_dcp' => $word_intr_text, 'wi_img_url' => $intr_photo_url]);
 							$wi_id = Db::name('word_intr')->getLastInsID();
 						}
@@ -108,7 +108,7 @@ class Word extends Model
 						if($intrPhotoInfo)
 						{
 							$word_intr_photo_url = str_replace('\\', "/", $intrPhotoInfo->getSaveName());
-							$intr_photo_url = "../../static/libraryResources/img/".$word_intr_photo_url;
+							$intr_photo_url = "../../../static/libraryResources/img/".$word_intr_photo_url;
 							Db::name('word_intr')->insert(['wi_name' => $word_name, 'wi_dcp' => $word_intr_text, 'wi_img_url' => $intr_photo_url]);
 							$wi_id = Db::name('word_intr')->getLastInsID();
 						}
@@ -397,11 +397,12 @@ class Word extends Model
 			$url = $word_photo[0]["wp_img_url"];
 			if($url != null)
 			{
-				$urlArray = explode("/", $url);
-				array_splice($urlArray, 1, 2);
-				$urlArray[0] = '../static';
-				$urlString = implode("/", $urlArray);
-				unlink($urlString);
+				unlink($url);
+				// $urlArray = explode("/", $url);
+				// array_splice($urlArray, 1, 2);
+				// $urlArray[0] = '../static';
+				// $urlString = implode("/", $urlArray);
+				// unlink($urlString);
 			}
 			Db::name('word_photo')->where('wp_id', $wordPhotoID)->delete();
 			
@@ -422,12 +423,12 @@ class Word extends Model
 			$url = $word_video[0]["wv_video_url"];
 			if($url != null)
 			{
-				
-				$urlArray = explode("/", $url);
-				array_splice($urlArray, 1, 2);
-				$urlArray[0] = '.';
-				$urlString = implode("/", $urlArray);
-				unlink($urlString);
+				unlink($url);
+				// $urlArray = explode("/", $url);
+				// array_splice($urlArray, 1, 2);
+				// $urlArray[0] = '.';
+				// $urlString = implode("/", $urlArray);
+				// unlink($urlString);
 			}
 			Db::name('word_video')->where('wv_id', $wordVideoID)->delete();
 			
@@ -732,11 +733,12 @@ class Word extends Model
 					$url = $wordPhoto[0]['wp_img_url'];
 					if($url != null)
 					{
-						$urlArray = explode("/", $url);
-						array_splice($urlArray, 1, 2);
-						$urlArray[0] = '.';
-						$urlString = implode("/", $urlArray);
-						unlink($urlString);
+						unlink($url);
+						// $urlArray = explode("/", $url);
+						// array_splice($urlArray, 1, 2);
+						// $urlArray[0] = '.';
+						// $urlString = implode("/", $urlArray);
+						// unlink($urlString);
 					}
 				}
 				Db::name('word_photo')->field(['wp_img_url'])->where('wp_id', $wordPhotoId)->update(['wp_img_url' => $word_photo_url]);
@@ -762,7 +764,7 @@ class Word extends Model
 			if ($photoInfo) 
 			{
 				$word_photo_url = str_replace('\\', "/", $photoInfo->getSaveName());
-				$url = "/bijianxing/public/static/libraryResources/img/".$word_photo_url;
+				$url = "../../../static/libraryResources/img/".$word_photo_url;
 				$photo = ['wordname' => $word_name, 'booktype' => $book_type, 'wordtype' => $word_type, 'wordphotourl' => $url];
 				$photoStatus = $this->updateWordPhoto($photo);
 				if($photoStatus == "Word doesn't exist")
@@ -814,11 +816,12 @@ class Word extends Model
 					$url = $wordVideo[0]['wv_video_url'];
 					if($url != null)
 					{
-						$urlArray = explode("/", $url);
-						array_splice($urlArray, 1, 2);
-						$urlArray[0] = '.';
-						$urlString = implode("/", $urlArray);
-						unlink($urlString);
+						unlink($url);
+						// $urlArray = explode("/", $url);
+						// array_splice($urlArray, 1, 2);
+						// $urlArray[0] = '.';
+						// $urlString = implode("/", $urlArray);
+						// unlink($urlString);
 					}
 				}
 				Db::name('word_video')->field(['wv_video_url'])->where('wv_id', $wordVideoId)->update(['wv_video_url' => $word_video_url]);
@@ -845,7 +848,7 @@ class Word extends Model
 			if($videoInfo)
 			{
 				$word_video_url = str_replace('\\', "/", $videoInfo->getSaveName());
-				$url = "/bijianxing/public/static/libraryResources/video/".$word_video_url;
+				$url = "../../../static/libraryResources/video/".$word_video_url;
 				$data = ['wordname' => $word_name, 'booktype' => $book_type, 'wordtype' => $word_type, 'wordvideourl' => $url];
 				$status = $this->updateWordVideo($data);
 				if($status == "Word doesn't exist")
@@ -878,7 +881,7 @@ class Word extends Model
 			if($intrPhotoInfo)
 			{
 				$word_intr_photo_url = str_replace('\\', "/", $intrPhotoInfo->getSaveName());
-				$intr_photo_url = "/bijianxing/public/static/libraryResources/img/".$word_intr_photo_url;
+				$intr_photo_url = "../../../static/libraryResources/img/".$word_intr_photo_url;
 				$intrPhoto = ['wordname' => $word_name, 'booktype' => $book_type, 'wordtype' => $word_type, 'wordintrphotourl' => $intr_photo_url];
 				$photoStatus = $this->updateIntrPhoto($intrPhoto);
 				if($photoStatus == "Word doesn't exist")
@@ -929,11 +932,12 @@ class Word extends Model
 					//修改图片url，unlink操作不识别绝对路径，必须./static...开头
 					if($url != null)
 					{
-						$urlArray = explode("/", $url);
-						array_splice($urlArray, 1, 2);
-						$urlArray[0] = '.';
-						$urlString = implode("/", $urlArray);
-						unlink($urlString);
+						unlink($url);
+						// $urlArray = explode("/", $url);
+						// array_splice($urlArray, 1, 2);
+						// $urlArray[0] = '.';
+						// $urlString = implode("/", $urlArray);
+						// unlink($urlString);
 					}
 				}
 				Db::name('word_intr')->field(['wi_img_url'])->where('wi_id', $intrId)->update(['wi_img_url' => $intr_photo]);
