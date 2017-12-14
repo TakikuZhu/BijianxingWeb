@@ -17,6 +17,7 @@ $(document).ready(function() {
 		async: true,
 		cache: false,
 		success: function(reg) {
+			document.querySelector('.search_table').style.display = 'block';
 			if(reg.toString() != "Word doesn't exist") {
 				if(reg.length != null) {
 					var word = null;

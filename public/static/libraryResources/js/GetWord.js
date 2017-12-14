@@ -57,7 +57,7 @@ $(document).ready(function() {
 				async: true,
 				cache: false,
 				success: function(reg) {
-					console.log(reg);
+					document.querySelector('.search_table').style.display = 'block';
 					var wordArr = [];
 					if(reg.toString() != "Word doesn't exist") {
 						for(key in reg) {
