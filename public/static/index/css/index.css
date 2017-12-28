@@ -63,6 +63,7 @@ a:hover{
 #left_menu a:hover {
 	text-decoration: none;
 	box-shadow: 0 0 5px 1px rgba(51, 122, 255, .4);
+	color: orange;
 }
 #scroll_img {
 	width: 68%;
