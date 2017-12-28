@@ -37,11 +37,13 @@ $(document).ready(function() {
 						createA(word, i);
 					}
 				}else {
+					document.querySelector('.search_table').style.display = 'none';
 					alert("该字不存在");
 				}
 			}
 		},error: function() {
-			alert("该字不存在，请检查您的输入是否正确21");
+			document.querySelector('.search_table').style.display = 'none';
+			alert("该字不存在，请检查您的输入是否正确");
 		}
 	});
 })
