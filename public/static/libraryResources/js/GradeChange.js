@@ -44,7 +44,7 @@ $(document).ready(function() {
 					}
 				}
 			},error: function() {
-				alert("该字不存在，请检查您的输入是否正确21");
+				alert("该字不存在，请检查您的输入是否正确");
 			}
 		});
 	})

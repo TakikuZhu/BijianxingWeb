@@ -1,6 +1,3 @@
-/**
- * 看图识字前后台交互函数 2017.11.06 唐锦城
- */
 
 //查询字信息并返回前台
 $(document).ready(function() {
@@ -21,12 +18,14 @@ $(document).ready(function() {
 					document.getElementById("qrCode").src = reg;
 				}
 				if(reg == null){
+					document.querySelector('.search_table').style.display = 'none';
 					alert("二维码暂时无法生成");
 				}
 			}, error: function()
 			{
 				//console.log(reg);
-				alert("该字不存在，请检查您的输入是否正确23");
+				document.querySelector('.search_table').style.display = 'none';
+				alert("该字不存在，请检查您的输入是否正确");
 			}
 		});
 	}
@@ -35,6 +34,7 @@ $(document).ready(function() {
 		function judge(val){
 			reg = /^[\u4E00-\u9FA5]{1,1}$/;
 			if(!reg.test(val)) {
+				document.querySelector('.search_table').style.display = 'none';
 				alert("每次仅查询一个汉字")
 				document.getElementById('wordName').value = '';
 			}
@@ -42,6 +42,7 @@ $(document).ready(function() {
 		var bookType = $("input[name='_fontStyle']:checked").val();
 		var wordType = $("input[name='_fontFam']:checked").val();
 		if ((wordName == null) || (wordName == "")) {
+			document.querySelector('.search_table').style.display = 'none';
 			alert("未输入字，请重新输入");
 		}else {
 			judge(wordName);
@@ -96,14 +97,17 @@ $(document).ready(function() {
 							getQRcode();
 						}
 						else {
+							document.querySelector('.search_table').style.display = 'none';
 							alert("该字不存在");
 						}
 					}
 					else {
-						alert("该字不存在，请检查您的输入是否正确11");
+						document.querySelector('.search_table').style.display = 'none';
+						alert("该字不存在，请检查您的输入是否正确");
 					}
 				}, error: function() {
-					alert("该字不存在，请检查您的输入是否正确21");
+					document.querySelector('.search_table').style.display = 'none';
+					alert("该字不存在，请检查您的输入是否正确");
 				}
 			});
 		}

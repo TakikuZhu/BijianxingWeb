@@ -9,6 +9,7 @@ $(document).ready(function() {
 		function judge(val){
 			reg = /^[\u4E00-\u9FA5]{1,1}$/;
 			if(!reg.test(val)) {
+				document.querySelector('.search_table').style.display = 'none';
 				alert("每次仅查询一个汉字")
 				document.getElementById('wordName').value = '';
 			}

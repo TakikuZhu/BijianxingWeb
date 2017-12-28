@@ -16,10 +16,12 @@ $(document).ready(function() {
 					document.getElementById("qrCode").src = reg;
 				}
 				if(reg == null){
+					document.querySelector('.search_table').style.display = 'none';
 					alert("二维码暂时无法生成");
 				}
 			}, error: function()
 			{
+				document.querySelector('.search_table').style.display = 'none';
 				alert("该字不存在，请检查您的输入是否正确");
 			}
 		});
@@ -35,6 +37,7 @@ $(document).ready(function() {
 			wordType = "1";
 		}
 		if ((wordName == null) || (wordName == "")) {
+			document.querySelector('.search_table').style.display = 'none';
 			alert("尚未选择生字，请重新选择");
 		}
 		else {
@@ -82,9 +85,11 @@ $(document).ready(function() {
 							getQRcode();
 						}
 					}else {
-						alert("该字不存在，请检查您的输入是否正确")
+						document.querySelector('.search_table').style.display = 'none';
+						alert("该字不存在，请检查您的输入是否正确");
 					}
 				}, error: function() {
+					document.querySelector('.search_table').style.display = 'none';
 					alert("该字不存在，请检查您的输入是否正确");
 				}
 			});
