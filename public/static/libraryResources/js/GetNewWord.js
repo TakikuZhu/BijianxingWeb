@@ -67,11 +67,18 @@ $(document).ready(function() {
 								imgNode.setAttribute('src', wordArr[2][1]);
 								div1.appendChild(imgNode);
 							}
+							function createNote(note) {
+								//delnote();
+								var ul = document.getElementById('wordNote');
+								var li = document.createElement('li');
+								li.innerHTML = note;
+								ul.appendChild(li);
+							}
 							createImg();
-							document.getElementById("wn1").innerHTML = "1. " + wordArr[3][0];
-							document.getElementById("wn2").innerHTML = "2. " + wordArr[3][1];
-							document.getElementById("wn3").innerHTML = "3. " + wordArr[3][2];
-							document.getElementById("wn4").innerHTML = "4. " + wordArr[3][3];
+							for(var j = 0; j < wordArr[3].length; j++){
+								note = wordArr[3][j];
+								createNote(note);
+							}
 							document.getElementById("wordScore").innerHTML = wordArr[4] + "  （满分100分）";
 							document.getElementById("commentCount").innerHTML = wordArr[5].length;
 							for(var i = 0; i < wordArr[5].length; i++) {
