@@ -59,7 +59,7 @@ $(document).ready(function(){
 			$("#ctl_list li").eq(count2).css('opacity', '1');
 		}
 	})
-	//*测试
+	/*测试
 	for(var i = 0; i < $("#img_list li").length; i ++){
 		// $("#img_list").children().eq(i).css("background", '#6cf');
 		$("#img_list").children().eq(i).css('background',getColor());

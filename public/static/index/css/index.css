@@ -73,6 +73,8 @@ a:hover{
 #scroll_img>ul>li{
 	list-style: none;
 	display: block;
+	background-repeat: no-repeat;
+	background-size: 100% 500px;
 }
 #img_list {
 	display: block;
