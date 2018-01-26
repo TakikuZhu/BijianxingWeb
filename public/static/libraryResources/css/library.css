@@ -132,14 +132,14 @@
 	/*position: absolute;
 	top: 5px;*/
 }
-#_preview {
+.whiteBtn {
 	display: block;
 	text-align: center;
 	padding: 5px 60px;
 	border: 1px solid #ccc;
 	cursor: pointer;
 }
-#_preview:hover {
+.whiteBtn:hover {
 	background: #eee;
 }
 .mesBox{

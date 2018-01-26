@@ -1,4 +1,4 @@
-{include file="header"/}
+	{include file="header"/}
 		<!--
         	作者：460183968@qq.com
         	时间：2017-09-17
@@ -63,7 +63,7 @@
 									<option value="默认">比肩行</option>
 								</select>
 							</li>
-							<li>
+							<!-- <li>
 								<label>样式      </label>
 								<select id="typesetting">
 									<option value="黑白">请选择样式</option>
@@ -73,7 +73,7 @@
 									<option value="黑红">黑红</option>
 									<option value="黄色">黄色</option>
 								</select>
-							</li>
+							</li> -->
 							<li>
 								<label>格式       </label>
 								<select id='_celltype'>
@@ -95,7 +95,10 @@
 								<input type="text" placeholder="比肩行" id="_sign" />
 							</li>
 							<li>
-								<span id='_preview'>预览字帖</span>
+								<span class="whiteBtn" id='_preview'>预览字帖</span>
+							</li>
+							<li>
+								<span class="whiteBtn" id='_buy' style="display: none">购买字帖</span>
 							</li>
 						</ul>
 					</div>
@@ -163,9 +166,12 @@
 									}else{
 										$("#copyBooks").getOptions(str).initDraw().fillDraw();
 									}
+								$('#_buy').css('display', 'block');
 							})
 						})
-	
+						$('#_buy').on('click', function(){
+							confirm('即将进入购买页面');
+						})
 					</script>
 				</div>
 			</div>
